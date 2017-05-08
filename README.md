@@ -16,3 +16,5 @@ Onyx3D is a 3D game engine developed with C++ and OpenGL
 - SSAO
 - Deferred rendering
 - CSM
+- Shadow mapping (point lights)
+- Reflection probes
