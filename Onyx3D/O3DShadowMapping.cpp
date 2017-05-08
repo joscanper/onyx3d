@@ -58,7 +58,7 @@ LightSetup O3DShadowMapping::getLightSetup(const ShadowEmitter& emitter){
     LightSetup ls;
     ls.view = glm::lookAt(l->getPosition(), l->getPosition() - l->getDirection(), glm::vec3(0,1,0));
     if(SpotLight_ptr spot = dynamic_pointer_cast<O3DSpotLight>(l))
-        ls.proj = glm::perspective(45.0f * (emitter.range/5), 1.0f, emitter.near, emitter.far);
+        ls.proj = glm::perspective(45.0f * (emitter.range/5.0f), 1.0f, emitter.near, emitter.far);
     else
         ls.proj = glm::ortho(-emitter.range, emitter.range, -emitter.range, emitter.range, emitter.near, emitter.far);
         

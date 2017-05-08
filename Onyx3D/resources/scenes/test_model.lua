@@ -1,4 +1,5 @@
 
+include("resources/resources.lua")
 
 material("red", "o3d_shaders/unlit_color");
 	set_mat_vec4("color", 1,0,0,1)
@@ -11,22 +12,11 @@ material("white", "o3d_shaders/unlit_color");
 material("grey", "o3d_shaders/unlit_color");
 	set_mat_vec4("color", 0.5,0.5,0.5,1)
 
-texture("wall", "resources/textures/wall.jpg")
-texture("floor", "resources/textures/floor.png")
 default_material("mat_wall")
 	set_mat_texture("diffuse", "wall", 0)
 	set_mat_texture("specular", "o3d_textures/white",1)
 	set_mat_float("shininess", 1)
-default_material("mat_floor")
-	set_mat_texture("diffuse", "floor", 0)
 
-cubemap("skymap",
-	"resources/skyboxes/4/right.tga",
-	"resources/skyboxes/4/left.tga",
-	"resources/skyboxes/4/top.tga",
-	"resources/skyboxes/4/bottom.tga",
-	"resources/skyboxes/4/back.tga",
-	"resources/skyboxes/4/front.tga")
 
 material("mat_sky", "o3d_shaders/skybox");
 	set_mat_cubemap("skybox", "skymap", 0)
@@ -50,7 +40,7 @@ node("pivot")
 	set_rotation(0,0,0)
 	
 
-
+--[[
 cube("floor")
 	set_scale(5,0.01,5)
 	set_material("mat_floor")
@@ -60,6 +50,7 @@ quad("ceiling")
 	set_rotation(90,0,0)
 	set_position(0,1,0)
 	set_material("mat_floor")
+]]
 
 function createCube(index, x, z)
 cube("w"..index)
@@ -92,19 +83,45 @@ octa("o0")
 	set_scale(0.15,0.15,0.15)
 	set_parent("pivot")
 	set_material("white")
-	set_position(0,1,1.5)
+	set_position(0,0.3,1.5)
 
 
 spot_light("dir_light")
 	set_parent("o0")
-	set_local_rotation(-35,0,0)
-	set_light_intensity(1)
-	set_light_range(4)
+	set_local_rotation(0,0,0)
+	set_light_intensity(0.5)
+	set_light_range(3)
 	set_light_angle(45)
 	set_light_color(1,1,1)
 	set_light_specular(2,2,2)
-	set_light_shadows(1024, 0.1,10)
+	set_light_shadows(1024, 0.1, 10, 300)
 	set_local_position(0,0,0)
+
+
+default_material("mat_floor")
+	set_mat_texture("diffuse", "tilesD", 0)
+	set_mat_texture("specular", "o3d_textures/white", 1)
+	set_mat_texture("normal", "tilesN", 2)
+
+
+
+for x=1,5 do
+	for y=1,5 do
+		quad("floor"..x.."-"..y)
+			set_rotation(-90,0,0)
+			set_material("mat_floor")
+			set_position(x-2.5,0,y-2.5)
+	end
+end
+
+for x=1,5 do
+	for y=1,5 do
+		quad("ceiling"..x.."-"..y)
+			set_rotation(90,0,0)
+			set_material("mat_floor")
+			set_position(x-2.5,1,y-2.5)
+	end
+end
 
 
 	
@@ -113,5 +130,8 @@ include("resources/models/cobra.model")
 model_instance("cobra", "car");
 	--set_parent("pivot")
 	set_local_scale(0.5,0.5,0.5)
+
+
+
 
 

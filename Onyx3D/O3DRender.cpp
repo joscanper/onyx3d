@@ -173,7 +173,7 @@ void O3DRender::renderScreenQuad(){
     glClear(GL_COLOR_BUFFER_BIT);
     
     glBindVertexArray(screenQuad->getMesh()->vao);
-        glDrawElements(GL_TRIANGLES, (GLuint)screenQuad->getMesh()->indices.size(), GL_UNSIGNED_INT, 0);
+        glDrawArrays(GL_TRIANGLES, 0, (GLuint)screenQuad->getMesh()->vertices.size());
     glBindVertexArray(0);
 }
 

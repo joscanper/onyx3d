@@ -43,9 +43,8 @@ int main() {
     
     //O3DGameObject* pivot = scene->getSceneObjectById<std:O3DGameObject>("pivot");
     
+    bool wasFocused = true;
     while(O3D().running()){
-        
-        
         
         // Camera movement
         
@@ -87,23 +86,28 @@ int main() {
             go->getTransform()->translate(glm::vec3(0,0.1,0));
         //if (O3DInput::isKeyPressed(Keys::Numpad_9))*/
         
-        if (O3DInput::isKeyPressed(Keys::R)){
-            glm::vec3 prev_cam_pos = camera->getPosition();
-            glm::vec3 prev_cam_rot = camera->getRotation();
-           
-            scene = O3DSceneLoader().load(("../../../../../Onyx3D/" + scene_path).c_str(), true, false);
-            camera = scene->getObjectById<O3DCamera>("main_camera");
-            camera->setPosition(prev_cam_pos);
-            camera->setRotation(prev_cam_rot);
-            
-            pivot = scene->getObjectById<O3DGameObject>("pivot");
-
-        }
+        
         
         O3D().update();
-        O3D().render();
         
-        
+        if (O3D().isFocused()){
+            O3D().render();
+            
+            if (!wasFocused){
+                glm::vec3 prev_cam_pos = camera->getPosition();
+                glm::vec3 prev_cam_rot = camera->getRotation();
+                
+                scene = O3DSceneLoader().load(("../../../../../Onyx3D/" + scene_path).c_str(), true, false);
+                camera = scene->getObjectById<O3DCamera>("main_camera");
+                camera->setPosition(prev_cam_pos);
+                camera->setRotation(prev_cam_rot);
+                
+                pivot = scene->getObjectById<O3DGameObject>("pivot");
+                wasFocused = true;
+            }
+        }else{
+            wasFocused = false;
+        }
         
     }
     

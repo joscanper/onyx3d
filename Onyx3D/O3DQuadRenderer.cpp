@@ -13,18 +13,14 @@ using namespace o3d;
 O3DQuadRenderer::O3DQuadRenderer(float size) : O3DMeshRenderer(){
     glm::vec3 red(1,0,0);
     glm::vec3 green(0,1,0);
-    m_mesh->vertices.push_back(O3DVertex(glm::vec3(-size,-size,0.0f),red,glm::vec3(0,0,1),glm::vec2(0,0)));
-    m_mesh->vertices.push_back(O3DVertex(glm::vec3(size,-size,0.0f),red,glm::vec3(0,0,1),glm::vec2(1,0)));
-    m_mesh->vertices.push_back(O3DVertex(glm::vec3(size,size,0.0f),green,glm::vec3(0,0,1),glm::vec2(1,1)));
-    m_mesh->vertices.push_back(O3DVertex(glm::vec3(-size,size,0.0f),green,glm::vec3(0,0,1),glm::vec2(0,1)));
+    m_mesh->vertices.push_back(O3DVertex(glm::vec3(-size,-size,0.0f),red,glm::vec3(0,0,1),glm::vec2(0,0))); //0
+    m_mesh->vertices.push_back(O3DVertex(glm::vec3(size,-size,0.0f),red,glm::vec3(0,0,1),glm::vec2(1,0))); //1
+    m_mesh->vertices.push_back(O3DVertex(glm::vec3(-size,size,0.0f),green,glm::vec3(0,0,1),glm::vec2(0,1))); //3
     
-    m_mesh->indices.push_back(0);
-    m_mesh->indices.push_back(1);
-    m_mesh->indices.push_back(3);
-    m_mesh->indices.push_back(1);
-    m_mesh->indices.push_back(2);
-    m_mesh->indices.push_back(3);
+    m_mesh->vertices.push_back(O3DVertex(glm::vec3(size,-size,0.0f),red,glm::vec3(0,0,1),glm::vec2(1,0))); //1
+    m_mesh->vertices.push_back(O3DVertex(glm::vec3(size,size,0.0f),green,glm::vec3(0,0,1),glm::vec2(1,1))); //2
+    m_mesh->vertices.push_back(O3DVertex(glm::vec3(-size,size,0.0f),green,glm::vec3(0,0,1),glm::vec2(0,1))); //3
    
-    //m_mesh->calculateTangents();
+    m_mesh->calculateTangents();
     m_mesh->generateVAO();
 }

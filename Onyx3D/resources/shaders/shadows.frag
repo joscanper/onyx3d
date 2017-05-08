@@ -25,7 +25,8 @@ float calculate_shadow(int index, vec4 coord){
     projcoord = projcoord * 0.5 + 0.5;
     
     if(projcoord.z > 1.0)
-        return 0.0f;
+        return 1.0f;
+    
     
     float closestDepth = texture(shadowEmitters.shadowMap[index], projcoord.xy).r;
     float currentDepth = projcoord.z;

@@ -52,6 +52,8 @@ namespace o3d {
         GLFWwindow * getWindow() { return m_window; }
         O3DResources& getResources() { return m_resources; }
         
+        void setFocused(bool focus) { m_focused = focus; }
+        bool isFocused(){ return m_focused; }
     private:
         O3DResources m_resources;
         O3DRender m_render;
@@ -64,6 +66,7 @@ namespace o3d {
         float m_fpsFrames = 0;
         float m_fpsTime = 0;
         float m_fps = 0;
+        bool m_focused = true;
         
         O3DCore();
 
@@ -74,7 +77,13 @@ namespace o3d {
         return O3DCore::getInstance();
     }
 
+    static void window_focus_callback(GLFWwindow* window, int focused)
+    {
+        O3D().setFocused(focused == GLFW_TRUE);
+    }
 }
+
+
 
 
 #endif /* O3DCore_hpp */

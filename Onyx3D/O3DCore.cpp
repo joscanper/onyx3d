@@ -8,8 +8,10 @@
 
 #include "O3DCore.hpp"
 #include <iostream>
+#include <GLFW/glfw3.h>
 
 using namespace o3d;
+
 
 O3DCore::O3DCore() :
     m_resources(),
@@ -26,6 +28,8 @@ void O3DCore::terminate(){
     glfwTerminate();
 }
 
+
+
 int O3DCore::init(GLint width, GLint height, const char* window_name)
 {
     glfwInit();
@@ -39,7 +43,6 @@ int O3DCore::init(GLint width, GLint height, const char* window_name)
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-    glfwWindowHint(GLFW_SAMPLES, 6);
     
     m_window = glfwCreateWindow(width, height, window_name, nullptr, nullptr);
     if (m_window == nullptr){
@@ -67,6 +70,8 @@ int O3DCore::init(GLint width, GLint height, const char* window_name)
     {
         //std::cout << "Pressed: " << key << " : " << action << std::endl;
     });
+    
+    glfwSetWindowFocusCallback(m_window, window_focus_callback);
     
     m_resources.init();
     
@@ -101,4 +106,6 @@ void O3DCore::update(){
 void O3DCore::render(){
     m_render.render();
 }
+
+
 
