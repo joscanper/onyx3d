@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Onyx3D.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Onyx3DLib.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Onyx3dLib.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>0D60CF931EA553EC008D41F3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0DF3D35F1EBA01AD000D0687</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0DF3D36E1EBA02F6000D0687</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0DF3D49A1EBA048A000D0687</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

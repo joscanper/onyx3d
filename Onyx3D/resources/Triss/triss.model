@@ -1,0 +1,45 @@
+
+texture("triss_eyes_normal", "resources/Triss/Eyes_Norm.tga");
+texture("triss_eyes_diffuse", "resources/Triss/Eyes_Diff.tga");
+default_material("mat_triss_eyes")
+	set_mat_texture("diffuse", "triss_eyes_diffuse", 0)
+	set_mat_texture("specular", "o3d_textures/white", 1)
+	set_mat_texture("normal", "triss_eyes_normal", 2)
+	set_mat_float("shininess", 20)
+
+texture("triss_normal", "resources/Triss/Triss_Norm.tga");
+texture("triss_specular", "resources/Triss/Triss_Spec.tga");
+texture("triss_diffuse", "resources/Triss/Triss_Diff.tga");
+default_material("mat_triss");
+	set_mat_texture("diffuse", "triss_diffuse", 0)
+	set_mat_texture("specular", "triss_specular", 1)
+	set_mat_texture("normal", "triss_normal", 2)
+	set_mat_float("shininess", 2)
+	
+texture("triss_hair_normal", "resources/Triss/Hair_Norm.tga");
+texture("triss_hair_diffuse", "resources/Triss/Hair_Diff.tga");
+default_material("mat_triss_hair")
+	set_mat_texture("diffuse", "triss_hair_diffuse", 0)
+	set_mat_texture("normal", "triss_hair_normal", 2)
+	set_mat_float("shininess", 20)
+	set_mat_texture("specular", "o3d_textures/white", 1)
+
+texture("triss_eyelashes_diffuse", "resources/Triss/Eyelashes_Diff.tga");
+default_material("mat_triss_eyelashes")
+	set_mat_texture("diffuse", "triss_eyelashes_diffuse", 0)
+
+model("triss", "resources/Triss/Triss.obj")
+	set_position(0,0.5,0)
+	set_scale(0.5,0.5,0.5)
+	set_model_material("Model001_24_Acces_0.20_0_0.6","mat_triss")
+	set_model_material("Model001_24_Body2_0.20_0_0.08", "mat_triss")
+	set_model_material("Model001_24_Body1_0.20_0_0.8", "mat_triss")
+	set_model_material("Model001_24_Fingers_0.35_0_0.3","mat_triss")
+	set_model_material("Model001_24_Face_0.15_0_0.5_RightLeg_RightLeg", "mat_triss")
+	set_model_material("Model001_24_HairCon_0.20_0_0.1_RightHand_RightArm", "mat_triss")
+	set_model_material("Model001_24_Belts_0.20_0_0.2_Torso_Spine", "mat_triss")
+	set_model_material("Model001_24_AccBelts_0.20_0_0.1_Head_Head", "mat_triss")
+	set_model_material("Model001_7_Eyelashes_0.1_0_0_Hips_Pelvis", "mat_triss_eyelashes")
+	set_model_material("Model001_5_Eyes_0.15_0_0.1_LeftLeg_LeftLeg", "mat_triss_eyes")
+	set_model_material("Model001_4_Hair_0.20_0_0.08","mat_triss_hair")
+
