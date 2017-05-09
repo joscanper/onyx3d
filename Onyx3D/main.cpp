@@ -45,6 +45,7 @@ int main() {
     
     bool wasFocused = true;
     float camspeed= 0;
+    float samples = 3;
     while(O3D().running()){
         
         // Camera movement
@@ -71,13 +72,6 @@ int main() {
             camspeed-=0.01f;
         if (camspeed<0)
             camspeed+=0.01f;
-        /*
-        if (O3DInput::isKeyPressed(Keys::Numpad_8))
-            go->getTransform()->translate(glm::vec3(0,0,-0.1));
-        if (O3DInput::isKeyPressed(Keys::Numpad_2))
-            go->getTransform()->translate(glm::vec3(0,0,0.1));
-         */
-        
         
         if (O3DInput::isKeyPressed(Keys::Numpad_4))
             pivot->rotate(glm::vec3(0,1,0));

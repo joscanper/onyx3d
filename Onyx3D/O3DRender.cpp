@@ -111,9 +111,11 @@ void O3DRender::render(){
     resultBuffer = m_finalRender.getTextureId();
     
     // FINAL FXs---------------
-    m_motionBlurFX.use(resultBuffer,m_renderFBO.depthBuffer, m_prevRenderFBO.depthBuffer, projM * viewM);
-    renderScreenQuad();
-    resultBuffer = m_motionBlurFX.getTextureId();
+    if (m_motionBlurFX.isEnabled()){
+        m_motionBlurFX.use(resultBuffer,m_renderFBO.depthBuffer, m_prevRenderFBO.depthBuffer, projM * viewM);
+        renderScreenQuad();
+        resultBuffer = m_motionBlurFX.getTextureId();
+    }
     
     
     // Final composition to screen

@@ -12,6 +12,9 @@ out vec4 outColor;
 uniform mat4 viewProjectionInverseM;
 uniform mat4 previousViewProjectionM;
 
+uniform float strength;
+uniform float samples;
+
 uniform sampler2D screen;
 uniform sampler2D depthTexture;
 uniform sampler2D prevDepthTexture;
@@ -36,7 +39,7 @@ void main(){
     previousPos /= previousPos.w;
     // Use this frame's position and last frame's to compute the pixel
     // velocity.
-    vec4 velocity = (previousPos - currentPos)/2.0f;
+    vec4 velocity = (previousPos - currentPos) / (2.0f/strength);
     velocity.y *= -1.0f;
     velocity.x *= 0.5f;
     
@@ -46,8 +49,8 @@ void main(){
     vec4 color = screenCol;
     tcoord += velocity.xy;
     
-    int num_samples = 3;
-    for(int i = 1; i < num_samples; ++i, tcoord += velocity.xy)
+    
+    for(int i = 1; i < samples; ++i, tcoord += velocity.xy)
     {
         // Sample the color buffer along the velocity vector.
         vec4 currentColor = texture(screen, tcoord);
@@ -58,6 +61,6 @@ void main(){
     // Average all of the samples to get the final blur color.
     //outColor = ;
     
-    outColor = color/num_samples;
+    outColor = color/samples;
     
 }

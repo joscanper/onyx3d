@@ -51,6 +51,7 @@ namespace o3d {
         const glm::vec2& getScreenSize() { return m_screenSize; }
         GLFWwindow * getWindow() { return m_window; }
         O3DResources& getResources() { return m_resources; }
+        O3DRender& getRenderer(){ return m_render; }
         
         void setFocused(bool focus) { m_focused = focus; }
         bool isFocused(){ return m_focused; }

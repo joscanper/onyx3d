@@ -19,7 +19,11 @@ namespace  o3d {
         void init(Shader_ptr shader, int w, int h);
         void use(GLuint frame);
         GLuint getTextureId(){ return fx_tex; }
+        bool isEnabled(){ return m_enabled; }
+        void setEnabled(bool isEnabled){ m_enabled = isEnabled; }
     protected:
+        
+        bool m_enabled = true;
         Shader_ptr shader;
         GLuint fx_fbo;
         GLuint fx_tex;

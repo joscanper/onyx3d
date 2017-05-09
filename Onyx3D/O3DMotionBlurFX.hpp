@@ -32,11 +32,19 @@ namespace o3d {
             shader->setUniformTexture("prevDepthTexture", prevDepth,2);
             shader->setUniform("viewProjectionInverseM", glm::inverse(viewProj));
             shader->setUniform("previousViewProjectionM", m_prevViewProj);
+            shader->setUniform("strength", m_strength);
+            shader->setUniform("samples", m_samples);
             
             m_prevViewProj = viewProj;
         }
         
+        void setStrength(float s){ m_strength = s; }
+        void setSamples(float s){ m_samples = s; }
+        
     private:
+        float m_strength = 1;
+        float m_samples = 3;
+        
         glm::mat4 m_prevViewProj;
     };
 }

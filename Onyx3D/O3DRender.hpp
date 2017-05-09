@@ -69,6 +69,8 @@ namespace o3d {
     public:
         void render();
         void init(int w, int h);
+        
+        O3DMotionBlurFX& getMotionBlur() { return m_motionBlurFX; }
     private:
         
         QuadRenderer_Uptr m_screenQuad;
