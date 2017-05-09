@@ -8,11 +8,11 @@ Onyx3D is a 3D game engine developed with C++ and OpenGL
   - Cubemaps reflection.
   - Multiple light casters: directional, point and spot.
 - Shadow mapping: directional and spot lights.
+- Motion blur
 
 ### Upcoming Features
 - HDR & Bloom
 - Tone mapping
-- Motion blur
 - SSAO
 - Deferred rendering
 - CSM
