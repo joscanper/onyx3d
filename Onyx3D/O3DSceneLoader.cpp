@@ -71,6 +71,9 @@ Scene_ptr O3DSceneLoader::load(const char* filename, bool active, bool reload_in
     lua_register(L, "texture", O3DSceneLoader::l_texture);
     lua_register(L, "cubemap", O3DSceneLoader::l_cubemap);
     
+    // Getters
+    lua_register(L, "get_material", O3DSceneLoader::l_getMaterial);
+    
     //Model modification
     lua_register(L, "set_model_material", O3DSceneLoader::l_setModelMaterial);
     
@@ -250,6 +253,15 @@ int O3DSceneLoader::l_cubemap(lua_State* L){
     return 1;
 }
 
+// ---------------------------------
+// ------ Getters
+// ---------------------------------
+
+int O3DSceneLoader::l_getMaterial(lua_State* L){
+    const char* id = lua_tostring(L, 1);
+    g_lastmaterial = O3D().getResources().getMaterial(id);
+    return 1;
+}
 
 // ---------------------------------
 // ------ Material modification

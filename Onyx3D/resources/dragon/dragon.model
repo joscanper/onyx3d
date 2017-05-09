@@ -1,0 +1,12 @@
+
+
+texture("dragon_dif","resources/dragon/Dragon_diffuse.tga")
+texture("dragon_nor","resources/dragon/Dragon_normal.tga")
+
+default_material("mat_dragon")
+	set_mat_texture("diffuse","dragon_dif",0)
+	set_mat_texture("normal","dragon_nor",2)
+
+model("mod_dragon", "resources/dragon/Dragon.obj")
+	set_model_material("Drugon","mat_dragon")
+	set_model_material("Stoyka","mat_dragon")

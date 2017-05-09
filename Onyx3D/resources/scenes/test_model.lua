@@ -1,26 +1,6 @@
 
 include("resources/resources.lua")
 
-material("red", "o3d_shaders/unlit_color");
-	set_mat_vec4("color", 1,0,0,1)
-material("blue", "o3d_shaders/unlit_color");
-	set_mat_vec4("color", 0,0,1,1)
-material("green", "o3d_shaders/unlit_color");
-	set_mat_vec4("color", 0,1,0,1)
-material("white", "o3d_shaders/unlit_color");
-	set_mat_vec4("color", 1,1,1,1)
-material("grey", "o3d_shaders/unlit_color");
-	set_mat_vec4("color", 0.5,0.5,0.5,1)
-
-default_material("mat_wall")
-	set_mat_texture("diffuse", "wall", 0)
-	set_mat_texture("specular", "o3d_textures/white",1)
-	set_mat_float("shininess", 1)
-
-
-material("mat_sky", "o3d_shaders/skybox");
-	set_mat_cubemap("skybox", "skymap", 0)
-
 
 skybox("sky")
 	set_material("mat_sky")
@@ -34,7 +14,6 @@ default_camera("main_camera")
     set_rotation(0,0,0)
 
 ambient_light(0.1,0.1,0.1)
-
 
 node("pivot")
 	set_rotation(0,0,0)
@@ -98,12 +77,6 @@ spot_light("dir_light")
 	set_local_position(0,0,0)
 
 
-default_material("mat_floor")
-	set_mat_texture("diffuse", "tilesD", 0)
-	set_mat_texture("specular", "o3d_textures/white", 1)
-	set_mat_texture("normal", "tilesN", 2)
-
-
 
 for x=1,5 do
 	for y=1,5 do
@@ -118,7 +91,7 @@ for x=1,5 do
 	for y=1,5 do
 		quad("ceiling"..x.."-"..y)
 			set_rotation(90,0,0)
-			set_material("mat_floor")
+			set_material("mat_ceiling")
 			set_position(x-2.5,1,y-2.5)
 	end
 end
@@ -126,9 +99,7 @@ end
 
 	
 include("resources/models/cobra.model")
-
 model_instance("cobra", "car");
-	--set_parent("pivot")
 	set_local_scale(0.5,0.5,0.5)
 
 

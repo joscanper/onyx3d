@@ -62,6 +62,9 @@ namespace o3d {
         static int l_texture(lua_State* L);
         static int l_cubemap(lua_State* L);
         
+        // --------- Getters
+        static int l_getMaterial(lua_State* L);
+        
         // --------- Model modificators
         static int l_setModelMaterial(lua_State* L);
         
