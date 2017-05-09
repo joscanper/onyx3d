@@ -20,41 +20,22 @@ using namespace o3d;
 
 void O3DRender::init(int w, int h){
     
-    screenQuad = unique_ptr<O3DQuadRenderer>(new O3DQuadRenderer(1));
-    baseShader = shared_ptr<O3DShader>(new O3DShader("resources/shaders/basic.vert", "resources/shaders/unlit.frag"));
-    screenShader = unique_ptr<O3DShader>(new O3DShader("resources/shaders/screen.vert", "resources/shaders/screen.frag"));
-    finalRenderShader = unique_ptr<O3DShader>(new O3DShader("resources/shaders/screen.vert", "resources/shaders/finalrender.frag"));
-    //screenFogShader = unique_ptr<O3DShader>(new O3DShader("resources/shaders/screen.vert", "resources/shaders/fog.frag"));
+    m_screenQuad = unique_ptr<O3DQuadRenderer>(new O3DQuadRenderer(1));
+    m_screenShader = unique_ptr<O3DShader>(new O3DShader("resources/shaders/screen.vert", "resources/shaders/screen.frag"));
     
-    glEnable(GL_MULTISAMPLE);
+    //glEnable(GL_MULTISAMPLE);
     
-    glGenFramebuffers(1, &framebuffer);
+    m_renderFBO.init(w,h);
+    m_prevRenderFBO.init(w,h);
     
-    glGenTextures(1, &texColorBuffer);
-    glBindTexture(GL_TEXTURE_2D, texColorBuffer);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, w, h, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glBindTexture(GL_TEXTURE_2D, 0);
+    m_shadowMaps.init();
+    m_finalRender.init(w,h);
+    m_motionBlurFX.init(w,h);
     
-    glGenTextures(1, &depthBuffer);
-    glBindTexture(GL_TEXTURE_2D, depthBuffer);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT32, w, h, 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glBindTexture(GL_TEXTURE_2D, 0);
-    
-    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texColorBuffer, 0);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthBuffer, 0);
-    
-    if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-        std::cout << "ERROR::FRAMEBUFFER:: Framebuffer is not complete!" << std::endl;
-        
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    
-    shadowMaps.init();
+    //Shader_ptr s = shared_ptr<O3DShader>(new O3DShader("resources/shaders/screen.vert", "resources/shaders/blur.frag"));
+    //m_motionBlurFX.init(s);
 }
+
 
 void O3DRender::render(){
 
@@ -79,11 +60,11 @@ void O3DRender::render(){
     // ----------------------------------------------------
     int emitters = (int)scene->getLighting().getShadowEmitters().size();
     for (int i = 0; i < emitters; ++i){
-        LightSetup ls = shadowMaps.setup(i);
-        renderObjects(m_opaque, ls.view, ls.proj, shadowMaps.getShadowMapShader());
+        LightSetup ls = m_shadowMaps.setup(i);
+        renderObjects(m_opaque, ls.view, ls.proj, m_shadowMaps.getShadowMapShader());
     }
-    shadowMaps.setupProjected();
-    renderObjects(m_opaque, viewM, projM, shadowMaps.getShadowProjectionShader());
+    m_shadowMaps.setupProjected();
+    renderObjects(m_opaque, viewM, projM, m_shadowMaps.getShadowProjectionShader());
     
     /// ----------------------------------------------------
     
@@ -94,7 +75,7 @@ void O3DRender::render(){
     
     glViewport(0, 0, O3D().getScreenSize().x, O3D().getScreenSize().y);
     
-    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, m_renderFBO.framebuffer);
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // We're not using stencil buffer now
     glCullFace(GL_BACK);
@@ -115,55 +96,60 @@ void O3DRender::render(){
     renderObjects(m_transparent, viewM, projM);
     glDisable(GL_BLEND);
     
-    glBindFramebuffer(GL_FRAMEBUFFER, 0); // back to default
-    
     // ----------------------------------------------------
-    
-    
     glDisable(GL_DEPTH_TEST);
     glDisable(GL_CULL_FACE);
-    
-    
-    /// POST FX SHADERS - HERE WE SHOULD DO.
-    /*
-    
-    for (auto s : postFXShaders){
-        glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
-        s->use();
-        glBindVertexArray(screenQuad->getMesh()->vao);
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, texColorBuffer);
-        glDrawElements(GL_TRIANGLES, (GLuint)screenQuad->getMesh()->indices.size(), GL_UNSIGNED_INT, 0);
-        glBindVertexArray(0);
-        glBindFramebuffer(GL_FRAMEBUFFER, 0); // back to default
-    }
-    */
     
     // ----------------------------------------------------
     // Final composition  ---------------------------------
     // ----------------------------------------------------
+    GLuint resultBuffer;
     
-    finalRenderShader->use();
-    finalRenderShader->setUniformTexture("diffuse", texColorBuffer,0);
-    finalRenderShader->setUniformTexture("shadows", shadowMaps.getProjectedShadowTexture(), 1);
-    finalRenderShader->setUniformTexture("depth", depthBuffer,2);
+    // Final composition to texture
+    m_finalRender.use(m_renderFBO.colorBuffer, m_shadowMaps.getProjectedShadowTexture(), m_renderFBO.depthBuffer);
+    renderScreenQuad();
+    resultBuffer = m_finalRender.getTextureId();
+    
+    // FINAL FXs---------------
+    m_motionBlurFX.use(resultBuffer,m_renderFBO.depthBuffer, m_prevRenderFBO.depthBuffer, projM * viewM);
+    renderScreenQuad();
+    resultBuffer = m_motionBlurFX.getTextureId();
+    
+    
+    // Final composition to screen
+    glBindFramebuffer(GL_FRAMEBUFFER, 0); // back to default
+    m_screenShader->use();
+    m_screenShader->setUniformTexture("screen", resultBuffer, 0);
     renderScreenQuad();
     
+    // ----------------------------------------------------
     // -------- DEBUG RENDERS -----------------------------
+    // ----------------------------------------------------
     
-    showDebugRender(Keys::Num1, shadowMaps.getShadowMap(0));
-    showDebugRender(Keys::Num2, shadowMaps.getShadowMap(1));
-    showDebugRender(Keys::Num3, shadowMaps.getShadowMap(2));
-    showDebugRender(Keys::Num4, shadowMaps.getShadowMap(3));
+    showDebugRender(Keys::Num1, m_shadowMaps.getShadowMap(0));
+    showDebugRender(Keys::Num2, m_shadowMaps.getShadowMap(1));
+    showDebugRender(Keys::Num3, m_shadowMaps.getShadowMap(2));
+    showDebugRender(Keys::Num4, m_shadowMaps.getShadowMap(3));
     
-    showDebugRender(Keys::F, shadowMaps.getProjectedShadowTexture());
-    showDebugRender(Keys::G, texColorBuffer);
+    //showDebugRender(Keys::Num8, resultBuffer);
+    showDebugRender(Keys::Num9, m_shadowMaps.getProjectedShadowTexture());
+    showDebugRender(Keys::Num0, m_renderFBO.colorBuffer);
+    
+    
+    
+    int w = O3D().getScreenSize().x;
+    int h = O3D().getScreenSize().y;
+    
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, m_renderFBO.framebuffer);
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_prevRenderFBO.framebuffer);
+    glBlitFramebuffer(0, 0, w, h, 0, 0, w, h, GL_DEPTH_BUFFER_BIT, GL_NEAREST);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
 void O3DRender::showDebugRender(int key, GLuint texture){
     if(O3DInput::isKeyPressed(key)){
-        screenShader->use();
-        screenShader->setUniformTexture("screen", texture, 0);
+        m_screenShader->use();
+        m_screenShader->setUniformTexture("screen", texture, 0);
         renderScreenQuad();
     }
 }
@@ -172,8 +158,8 @@ void O3DRender::renderScreenQuad(){
     glClearColor(0,0,0,1);
     glClear(GL_COLOR_BUFFER_BIT);
     
-    glBindVertexArray(screenQuad->getMesh()->vao);
-        glDrawArrays(GL_TRIANGLES, 0, (GLuint)screenQuad->getMesh()->vertices.size());
+    glBindVertexArray(m_screenQuad->getMesh()->vao);
+        glDrawArrays(GL_TRIANGLES, 0, (GLuint)m_screenQuad->getMesh()->vertices.size());
     glBindVertexArray(0);
 }
 

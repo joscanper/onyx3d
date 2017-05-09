@@ -43,6 +43,7 @@
 		0D8544DB1EAE124C00C93F2B /* O3DModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D8544D91EAE124C00C93F2B /* O3DModel.cpp */; };
 		0D9D0A351EB3E6EA0058DD3A /* O3DShadowMapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D0A331EB3E6EA0058DD3A /* O3DShadowMapping.cpp */; };
 		0DC972921EB4827900958018 /* O3DGizmos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DC972901EB4827900958018 /* O3DGizmos.cpp */; };
+		0DE655E01EC1D8220043AE78 /* O3DPostProFX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DE655DE1EC1D8220043AE78 /* O3DPostProFX.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +170,10 @@
 		0DC972901EB4827900958018 /* O3DGizmos.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DGizmos.cpp; sourceTree = "<group>"; };
 		0DC972911EB4827900958018 /* O3DGizmos.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DGizmos.hpp; sourceTree = "<group>"; };
 		0DC972941EB9CDF800958018 /* O3DShadowMapFBO.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DShadowMapFBO.hpp; sourceTree = "<group>"; };
+		0DE655DE1EC1D8220043AE78 /* O3DPostProFX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DPostProFX.cpp; sourceTree = "<group>"; };
+		0DE655DF1EC1D8220043AE78 /* O3DPostProFX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DPostProFX.hpp; sourceTree = "<group>"; };
+		0DE655E31EC1E35F0043AE78 /* O3DRenderComposition.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DRenderComposition.hpp; sourceTree = "<group>"; };
+		0DE655E61EC1EA890043AE78 /* O3DMotionBlurFX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DMotionBlurFX.hpp; sourceTree = "<group>"; };
 		0DF3D37A1EBA034E000D0687 /* Demo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Demo.xcodeproj; path = Demo/Demo.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -323,6 +328,10 @@
 				0DC972901EB4827900958018 /* O3DGizmos.cpp */,
 				0DC972911EB4827900958018 /* O3DGizmos.hpp */,
 				0DC972941EB9CDF800958018 /* O3DShadowMapFBO.hpp */,
+				0DE655DE1EC1D8220043AE78 /* O3DPostProFX.cpp */,
+				0DE655DF1EC1D8220043AE78 /* O3DPostProFX.hpp */,
+				0DE655E31EC1E35F0043AE78 /* O3DRenderComposition.hpp */,
+				0DE655E61EC1EA890043AE78 /* O3DMotionBlurFX.hpp */,
 			);
 			name = graphics;
 			sourceTree = "<group>";
@@ -461,6 +470,7 @@
 				0D28A6CB1EA632D700CE1238 /* O3DMeshRenderer.cpp in Sources */,
 				0D28A6CE1EA639F400CE1238 /* O3DQuadRenderer.cpp in Sources */,
 				0D6D20721EB22F5F00EC5DEB /* O3DRenderer.cpp in Sources */,
+				0DE655E01EC1D8220043AE78 /* O3DPostProFX.cpp in Sources */,
 				0D28A6BF1EA630B300CE1238 /* O3DCamera.cpp in Sources */,
 				0D60CF981EA553EC008D41F3 /* main.cpp in Sources */,
 				0D6D205C1EB0EBE200EC5DEB /* O3DCubeMap.cpp in Sources */,

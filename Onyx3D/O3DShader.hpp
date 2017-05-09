@@ -52,7 +52,7 @@ namespace o3d
         void setUniform(const char* name, glm::vec2 v);
         void setUniform(const char* name, glm::vec3 v);
         void setUniform(const char* name, glm::vec4 v);
-        void setUniform(const char* name, glm::mat4x4 m);
+        void setUniform(const char* name, glm::mat4 m);
         
         void setUniformTexture(const char* name, GLuint texture, GLuint index);
         void setUniformCubemap(const char* name, GLuint texture, GLuint index);

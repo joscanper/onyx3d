@@ -13,9 +13,6 @@
 
 #include <GL/glew.h>
 
-#define SHADOW_MAP_W 512
-#define SHADOW_MAP_H 512
-
 namespace o3d {
 
     class O3DShadowMapFBO{

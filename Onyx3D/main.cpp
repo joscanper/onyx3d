@@ -33,7 +33,7 @@ int main() {
     }
     
     
-    std::string scene_path = "resources/scenes/test_point_lights.lua";
+    std::string scene_path = "resources/scenes/test_model.lua";
     
     Scene_ptr scene = O3DSceneLoader().load(scene_path.c_str());
     Camera_ptr camera = scene->getObjectById<O3DCamera>("main_camera");
@@ -44,6 +44,7 @@ int main() {
     //O3DGameObject* pivot = scene->getSceneObjectById<std:O3DGameObject>("pivot");
     
     bool wasFocused = true;
+    float camspeed= 0;
     while(O3D().running()){
         
         // Camera movement
@@ -53,9 +54,9 @@ int main() {
         if (O3DInput::isKeyPressed(Keys::S))
             camera->translate(glm::vec3(0,0,0.05));
         if (O3DInput::isKeyPressed(Keys::A))
-            camera->rotate(glm::vec3(0,-3,0));
+            camspeed -= 0.1f;
         if (O3DInput::isKeyPressed(Keys::D))
-            camera->rotate(glm::vec3(0,3,0));
+            camspeed += 0.1f;
         if (O3DInput::isKeyPressed(Keys::ArrowUp))
             camera->translate(glm::vec3(0,0.05,0));
         if (O3DInput::isKeyPressed(Keys::ArrowDown))
@@ -65,6 +66,11 @@ int main() {
         if (O3DInput::isKeyPressed(Keys::ArrowLeft))
             camera->translate(glm::vec3(-0.01,0,0));
         
+        camera->rotate(glm::vec3(0,camspeed,0));
+        if (camspeed>0)
+            camspeed-=0.01f;
+        if (camspeed<0)
+            camspeed+=0.01f;
         /*
         if (O3DInput::isKeyPressed(Keys::Numpad_8))
             go->getTransform()->translate(glm::vec3(0,0,-0.1));
