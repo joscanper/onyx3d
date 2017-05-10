@@ -12,9 +12,6 @@
 #include "O3DInput.hpp"
 
 
-#include <glm/glm.hpp>
-#include <glm/gtx/norm.hpp>
-//#include <gtx/norm.hpp>
 
 using namespace o3d;
 
@@ -55,18 +52,7 @@ void O3DRender::render(){
     glm::mat4 projM = cam->getProjectionMatrix();
     
     
-    // ----------------------------------------------------
-    // Shadow Mapping -------------------------------------
-    // ----------------------------------------------------
-    int emitters = (int)scene->getLighting().getShadowEmitters().size();
-    for (int i = 0; i < emitters; ++i){
-        LightSetup ls = m_shadowMaps.setup(i);
-        renderObjects(m_opaque, ls.view, ls.proj, m_shadowMaps.getShadowMapShader());
-    }
-    m_shadowMaps.setupProjected();
-    renderObjects(m_opaque, viewM, projM, m_shadowMaps.getShadowProjectionShader());
-    
-    /// ----------------------------------------------------
+    renderShadowMaps(scene, viewM, projM);
     
     
     // ----------------------------------------------------
@@ -179,7 +165,7 @@ void O3DRender::updateAndSortRenderers(const SceneNode_ptr& node, const Camera_p
                 }
                 
                 float d = getValidDistance(go, cam);
-                if (r->getMaterial()->isTransparent())
+                if (r->getMaterial()->getRenderingMode() != MaterialRenderingMode::Opaque)
                     m_transparent[d] = r;
                 else
                     m_opaque[d] = r;
@@ -188,6 +174,17 @@ void O3DRender::updateAndSortRenderers(const SceneNode_ptr& node, const Camera_p
         
         updateAndSortRenderers(child, cam);
     }
+}
+
+void O3DRender::renderShadowMaps(Scene_ptr scene, glm::mat4 viewM, glm::mat4 projM){
+    int emitters = (int)scene->getLighting().getShadowEmitters().size();
+    for (int i = 0; i < emitters; ++i){
+        LightSetup ls = m_shadowMaps.setup(i);
+        renderObjects(m_opaque, ls.view, ls.proj, m_shadowMaps.getShadowMapShader());
+        renderObjects(m_transparent, ls.view, ls.proj, m_shadowMaps.getShadowMapShader());
+    }
+    m_shadowMaps.setupProjected();
+    renderObjects(m_opaque, viewM, projM, m_shadowMaps.getShadowProjectionShader());
 }
 
 
@@ -213,7 +210,7 @@ void O3DRender::renderObjects(const std::map<float, Renderer_Wptr>& list,const g
                 rptr->getMaterial()->use();
                 rptr->render(view, projection, rptr->getMaterial()->getShader());
             }else{
-                shader->use();
+                rptr->getMaterial()->use(shader);
                 rptr->render(view, projection, shader);
             }
             

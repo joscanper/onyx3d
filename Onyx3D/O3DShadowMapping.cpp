@@ -79,8 +79,9 @@ void O3DShadowMapping::setupProjected(){
     for (int i = 0; i < emitters.size(); i++){
         ShadowEmitter se = emitters[i];
         std::string index = std::to_string(i);
+        
         m_projected_shader->setUniform(("shadowEmitters.lightSpace["+index+"]").c_str(), se.lightSpace);
-        m_projected_shader->setUniformTexture(("shadowEmitters.shadowMap["+index+"]").c_str(), se.fbo.getTextureId(), i);
+        m_projected_shader->setUniformTexture(("shadowEmitters.shadowMap["+index+"]").c_str(), se.fbo.getTextureId(), 10+i);
         m_projected_shader->setUniform(("shadowEmitters.lightDir["+index+"]").c_str(), se.light->getDirection());
     }
 }

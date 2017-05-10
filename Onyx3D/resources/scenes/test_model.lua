@@ -103,6 +103,27 @@ model_instance("cobra", "car");
 	set_local_scale(0.5,0.5,0.5)
 
 
+texture("fence", "resources/textures/fence.png")
+default_material("mat_fence","CUTOUT")
+	set_mat_texture("diffuse", "fence", 0)
 
+
+cube("cuby")
+	set_scale(1,1,0.01)
+	set_position(-1.2,0.5,0)
+	set_material("mat_fence")
+
+cube("cuby2")
+	set_scale(1,1,0.01)
+	set_position(1.2,0.5,0)
+	set_material("mat_fence")
+
+cube("pos1")
+	set_scale(0.1,2,0.1)
+	set_position(-0.7,0,0)
+
+cube("pos2")
+	set_scale(0.1,2,0.1)
+	set_position(0.7,0,0)
 
 

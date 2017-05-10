@@ -22,6 +22,8 @@
 #include <GLFW/glfw3.h>
 #include <map>
 #include <iostream>
+#include <glm/glm.hpp>
+#include <glm/gtx/norm.hpp>
 
 namespace o3d {
     
@@ -93,8 +95,10 @@ namespace o3d {
         void renderShadowMap(const Camera_ptr& cam);
         void renderObjects(const std::map<float, Renderer_Wptr>& list, const glm::mat4& view, const glm::mat4& proj, const Shader_ptr& shader = nullptr);
         void renderScreenQuad();
+        void renderShadowMaps(Scene_ptr scene, glm::mat4 viewM, glm::mat4 projM);
         void showDebugRender(int key, GLuint texture);
         void prepareBuffers(int w, int h);
+        
     };
 }
 

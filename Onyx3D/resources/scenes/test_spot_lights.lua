@@ -76,11 +76,11 @@ spot_light("l"..index)
 	set_parent("o"..index)	
 	set_light_angle(40)
 	set_light_range(1)
-	set_light_intensity(3)
+	set_light_intensity(1)
 	set_local_position(0,0,0)
 	set_local_rotation(-90,0,0)
 	set_light_color(cr,cg,cb)
-	set_light_specular(cr+0.3,cg+0.3,cb+0.3)
+	set_light_specular(cr+0.8,cg+0.8,cb+0.8)
 
 end
 

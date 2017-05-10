@@ -33,7 +33,7 @@ default_material("mat_car_chrome")
 	set_mat_float("reflectivity", 5)
 	set_mat_float("fresnel", 1)
 
-default_material("mat_car_glass", true)
+default_material("mat_car_glass","TRANSPARENT")
 	set_mat_vec4("color",1,1,1,0)
 	set_mat_texture("specular", "o3d_textures/white",2)
 	set_mat_cubemap("environment", "skymap", 3)

@@ -33,7 +33,7 @@ int main() {
     }
     
     
-    std::string scene_path = "resources/scenes/test_model.lua";
+    std::string scene_path = "resources/scenes/test_spot_lights.lua";
     
     Scene_ptr scene = O3DSceneLoader().load(scene_path.c_str());
     Camera_ptr camera = scene->getObjectById<O3DCamera>("main_camera");
@@ -73,6 +73,15 @@ int main() {
         if (camspeed<0)
             camspeed+=0.01f;
         
+        /*
+        if (O3DInput::isKeyPressed(Keys::Numpad_8))
+            samples += 1;
+        if (O3DInput::isKeyPressed(Keys::Numpad_2))
+            samples -= 1;
+        
+        std::cout << samples << std::endl;
+        O3D().getRenderer().getMotionBlur().setSamples(samples);
+        */
         if (O3DInput::isKeyPressed(Keys::Numpad_4))
             pivot->rotate(glm::vec3(0,1,0));
         if (O3DInput::isKeyPressed(Keys::Numpad_6))
@@ -94,6 +103,7 @@ int main() {
             O3D().render();
             
             if (!wasFocused){
+                camspeed = 0;
                 glm::vec3 prev_cam_pos = camera->getPosition();
                 glm::vec3 prev_cam_rot = camera->getRotation();
                 

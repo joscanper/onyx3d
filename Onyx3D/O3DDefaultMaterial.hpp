@@ -16,7 +16,7 @@ namespace o3d {
     
     class O3DDefaultMaterial : public O3DMaterial {
     public:
-        explicit O3DDefaultMaterial(bool transparent = false);
+        explicit O3DDefaultMaterial(MaterialRenderingMode mode = MaterialRenderingMode::Opaque);
     };
 }
 

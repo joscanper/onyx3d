@@ -210,18 +210,20 @@ int O3DSceneLoader::l_ambientLight(lua_State* L){
 int O3DSceneLoader::l_material(lua_State* L){
     const char* id = lua_tostring(L, 1);
     const char* shaderid = lua_tostring(L, 2);
-    bool transparent = lua_toboolean(L, 3);
+    const char* mode = lua_tostring(L, 3);
     
-    Material_ptr m = O3D().getResources().createMaterial(id, shaderid, transparent);
+    MaterialRenderingMode mat_mode = O3DMaterial::getRenderingMode(mode);
+    
+    Material_ptr m = O3D().getResources().createMaterial(id, shaderid, mat_mode);
     g_lastmaterial = m;
     return 1;
 }
 
 int O3DSceneLoader::l_defaultMaterial(lua_State* L){
     const char* id = lua_tostring(L, 1);
-    bool transparent = lua_toboolean(L, 2);
-    
-    g_lastmaterial = O3D().getResources().createDefaultMaterial(id, transparent);
+    const char* mode = lua_tostring(L, 2);
+    MaterialRenderingMode mat_mode = O3DMaterial::getRenderingMode(mode);
+    g_lastmaterial = O3D().getResources().createDefaultMaterial(id, mat_mode);
     return 1;
 }
 

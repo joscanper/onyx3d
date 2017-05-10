@@ -57,14 +57,15 @@ class O3DResources {
             m_shaders[id] = s;
             return s;
         }
-        Material_ptr createMaterial(const char *id, const char* shaderid, bool transparent){
+        Material_ptr createMaterial(const char *id, const char* shaderid, MaterialRenderingMode mode = MaterialRenderingMode::Opaque){
             Shader_ptr s = getShader(shaderid);
-            Material_ptr mat = std::make_shared<O3DMaterial>(s,transparent);
+            
+            Material_ptr mat = std::make_shared<O3DMaterial>(s, mode);
             m_materials[id] = mat;
             return mat;
         }
-        DefaultMaterial_ptr createDefaultMaterial(const char *id, bool transparent){
-            std::shared_ptr<O3DDefaultMaterial> mat = std::make_shared<O3DDefaultMaterial>(transparent);
+        DefaultMaterial_ptr createDefaultMaterial(const char *id, MaterialRenderingMode mode){
+            std::shared_ptr<O3DDefaultMaterial> mat = std::make_shared<O3DDefaultMaterial>(mode);
             m_materials[id] = mat;
             return mat;
         }

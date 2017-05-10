@@ -21,6 +21,12 @@ namespace o3d {
   
     DEFINE_CLASS_PTR(O3DMaterial, Material);
     
+    enum MaterialRenderingMode{
+        Opaque = 0,
+        Transparent = 1,
+        Cutout = 2
+    };
+    
     class O3DMaterial{
     public:
         
@@ -67,9 +73,9 @@ namespace o3d {
             GLuint index;
         };
         
-        explicit O3DMaterial(Shader_ptr shader, bool transparent) :
+        explicit O3DMaterial(Shader_ptr shader, MaterialRenderingMode mode) :
             m_shader(shader),
-            m_transparent(transparent)
+            m_render_mode(mode)
         {
         };
         
@@ -87,13 +93,28 @@ namespace o3d {
         void setTexture(const char* id, Texture_ptr t, GLuint index){ m_properties[id] = Property_ptr(new TexturePropertyValue<Texture_ptr>(TEXTURE, t, index)); }
         void setCubemap(const char* id, CubeMap_ptr map, GLuint index){ m_properties[id] = Property_ptr(new TexturePropertyValue<CubeMap_ptr>(CUBEMAP, map, index)); }
         
-        void use();
-        bool isTransparent() { return m_transparent; }
+        void use(Shader_ptr shader = nullptr);
+        MaterialRenderingMode getRenderingMode(){ return m_render_mode; }
+        
+        static MaterialRenderingMode getRenderingMode(const char* mode){
+            
+            
+            MaterialRenderingMode mat_mode = MaterialRenderingMode::Opaque;
+            if (mode==nullptr)
+                return mat_mode;
+            std::cout << "MODE: >" << mode << "<" << std::endl;
+            if (strcmp(mode, "TRANSPARENT") == 0){
+                mat_mode = MaterialRenderingMode::Transparent;
+            }else if (strcmp(mode, "CUTOUT") == 0){
+                mat_mode = MaterialRenderingMode::Cutout;
+            }
+            return mat_mode;
+        }
         
     private:
         std::map<std::string, Property_ptr> m_properties;
         Shader_ptr m_shader;
-        bool m_transparent;
+        MaterialRenderingMode m_render_mode;
     };
 }
 

@@ -4,6 +4,10 @@
 #define MAX_POINT_LIGHTS 8
 #define MAX_SPOT_LIGHTS 8
 
+#define RENDER_MODE_OPAQUE      0
+#define RENDER_MODE_TRANSPARENT 1
+#define RENDER_MODE_CUTOUT      2
+
 in VS_OUT{
     vec3 color;
     vec2 texCoord;
@@ -29,6 +33,7 @@ struct Material{
     samplerCube environment;
     float reflectivity;
     float fresnel;
+    int renderMode;
 };
 uniform Material material;
 
@@ -93,11 +98,11 @@ vec4 calculate_directional_lights(vec3 texnormal, vec3 texspecular, vec3 viewdir
     vec3 specular = vec3(0,0,0);
 
     for (int i = 0; i < lighting_data.dirlightsnum; ++i){
-        vec3 lightdir = normalize(-lighting_data.directional[i].direction) ;
+        vec3 lightdir = normalize(-lighting_data.directional[i].direction);
         diffuse += lighting_data.directional[i].color * max(dot(texnormal, lightdir), 0) * lighting_data.directional[i].intensity;
         
-        vec3 reflectdir = reflect(-lightdir, texnormal);
-        specular += pow(max(dot(reflectdir, viewdir),0), material.shininess) * lighting_data.directional[i].specular * texspecular;
+        vec3 halfwaydir = normalize(lightdir + viewdir);
+        specular += pow(max(dot(texnormal, halfwaydir),0), material.shininess) * lighting_data.directional[i].specular * texspecular;
     }
     return vec4(diffuse + specular,1);
 }
@@ -114,8 +119,9 @@ vec4 calculate_point_lights(vec3 texnormal, vec3 texspecular, vec3 viewdir){
         
         diffuse += lighting_data.point[i].color * attenuation * abs(max(dot(texnormal,lightfragdir),0));
         
-        vec3 reflectdir = reflect(-lightfragdir, texnormal);
-        specular += pow(max(dot(reflectdir, viewdir),0), material.shininess) * lighting_data.point[i].specular * attenuation * texspecular;
+        
+        vec3 halfwaydir = normalize(lightfragdir + viewdir);
+        specular += pow(max(dot(texnormal, halfwaydir),0), material.shininess) * lighting_data.point[i].specular * attenuation * texspecular;
     }
     return vec4(diffuse + specular,1);
 }
@@ -135,9 +141,8 @@ vec4 calculate_spot_lights(vec3 texnormal, vec3 texspecular, vec3 viewdir){
         float distcenter = (1-min(angle/lighting_data.spot[i].angle,1));
         diffuse += lighting_data.spot[i].color * attenuation * (distcenter + pow(distcenter,8)) * abs(max(dot(texnormal,lightfragdir),0));
         
-        vec3 reflectdir = reflect(-lightfragdir, texnormal);
-        
-        specular += pow(max(dot(reflectdir, viewdir),0), material.shininess)* distcenter * (lighting_data.spot[i].intensity/dist) * 0.2 * texspecular * lighting_data.spot[i].specular;
+        vec3 halfwaydir = normalize(lightfragdir + viewdir);
+        specular += pow(max(dot(texnormal, halfwaydir),0), material.shininess)* distcenter * (lighting_data.spot[i].intensity/dist) * 0.2 * texspecular * lighting_data.spot[i].specular;
     }
     return vec4(diffuse + specular,1);
 }
@@ -187,7 +192,12 @@ void main()
     if (material.reflectivity > 0)
         diffuse += calculate_reflection(normal, specular, viewdir);
     
-    outColor = min((col + vec4(lighting_data.ambient,1)) * diffuse, 1);
+    col = min((col + vec4(lighting_data.ambient,1)) * diffuse, 1);
+    
+    if (material.renderMode == RENDER_MODE_CUTOUT && diffuse.a < 0.8f)
+        discard;
+    
+    outColor = col;
     
     
 }

@@ -11,8 +11,8 @@
 
 using namespace o3d;
 
-O3DDefaultMaterial::O3DDefaultMaterial(bool transparent) :
-    O3DMaterial(O3D().getResources().getShader("o3d_shaders/default"), transparent)
+O3DDefaultMaterial::O3DDefaultMaterial(MaterialRenderingMode mode) :
+    O3DMaterial(O3D().getResources().getShader("o3d_shaders/default"), mode)
 {
     
     setColor("color", glm::vec4(0.8,0.8,0.8,1));
