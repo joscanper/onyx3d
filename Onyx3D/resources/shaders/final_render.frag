@@ -14,26 +14,10 @@ float NEAR = 1.0f;
 vec4 FOG_COLOR = vec4(0.5,0.5,0.5,1);
 int BLUR_RANGE = 5;
 
-float A = 0.15;
-float B = 0.50;
-float C = 0.10;
-float D = 0.20;
-float E = 0.02;
-float F = 0.30;
-float W = 11.2;
-
-vec4 Uncharted2Tonemap(vec4 x)
-{
-    return ((x*(A*x+C*B)+D*E)/(x*(A*x+B)+D*F))-E/F;
-}
-
 vec4 ToneMapping(vec4 col){
-    col *= 16;
-    vec4 curr = Uncharted2Tonemap(2.0f*col);
-    vec4 whiteScale = 1.0f/Uncharted2Tonemap(vec4(W));
-    vec4 color = curr*whiteScale;
-    vec3 retColor = pow(color.rgb, vec3(2));
-    return vec4(retColor.xyz,1);
+    vec3 x = max(vec3(0),col.rgb-0.004); // Filmic Curve
+    vec3 retColor = (x*(6.2*x+.5))/(x*(6.2*x+1.7)+0.06);
+    return vec4(retColor,1);
 }
 
 float SCurve (float x) {

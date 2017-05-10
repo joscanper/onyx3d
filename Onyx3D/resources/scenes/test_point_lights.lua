@@ -13,7 +13,7 @@ grid("grid");
 	set_position(-5,0.01,-5)
 	set_material("grey")
 
-ambient_light(0.005,0.005,0.005)
+ambient_light(0.01,0.01,0.01)
 
 node("pivot")
 	set_rotation(0,0,0)
@@ -79,7 +79,7 @@ function createLight(index, x, y, z, cr,cg,cb, mat)
 	point_light("l"..index)
 		set_parent("o"..index)	
 		set_light_range(0.2)
-		set_light_intensity(0.6)
+		set_light_intensity(0.5)
 		set_local_position(0,0,0)
 		set_light_color(cr,cg,cb)
 		set_light_specular(cr*1.5+0.5,cg*1.5+0.5,cb*1.5+0.5)

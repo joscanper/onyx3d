@@ -33,7 +33,7 @@ int main() {
     }
     
     
-    std::string scene_path = "resources/scenes/test_model.lua";
+    std::string scene_path = "resources/scenes/test_point_lights.lua";
     
     Scene_ptr scene = O3DSceneLoader().load(scene_path.c_str());
     Camera_ptr camera = scene->getObjectById<O3DCamera>("main_camera");
