@@ -174,6 +174,7 @@
 		0DE655DF1EC1D8220043AE78 /* O3DPostProFX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DPostProFX.hpp; sourceTree = "<group>"; };
 		0DE655E31EC1E35F0043AE78 /* O3DRenderComposition.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DRenderComposition.hpp; sourceTree = "<group>"; };
 		0DE655E61EC1EA890043AE78 /* O3DMotionBlurFX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DMotionBlurFX.hpp; sourceTree = "<group>"; };
+		0DE655E91EC32D2A0043AE78 /* O3DBloomFX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DBloomFX.hpp; sourceTree = "<group>"; };
 		0DF3D37A1EBA034E000D0687 /* Demo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Demo.xcodeproj; path = Demo/Demo.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -332,6 +333,7 @@
 				0DE655DF1EC1D8220043AE78 /* O3DPostProFX.hpp */,
 				0DE655E31EC1E35F0043AE78 /* O3DRenderComposition.hpp */,
 				0DE655E61EC1EA890043AE78 /* O3DMotionBlurFX.hpp */,
+				0DE655E91EC32D2A0043AE78 /* O3DBloomFX.hpp */,
 			);
 			name = graphics;
 			sourceTree = "<group>";

@@ -13,7 +13,7 @@ default_camera("main_camera")
     set_position(0,0.7,1.5)
     set_rotation(0,0,0)
 
-ambient_light(0.1,0.1,0.1)
+ambient_light(0.01,0.01,0.01)
 
 node("pivot")
 	set_rotation(0,0,0)
@@ -119,11 +119,13 @@ cube("cuby2")
 	set_material("mat_fence")
 
 cube("pos1")
-	set_scale(0.1,2,0.1)
-	set_position(-0.7,0,0)
+	set_scale(0.1,1,0.1)
+	set_position(-0.7,0.5,0)
+	set_material("mat_ceiling")
 
 cube("pos2")
-	set_scale(0.1,2,0.1)
-	set_position(0.7,0,0)
+	set_scale(0.1,1,0.1)
+	set_position(0.7,0.5,0)
+	set_material("mat_ceiling")
 
 

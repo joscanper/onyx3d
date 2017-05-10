@@ -16,11 +16,12 @@ namespace o3d{
     public:
         
         void init(int w, int h){
-            Shader_ptr s = std::make_shared<O3DShader>("resources/shaders/screen.vert", "resources/shaders/finalrender.frag");
+            Shader_ptr s = std::make_shared<O3DShader>("resources/shaders/screen.vert", "resources/shaders/final_render.frag");
             O3DPostProFX::init(s, w, h);
         }
     
-        void use(GLuint diffuse, GLuint shadows, GLuint depth){
+        void use(GLuint diffuse, GLuint shadows, GLuint depth, GLuint bloom){
+            glViewport(0,0,width,height);
             glBindFramebuffer(GL_FRAMEBUFFER, fx_fbo);
             glClearColor(1,1,1,1);
             glClear(GL_COLOR_BUFFER_BIT);
@@ -29,6 +30,7 @@ namespace o3d{
             shader->setUniformTexture("diffuse", diffuse,0);
             shader->setUniformTexture("shadows", shadows, 1);
             shader->setUniformTexture("depth", depth,2);
+            shader->setUniformTexture("bloom", bloom,3);
         }
     };
 }

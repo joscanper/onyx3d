@@ -17,7 +17,7 @@ void O3DPostProFX::init(Shader_ptr shader, int w, int h){
     glGenFramebuffers(1, &fx_fbo);
     glGenTextures(1, &fx_tex);
     glBindTexture(GL_TEXTURE_2D, fx_tex);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, O3D().getScreenSize().x, O3D().getScreenSize().y,0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, w, h,0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -30,9 +30,13 @@ void O3DPostProFX::init(Shader_ptr shader, int w, int h){
     
     if(glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
         std::cout << "ERROR: PostProFX framebuffer is not complete" << std::endl;
+    
+    width = w;
+    height = h;
 }
 
 void O3DPostProFX::use(GLuint frame){
+    glViewport(0,0,width,height);
     glBindFramebuffer(GL_FRAMEBUFFER, fx_fbo);
     glClearColor(1,1,1,1);
     glClear(GL_COLOR_BUFFER_BIT);

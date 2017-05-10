@@ -91,7 +91,8 @@ void O3DCore::update(){
     m_fpsTime += m_elapsedTime;
     m_fpsFrames += 1;
     if (m_fpsTime > 1){
-        std::cout << m_fpsFrames << "fps" << std::endl;
+        
+        std::cout << m_fpsFrames << "fps, render:" << m_render.getRenderTime(m_fpsFrames) <<"ms"<< std::endl;
         m_fps = m_fpsFrames;
         m_fpsTime = 0;
         m_fpsFrames = 0;

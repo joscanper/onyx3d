@@ -27,6 +27,8 @@ namespace  o3d {
         Shader_ptr shader;
         GLuint fx_fbo;
         GLuint fx_tex;
+        GLuint width;
+        GLuint height;
     };
 }
 #endif /* O3DPostProFX_hpp */

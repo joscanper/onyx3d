@@ -17,6 +17,7 @@
 #include "O3DShadowMapping.hpp"
 #include "O3DRenderComposition.hpp"
 #include "O3DMotionBlurFX.hpp"
+#include "O3DBloomFX.hpp"
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -34,7 +35,7 @@ namespace o3d {
             
             glGenTextures(1, &colorBuffer);
             glBindTexture(GL_TEXTURE_2D, colorBuffer);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, w, h, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
@@ -71,15 +72,21 @@ namespace o3d {
     public:
         void render();
         void init(int w, int h);
-        
+        float getRenderTime(int frames) {
+            float time = m_renderTime / frames;
+            m_renderTime = 0;
+            return time;
+        }
         O3DMotionBlurFX& getMotionBlur() { return m_motionBlurFX; }
     private:
+        float m_renderTime;
         
         QuadRenderer_Uptr m_screenQuad;
         Shader_Uptr m_screenShader;
         
         O3DRenderComposition m_finalRender;
         O3DMotionBlurFX m_motionBlurFX;
+        O3DBloomFX m_bloomFX;
         O3DShadowMapping m_shadowMaps;
         
         O3DRenderFBO m_renderFBO;

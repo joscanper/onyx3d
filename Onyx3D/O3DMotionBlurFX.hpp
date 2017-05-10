@@ -16,12 +16,12 @@ namespace o3d {
     class O3DMotionBlurFX : public O3DPostProFX {
     public:
         void init(int w, int h){
-            Shader_ptr s = std::make_shared<O3DShader>("resources/shaders/screen.vert", "resources/shaders/motionblur.frag");
+            Shader_ptr s = std::make_shared<O3DShader>("resources/shaders/screen.vert", "resources/shaders/motion_blur.frag");
             O3DPostProFX::init(s, w, h);
         }
         
         void use(GLuint screen, GLuint depth, GLuint prevDepth, glm::mat4 viewProj){
-            
+            glViewport(0,0,width,height);
             glBindFramebuffer(GL_FRAMEBUFFER, fx_fbo);
             glClearColor(1,1,1,1);
             glClear(GL_COLOR_BUFFER_BIT);

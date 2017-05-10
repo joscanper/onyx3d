@@ -28,14 +28,14 @@ void O3DRender::init(int w, int h){
     m_shadowMaps.init();
     m_finalRender.init(w,h);
     m_motionBlurFX.init(w,h);
+    m_bloomFX.init(w/2,h/2);
     
-    //Shader_ptr s = shared_ptr<O3DShader>(new O3DShader("resources/shaders/screen.vert", "resources/shaders/blur.frag"));
-    //m_motionBlurFX.init(s);
 }
 
 
 void O3DRender::render(){
-
+    float initTime =glfwGetTime();
+    
     m_opaque.clear();
     m_transparent.clear();
     
@@ -89,20 +89,25 @@ void O3DRender::render(){
     // ----------------------------------------------------
     // Final composition  ---------------------------------
     // ----------------------------------------------------
-    GLuint resultBuffer;
+    m_bloomFX.use(m_renderFBO.colorBuffer);
+    renderScreenQuad();
+    m_bloomFX.getTextureId();
     
-    // Final composition to texture
-    m_finalRender.use(m_renderFBO.colorBuffer, m_shadowMaps.getProjectedShadowTexture(), m_renderFBO.depthBuffer);
+    GLuint resultBuffer;
+    // Final render to texture
+    m_finalRender.use(m_renderFBO.colorBuffer, m_shadowMaps.getProjectedShadowTexture(), m_renderFBO.depthBuffer, m_bloomFX.getTextureId());
     renderScreenQuad();
     resultBuffer = m_finalRender.getTextureId();
     
     // FINAL FXs---------------
+   
+    
     if (m_motionBlurFX.isEnabled()){
         m_motionBlurFX.use(resultBuffer,m_renderFBO.depthBuffer, m_prevRenderFBO.depthBuffer, projM * viewM);
         renderScreenQuad();
         resultBuffer = m_motionBlurFX.getTextureId();
     }
-    
+   
     
     // Final composition to screen
     glBindFramebuffer(GL_FRAMEBUFFER, 0); // back to default
@@ -119,7 +124,7 @@ void O3DRender::render(){
     showDebugRender(Keys::Num3, m_shadowMaps.getShadowMap(2));
     showDebugRender(Keys::Num4, m_shadowMaps.getShadowMap(3));
     
-    //showDebugRender(Keys::Num8, resultBuffer);
+    showDebugRender(Keys::Num8, m_bloomFX.getTextureId());
     showDebugRender(Keys::Num9, m_shadowMaps.getProjectedShadowTexture());
     showDebugRender(Keys::Num0, m_renderFBO.colorBuffer);
     
@@ -132,6 +137,8 @@ void O3DRender::render(){
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_prevRenderFBO.framebuffer);
     glBlitFramebuffer(0, 0, w, h, 0, 0, w, h, GL_DEPTH_BUFFER_BIT, GL_NEAREST);
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    
+    m_renderTime += glfwGetTime() - initTime;
 }
 
 void O3DRender::showDebugRender(int key, GLuint texture){
