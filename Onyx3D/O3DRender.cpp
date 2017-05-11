@@ -89,13 +89,16 @@ void O3DRender::render(){
     // ----------------------------------------------------
     // Final composition  ---------------------------------
     // ----------------------------------------------------
-    m_bloomFX.use(m_renderFBO.colorBuffer);
-    renderScreenQuad();
-    m_bloomFX.getTextureId();
+    GLuint bloom = 0;
+    if(!O3DInput::isKeyPressed(Keys::B)){
+        m_bloomFX.use(m_renderFBO.colorBuffer);
+        renderScreenQuad();
+       bloom = m_bloomFX.getTextureId();
+    }
     
     GLuint resultBuffer;
     // Final render to texture
-    m_finalRender.use(m_renderFBO.colorBuffer, m_shadowMaps.getProjectedShadowTexture(), m_renderFBO.depthBuffer, m_bloomFX.getTextureId());
+    m_finalRender.use(m_renderFBO.colorBuffer, m_shadowMaps.getProjectedShadowTexture(), m_renderFBO.depthBuffer, bloom);
     renderScreenQuad();
     resultBuffer = m_finalRender.getTextureId();
     

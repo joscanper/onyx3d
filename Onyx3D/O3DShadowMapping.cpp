@@ -41,7 +41,7 @@ void O3DShadowMapping::init(){
 
 
 LightSetup O3DShadowMapping::setup(int index){
-    ShadowEmitter& emitter = O3DScene::getActiveScene()->getLighting().getShadowEmitters()[index];
+    ShadowEmitter& emitter = O3DScene::getActiveScene()->getLighting().getShadowEmitter(index);
     
     emitter.fbo.setup();
     LightSetup ls = getLightSetup(emitter);
@@ -56,11 +56,14 @@ LightSetup O3DShadowMapping::setup(int index){
 LightSetup O3DShadowMapping::getLightSetup(const ShadowEmitter& emitter){
     Light_ptr l = emitter.light;
     LightSetup ls;
-    ls.view = glm::lookAt(l->getPosition(), l->getPosition() - l->getDirection(), glm::vec3(0,1,0));
-    if(SpotLight_ptr spot = dynamic_pointer_cast<O3DSpotLight>(l))
+    
+    if(SpotLight_ptr spot = dynamic_pointer_cast<O3DSpotLight>(l)){
+        ls.view = glm::lookAt(l->getPosition(), l->getPosition() - l->getDirection(), glm::vec3(l->getRotationMatrix()[1]));
         ls.proj = glm::perspective(45.0f * (emitter.range/5.0f), 1.0f, emitter.near, emitter.far);
-    else
+    }else{
+        ls.view = glm::lookAt(l->getPosition(), l->getPosition() + l->getDirection(), glm::vec3(l->getRotationMatrix()[1]));
         ls.proj = glm::ortho(-emitter.range, emitter.range, -emitter.range, emitter.range, emitter.near, emitter.far);
+    }
         
     return ls;
 }

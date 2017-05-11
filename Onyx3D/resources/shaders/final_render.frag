@@ -1,6 +1,6 @@
 #version 330 core
 in vec2 TexCoords;
-out vec4 color;
+out vec4 outColor;
 
 
 uniform sampler2D diffuse;
@@ -18,6 +18,10 @@ vec4 ToneMapping(vec4 col){
     vec3 x = max(vec3(0),col.rgb-0.004); // Filmic Curve
     vec3 retColor = (x*(6.2*x+.5))/(x*(6.2*x+1.7)+0.06);
     return vec4(retColor,1);
+}
+
+float rand(vec2 co){
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
 }
 
 float SCurve (float x) {
@@ -90,8 +94,8 @@ vec4 blurV (sampler2D source, vec2 size, vec2 uv, float radius, float blur_size 
 }
 
 
-float linearize_depth(){
-    float z = texture(depth, TexCoords).x;
+float linearize_depth(vec2 coord){
+    float z = texture(depth, coord).x;
     return (2.0 * NEAR) / (FAR + NEAR - z * (FAR - NEAR));
 }
 
@@ -105,9 +109,8 @@ float calculate_shadow(){
     return (1 - shadow.r) ;// * (1.0f-depth);
 }
 
-
 float calculate_fog(){
-    float depth = pow(linearize_depth(),5);
+    float depth = pow(linearize_depth(TexCoords),5);
     if (depth == 1)
         return 0;
     return depth;
@@ -120,6 +123,41 @@ vec4 calculate_bloom(){
     return (bH + bV) / 2.0f;
 }
 
+vec3 ssao_samples[16] = vec3[](
+    vec3( 0.5381, 0.1856,-0.4319), vec3( 0.1379, 0.2486, 0.4430),
+    vec3( 0.3371, 0.5679,-0.0057), vec3(-0.6999,-0.0451,-0.0019),
+    vec3( 0.0689,-0.1598,-0.8547), vec3( 0.0560, 0.0069,-0.1843),
+    vec3(-0.0146, 0.1402, 0.0762), vec3( 0.0100,-0.1924,-0.0344),
+    vec3(-0.3577,-0.5301,-0.4358), vec3(-0.3169, 0.1063, 0.0158),
+    vec3( 0.0103,-0.5869, 0.0046), vec3(-0.0897,-0.4940, 0.3287),
+    vec3( 0.7119,-0.0154,-0.0918), vec3(-0.0533, 0.0596,-0.5411),
+    vec3( 0.0352,-0.0631, 0.5460), vec3(-0.4776, 0.2847,-0.0271)
+);
+
+
+float calculate_ssao(){
+    float falloff = 0.1;
+    float area = 0.0001;
+    int num_samples = 16;
+    
+    float fragDepth = linearize_depth(TexCoords);
+    vec3 fragPos = vec3(TexCoords,fragDepth);
+    
+    float occlusion = 0;
+    float radius = 0.003 / fragDepth;
+    
+    for (int i = 0; i < num_samples; i++){
+        vec3 pos = fragPos + radius * ssao_samples[i];
+        float occ_depth = linearize_depth(clamp(pos.xy,0,1));
+        float diff = fragDepth - occ_depth;
+        
+        if (diff < radius)
+            occlusion += (1-smoothstep(falloff, area, clamp(diff/radius,0,1)));
+    }
+    
+    
+    return  clamp(1.0 - occlusion / num_samples,0,1);
+}
 
 void main()
 {
@@ -127,6 +165,7 @@ void main()
     float shadow = calculate_shadow();
     float fog = calculate_fog();
     vec4 bloomCol = calculate_bloom();
+    float ssao = calculate_ssao();
     
-    color = ToneMapping(max(clamp(col - col*shadow + FOG_COLOR * fog, 0, 1), bloomCol));
+    outColor = ToneMapping(max(clamp(col - col*shadow + FOG_COLOR * fog, 0, 1), bloomCol) * ssao);
 }

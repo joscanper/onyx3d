@@ -40,6 +40,10 @@ namespace o3d {
         O3DLighting() :
             m_ambientLight(glm::vec3(0.5,0.5,0.5)){}
         
+        ~O3DLighting(){
+            for(auto e : m_shadowEmitters)
+                e.fbo.clean();
+        }
         void setAmbientLight(glm::vec3 color) { m_ambientLight = color; }
         inline glm::vec3 getAmbientLight(){ return m_ambientLight; }
         
@@ -57,6 +61,8 @@ namespace o3d {
             m_shadowEmitters.push_back(emitter);
         };
         std::vector<ShadowEmitter>& getShadowEmitters(){ return m_shadowEmitters; }
+        ShadowEmitter& getShadowEmitter(int index){ return m_shadowEmitters[index]; }
+        
         
     private:
         std::vector<Light_ptr> m_directionalLights;

@@ -18,7 +18,7 @@
     typedef std::unique_ptr<C>  N##_Uptr;
 
 
-#define NOTIF_DELETIONS 1
+#define NOTIF_DELETIONS 0
 
 #define DELETE_NOTIF(N)             \
     if (NOTIF_DELETIONS)            \

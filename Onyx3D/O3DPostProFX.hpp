@@ -16,6 +16,11 @@
 namespace  o3d {
     class O3DPostProFX{
     public:
+        ~O3DPostProFX(){
+            glDeleteBuffers(1, &fx_fbo);
+            glDeleteTextures(1, &fx_tex);
+        }
+        
         void init(Shader_ptr shader, int w, int h);
         void use(GLuint frame);
         GLuint getTextureId(){ return fx_tex; }

@@ -46,6 +46,12 @@ namespace o3d {
                 return 0;
         }
         
+        ~O3DShadowMapping(){
+            glDeleteBuffers(1, &m_projected_fbo);
+            glDeleteBuffers(1, &m_projected_rbo);
+            glDeleteTextures(1, &m_projected_fbo);
+        }
+        
     private:
         GLuint m_projected_fbo;
         GLuint m_projected_rbo;
@@ -53,8 +59,6 @@ namespace o3d {
         
         Shader_ptr m_shadowmap_shader;
         Shader_ptr m_projected_shader;
-        
-        //O3DShadowMapFBO* m_shadow_fbo;
         
         LightSetup getLightSetup(const ShadowEmitter& emitter);
         

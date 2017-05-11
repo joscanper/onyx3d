@@ -30,6 +30,12 @@ namespace o3d {
     
     class O3DRenderFBO{
     public:
+        ~O3DRenderFBO(){
+            glDeleteBuffers(1, &framebuffer);
+            glDeleteTextures(1, &colorBuffer);
+            glDeleteTextures(1, &depthBuffer);
+        }
+        
         void init(int w, int h){
             glGenFramebuffers(1, &framebuffer);
             

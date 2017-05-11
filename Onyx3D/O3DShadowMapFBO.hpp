@@ -44,6 +44,11 @@ namespace o3d {
                 std::cout << "ERROR: Shadow Map framebuffer is not complete" << std::endl;
         }
         
+        void clean(){
+            glDeleteBuffers(1, &m_smap_fbo);
+            glDeleteTextures(1, &m_smap_tex);
+        }
+        
         void setup(){
             glViewport(0, 0, m_size, m_size);
             glBindFramebuffer(GL_FRAMEBUFFER, m_smap_fbo);
