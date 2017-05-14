@@ -17,7 +17,7 @@ using namespace o3d;
 
 void O3DRender::init(int w, int h){
     
-    m_screenQuad = unique_ptr<O3DQuadRenderer>(new O3DQuadRenderer(1));
+    m_screenQuad = unique_ptr<O3DQuadRenderer>(new O3DQuadRenderer(1,1));
     m_screenShader = unique_ptr<O3DShader>(new O3DShader("resources/shaders/screen.vert", "resources/shaders/screen.frag"));
     
     //glEnable(GL_MULTISAMPLE);
@@ -97,13 +97,11 @@ void O3DRender::render(){
     }
     
     GLuint resultBuffer;
-    // Final render to texture
+    
     m_finalRender.use(m_renderFBO.colorBuffer, m_shadowMaps.getProjectedShadowTexture(), m_renderFBO.depthBuffer, bloom);
     renderScreenQuad();
     resultBuffer = m_finalRender.getTextureId();
     
-    // FINAL FXs---------------
-   
     
     if (m_motionBlurFX.isEnabled()){
         m_motionBlurFX.use(resultBuffer,m_renderFBO.depthBuffer, m_prevRenderFBO.depthBuffer, projM * viewM);

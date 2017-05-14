@@ -11,6 +11,8 @@ material("white", "o3d_shaders/unlit_color");
 	set_mat_vec4("color", 1,1,1,1)
 material("grey", "o3d_shaders/unlit_color");
 	set_mat_vec4("color", 0.5,0.5,0.5,1)
+material("transparent", "o3d_shaders/unlit_color");
+    set_mat_vec4("color", 0,0,0,0)
 
 -- BASIC SKYMAP --
 cubemap("skymap",

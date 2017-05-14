@@ -12,6 +12,7 @@
 #include "O3DModel.hpp"
 #include "O3DMaterial.hpp"
 #include "O3DDefaultMaterial.hpp"
+#include "O3DFont.hpp"
 
 #include <string>
 #include <unordered_map>
@@ -28,6 +29,7 @@ class O3DResources {
         void addMaterial(const char* id, Material_ptr mat){ m_materials[id] = mat; }
         void addTexture(const char* id, Texture_ptr tex){ m_textures[id] = tex; }
         void addCubemap(const char* id, CubeMap_ptr tex){ m_cubemaps[id] = tex; }
+        void addFont(const char* id, Font_ptr f){ m_fonts[id] = f; }
     
     
         Shader_ptr getShader(const char* id){
@@ -50,6 +52,13 @@ class O3DResources {
                 throw(("Resources : Trying to get undefined cubemap with id : " + std::string(id)).c_str());
             return m_cubemaps[id];
         }
+        Font_ptr getFont(const char* id){
+            if (m_fonts.find(id) == m_fonts.end())
+                throw(("Resources : Trying to get undefined cubemap with id : " + std::string(id)).c_str());
+            return m_fonts[id];
+        }
+    
+    
     
     
         Shader_ptr createShader(const char* id, const char *frag, const char* vert){
@@ -79,8 +88,12 @@ class O3DResources {
             m_cubemaps[id] = t;
             return t;
         }
+        Font_ptr createFont(const char *id, const char* path){
+            Font_ptr f = std::make_shared<O3DFont>(path);
+            m_fonts[id] = f;
+            return f;
+        }
     
-        
     
     
         void addModel(const char* id, Model_ptr model){ m_models[id] = model; }
@@ -106,6 +119,7 @@ class O3DResources {
         std::unordered_map<std::string, Texture_ptr> m_textures;
         std::unordered_map<std::string, Model_ptr> m_models;
         std::unordered_map<std::string, CubeMap_ptr> m_cubemaps;
+        std::unordered_map<std::string, Font_ptr> m_fonts;
     };
 }
 

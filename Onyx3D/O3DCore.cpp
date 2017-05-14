@@ -14,7 +14,6 @@ using namespace o3d;
 
 
 O3DCore::O3DCore() :
-    m_resources(),
     m_screenSize(0,0)
 {
     
@@ -32,6 +31,8 @@ void O3DCore::terminate(){
 
 int O3DCore::init(GLint width, GLint height, const char* window_name)
 {
+    
+    // TODO - Move this to a system interface
     glfwInit();
     
     glfwSetErrorCallback([] (int a_iError, const char* a_szDiscription) {
@@ -60,11 +61,6 @@ int O3DCore::init(GLint width, GLint height, const char* window_name)
     
     GLint w, h;
     glfwGetFramebufferSize(m_window, &w, &h);
-    glViewport(0,0,w,h);
-    m_screenSize.x = w;
-    m_screenSize.y = h;
-
-    m_render.init(w, h);
     
     glfwSetKeyCallback(m_window, [](GLFWwindow* window, int key, int scancode, int action, int mods)
     {
@@ -72,7 +68,18 @@ int O3DCore::init(GLint width, GLint height, const char* window_name)
     });
     
     glfwSetWindowFocusCallback(m_window, window_focus_callback);
+    // ---------
     
+    init(w,h);
+    
+    return 1;
+}
+
+int O3DCore::init(GLint w, GLint h){
+    glViewport(0,0,w,h);
+    m_screenSize.x = w;
+    m_screenSize.y = h;
+    m_render.init(w, h);
     m_resources.init();
     
     return 1;
@@ -92,7 +99,7 @@ void O3DCore::update(){
     m_fpsFrames += 1;
     if (m_fpsTime > 1){
         
-        std::cout << m_fpsFrames << "fps, render:" << m_render.getRenderTime(m_fpsFrames) <<"ms"<< std::endl;
+        //std::cout << m_fpsFrames << "fps, render:" << m_render.getRenderTime(m_fpsFrames) <<"ms"<< std::endl;
         m_fps = m_fpsFrames;
         m_fpsTime = 0;
         m_fpsFrames = 0;
@@ -102,10 +109,13 @@ void O3DCore::update(){
     
     glfwSwapBuffers(m_window);
     glfwPollEvents();
+    
+    m_ui.update();
 }
 
 void O3DCore::render(){
     m_render.render();
+    m_ui.render();
 }
 
 

@@ -44,6 +44,17 @@ class luawrapper{
         }
         return val;
     }
+    
+    static const char* pop_string(lua_State* L, const char* def){
+        const char* val;
+        if (lua_gettop(L) >= 1){
+            val = lua_tostring(L, 1);
+            lua_remove(L, 1);
+        }else{
+            val = def;
+        }
+        return val;
+    }
 };
 
 #endif /* luawrapper_h */

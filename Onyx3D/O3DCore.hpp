@@ -20,6 +20,7 @@
 
 #include "O3DRender.hpp"
 #include "O3DResources.hpp"
+#include "O3DUI.hpp"
 
 namespace o3d {
     
@@ -30,6 +31,7 @@ namespace o3d {
         ~O3DCore();
         
         int init(GLint width, GLint height, const char* window_name);
+        int init(GLint width, GLint height);
         bool running();
         void update();
         void render();
@@ -48,16 +50,19 @@ namespace o3d {
             return instance;
         }
 
+        
         const glm::vec2& getScreenSize() { return m_screenSize; }
         GLFWwindow * getWindow() { return m_window; }
         O3DResources& getResources() { return m_resources; }
         O3DRender& getRenderer(){ return m_render; }
+        O3DUI& getUI(){ return m_ui; }
         
         void setFocused(bool focus) { m_focused = focus; }
         bool isFocused(){ return m_focused; }
     private:
         O3DResources m_resources;
         O3DRender m_render;
+        O3DUI m_ui;
         
         glm::vec2 m_screenSize;
         GLFWwindow * m_window;

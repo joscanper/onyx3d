@@ -136,8 +136,8 @@ vec3 ssao_samples[16] = vec3[](
 
 
 float calculate_ssao(){
-    float falloff = 0.1;
-    float area = 0.0001;
+    float falloff = 0.05;
+    float area = 0.005;
     int num_samples = 16;
     
     float fragDepth = linearize_depth(TexCoords);
@@ -165,7 +165,7 @@ void main()
     float shadow = calculate_shadow();
     float fog = calculate_fog();
     vec4 bloomCol = calculate_bloom();
-    float ssao = calculate_ssao();
+    float ssao = 1;//calculate_ssao();
     
-    outColor = ToneMapping(max(clamp(col - col*shadow + FOG_COLOR * fog, 0, 1), bloomCol) * ssao);
+    outColor = ToneMapping(max(clamp(col - col*shadow, 0, 1), bloomCol) * ssao);
 }

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0DF3D49A1EBA048A000D0687"
-               BuildableName = "libOnyx3dLib.a"
-               BlueprintName = "Onyx3dLib"
+               BlueprintIdentifier = "0D3D8C501EC728CA00DAA2D3"
+               BuildableName = "libOnyx3DLib.a"
+               BlueprintName = "Onyx3DLib"
                ReferencedContainer = "container:Onyx3D.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0DF3D49A1EBA048A000D0687"
-            BuildableName = "libOnyx3dLib.a"
-            BlueprintName = "Onyx3dLib"
+            BlueprintIdentifier = "0D3D8C501EC728CA00DAA2D3"
+            BuildableName = "libOnyx3DLib.a"
+            BlueprintName = "Onyx3DLib"
             ReferencedContainer = "container:Onyx3D.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "0DF3D49A1EBA048A000D0687"
-            BuildableName = "libOnyx3dLib.a"
-            BlueprintName = "Onyx3dLib"
+            BlueprintIdentifier = "0D3D8C501EC728CA00DAA2D3"
+            BuildableName = "libOnyx3DLib.a"
+            BlueprintName = "Onyx3DLib"
             ReferencedContainer = "container:Onyx3D.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

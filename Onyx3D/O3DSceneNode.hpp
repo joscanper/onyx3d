@@ -31,7 +31,8 @@ namespace o3d {
         
         void addChild(const SceneNode_ptr& node);
         void removeChild(const SceneNode_ptr& node);
-
+        void removeAllChildren();
+        
         void setActive(bool active){ this->m_active = active; }
         bool isActive(){ return m_active; }
         

@@ -16,7 +16,7 @@ namespace o3d {
     
     class O3DQuadRenderer : public O3DMeshRenderer{
     public:
-        O3DQuadRenderer(float size=0.5);
+        O3DQuadRenderer(float sizex=0.5f, float sizey=0.5f);
     };
 }
 

@@ -13,17 +13,34 @@
 #include "O3DGameObject.hpp"
 #include "O3DScene.hpp"
 #include "O3DSceneLoader.hpp"
+#include "O3DUILoader.hpp"
 #include "O3DModel.hpp"
-#include "O3DGridRenderer.hpp"
+
+#include "O3DTextRenderer.hpp"
 
 #include <GL/glew.h>
 
-const GLint WIDTH = 800;
-const GLint HEIGHT = 600;
+
+
+const GLint WIDTH = 1024;
+const GLint HEIGHT = 768;
 
 using namespace o3d;
 
-
+void showFPS(){
+    static float time;
+    time += O3D().getElapsedTime();
+    
+    if (time > 1){
+        int fps = (int)O3D().getFPS();
+        std::string sfps = std::to_string(fps) + "fps";
+        std::string render = "Render:" + std::to_string(O3D().getRenderer().getRenderTime(fps));
+        
+        O3D().getUI().getObjectById<O3DUIText>("textFPS")->setText(sfps);
+        O3D().getUI().getObjectById<O3DUIText>("textRender")->setText(render);
+        time = 0;
+    }
+}
 
 int main() {
     
@@ -33,15 +50,23 @@ int main() {
     }
     
     
-    std::string scene_path = "resources/scenes/test_model.lua";
+    std::string scene_path = "resources/scenes/test_ssao.lua";
+    //std::string scene_path = "resources/scenes/demo_dungeon.lua";
     
-    Scene_ptr scene = O3DSceneLoader().load(scene_path.c_str());
+    O3DUILoader::load("resources/ui/test.lua");
+    
+    Scene_ptr scene = O3DSceneLoader::load(scene_path.c_str());
     Camera_ptr camera = scene->getObjectById<O3DCamera>("main_camera");
     GameObject_ptr pivot = scene->getObjectById<O3DGameObject>("pivot");
     
-    //make_shared<O3DModel>("resources/models/tank.obj");
     
-    //O3DGameObject* pivot = scene->getSceneObjectById<std:O3DGameObject>("pivot");
+    
+    
+    //Shader_ptr font_s = std::make_shared<O3DShader>("resources/shaders/text.vert","resources/shaders/text.frag");
+    //O3DTextRenderer tr;
+    //tr.setFont(font);
+    //glm::mat4 projection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f);
+    
     
     bool wasFocused = true;
     float camspeed= 0;
@@ -71,39 +96,49 @@ int main() {
             camspeed-=0.01f;
         if (camspeed<0)
             camspeed+=0.01f;
-             if (O3DInput::isKeyPressed(Keys::Numpad_4))
+        if (O3DInput::isKeyPressed(Keys::Numpad_4))
             pivot->rotate(glm::vec3(0,1,0));
         if (O3DInput::isKeyPressed(Keys::Numpad_6))
             pivot->rotate(glm::vec3(0,-1,0));
         
-        
         /*
-        if (O3DInput::isKeyPressed(Keys::Numpad_7))
-            go->getTransform()->translate(glm::vec3(0,-0.1,0));
-        if (O3DInput::isKeyPressed(Keys::Numpad_1))
-            go->getTransform()->translate(glm::vec3(0,0.1,0));
-        //if (O3DInput::isKeyPressed(Keys::Numpad_9))*/
+         if (O3DInput::isKeyPressed(Keys::Numpad_7))
+         go->getTransform()->translate(glm::vec3(0,-0.1,0));
+         if (O3DInput::isKeyPressed(Keys::Numpad_1))
+         go->getTransform()->translate(glm::vec3(0,0.1,0));
+         //if (O3DInput::isKeyPressed(Keys::Numpad_9))*/
         
         
         
         O3D().update();
         
+        
+        
+        
         if (O3D().isFocused()){
             O3D().render();
+            
             
             if (!wasFocused){
                 camspeed = 0;
                 glm::vec3 prev_cam_pos = camera->getPosition();
                 glm::vec3 prev_cam_rot = camera->getRotation();
                 
-                scene = O3DSceneLoader().load(("../../../../../Onyx3D/" + scene_path).c_str(), true, false);
+                O3DUILoader::load("../../../../../../Onyx3D/resources/ui/test.lua");
+                
+                scene = O3DSceneLoader::load(("../../../../../../Onyx3D/" + scene_path).c_str(), true, false);
                 camera = scene->getObjectById<O3DCamera>("main_camera");
                 camera->setPosition(prev_cam_pos);
                 camera->setRotation(prev_cam_rot);
                 
                 pivot = scene->getObjectById<O3DGameObject>("pivot");
                 wasFocused = true;
+                
+                
             }
+            
+            
+            showFPS();
         }else{
             wasFocused = false;
         }
@@ -111,6 +146,6 @@ int main() {
     }
     
     O3D().terminate();
-
+    
     return 1;
 }

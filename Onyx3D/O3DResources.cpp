@@ -16,6 +16,8 @@ void O3DResources::init(){
     createShader("o3d_shaders/unlit", "resources/shaders/basic.vert","resources/shaders/unlit.frag");
     createShader("o3d_shaders/unlit_color", "resources/shaders/basic.vert","resources/shaders/unlit_color.frag");
     createShader("o3d_shaders/skybox", "resources/shaders/skybox.vert","resources/shaders/skybox.frag");
+    createShader("o3d_shaders/ui", "resources/shaders/ui.vert","resources/shaders/ui.frag");
+    
     
     createTexture("o3d_textures/white", "resources/textures/white.png");
     createTexture("o3d_textures/black", "resources/textures/black.png");
@@ -30,6 +32,13 @@ void O3DResources::init(){
         "resources/textures/white.png"
     });
     
+    
+    createFont("o3d_fonts/default", "resources/fonts/Consolas.ttf");
+    
+    Material_ptr text_mat = std::make_shared<O3DMaterial>(getShader("o3d_shaders/ui"), MaterialRenderingMode::Opaque);
+    addMaterial("o3d_materials/ui", text_mat);
+    
     m_default_mat = std::make_shared<O3DDefaultMaterial>();
     addMaterial("o3d_materials/default", m_default_mat);
+    
 }

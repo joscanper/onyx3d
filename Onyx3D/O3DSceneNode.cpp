@@ -49,3 +49,7 @@ void O3DSceneNode::updateChildren(){
         }
     }
 }
+
+void O3DSceneNode::removeAllChildren(){
+    children.clear();
+}

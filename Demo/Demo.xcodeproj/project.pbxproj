@@ -7,10 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D3D8CD01EC73B9100DAA2D3 /* libOnyx3DLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D3D8CCF1EC73B9100DAA2D3 /* libOnyx3DLib.a */; };
+		0D3D8CD21EC73B9F00DAA2D3 /* libGLEW.2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D3D8CD11EC73B9F00DAA2D3 /* libGLEW.2.0.0.dylib */; };
+		0D3D8CD41EC73BAD00DAA2D3 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D3D8CD31EC73BAD00DAA2D3 /* libglfw.3.2.dylib */; };
+		0D3D8CD61EC73BCF00DAA2D3 /* liblua.5.1.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D3D8CD51EC73BCF00DAA2D3 /* liblua.5.1.5.dylib */; };
+		0D3D8CD71EC73BD600DAA2D3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF3D4A81EBA05CD000D0687 /* OpenGL.framework */; };
+		0D3D8CDF1EC742B900DAA2D3 /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D3D8CDE1EC742B900DAA2D3 /* libfreetype.6.dylib */; };
 		0DF3D3501EBA013C000D0687 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DF3D34F1EBA013C000D0687 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0D3D8CCE1EC73B9100DAA2D3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0DF3D4901EBA043A000D0687 /* Onyx3D.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0D3D8C511EC728CA00DAA2D3;
+			remoteInfo = Onyx3DLib;
+		};
 		0DF3D4951EBA043A000D0687 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0DF3D4901EBA043A000D0687 /* Onyx3D.xcodeproj */;
@@ -40,6 +53,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D3D8CD11EC73B9F00DAA2D3 /* libGLEW.2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.0.0.dylib; path = ../../../../../../../usr/local/Cellar/glew/2.0.0/lib/libGLEW.2.0.0.dylib; sourceTree = "<group>"; };
+		0D3D8CD31EC73BAD00DAA2D3 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../../../usr/local/Cellar/glfw/3.2.1/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
+		0D3D8CD51EC73BCF00DAA2D3 /* liblua.5.1.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblua.5.1.5.dylib; path = "../../../../../../../usr/local/Cellar/lua@5.1/5.1.5_4/lib/liblua.5.1.5.dylib"; sourceTree = "<group>"; };
+		0D3D8CDE1EC742B900DAA2D3 /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = ../../../../../../../usr/local/Cellar/freetype/2.7.1/lib/libfreetype.6.dylib; sourceTree = "<group>"; };
 		0DF3D34C1EBA013C000D0687 /* Demo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Demo; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DF3D34F1EBA013C000D0687 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		0DF3D4901EBA043A000D0687 /* Onyx3D.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Onyx3D.xcodeproj; path = ../Onyx3D.xcodeproj; sourceTree = "<group>"; };
@@ -51,6 +68,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D3D8CDF1EC742B900DAA2D3 /* libfreetype.6.dylib in Frameworks */,
+				0D3D8CD71EC73BD600DAA2D3 /* OpenGL.framework in Frameworks */,
+				0D3D8CD61EC73BCF00DAA2D3 /* liblua.5.1.5.dylib in Frameworks */,
+				0D3D8CD41EC73BAD00DAA2D3 /* libglfw.3.2.dylib in Frameworks */,
+				0D3D8CD21EC73B9F00DAA2D3 /* libGLEW.2.0.0.dylib in Frameworks */,
+				0D3D8CD01EC73B9100DAA2D3 /* libOnyx3DLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				0DF3D4961EBA043A000D0687 /* Onyx3D */,
+				0D3D8CCF1EC73B9100DAA2D3 /* libOnyx3DLib.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,6 +118,10 @@
 		0DF3D4A71EBA05CC000D0687 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0D3D8CDE1EC742B900DAA2D3 /* libfreetype.6.dylib */,
+				0D3D8CD51EC73BCF00DAA2D3 /* liblua.5.1.5.dylib */,
+				0D3D8CD31EC73BAD00DAA2D3 /* libglfw.3.2.dylib */,
+				0D3D8CD11EC73B9F00DAA2D3 /* libGLEW.2.0.0.dylib */,
 				0DF3D4A81EBA05CD000D0687 /* OpenGL.framework */,
 			);
 			name = Frameworks;
@@ -159,6 +187,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		0D3D8CCF1EC73B9100DAA2D3 /* libOnyx3DLib.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOnyx3DLib.a;
+			remoteRef = 0D3D8CCE1EC73B9100DAA2D3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		0DF3D4961EBA043A000D0687 /* Onyx3D */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.executable";
@@ -280,7 +315,18 @@
 		0DF3D3541EBA013C000D0687 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = ../Onyx3D/;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/freetype2,
+					/usr/local/include,
+					"\"$(SRCROOT)/../Onyx3D\"",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glew/2.0.0/lib,
+					/usr/local/Cellar/glfw/3.2.1/lib,
+					"/usr/local/Cellar/lua@5.1/5.1.5_4/lib",
+					/usr/local/Cellar/freetype/2.7.1/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -288,7 +334,18 @@
 		0DF3D3551EBA013C000D0687 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = ../Onyx3D/;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/freetype2,
+					/usr/local/include,
+					"\"$(SRCROOT)/../Onyx3D\"",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/Cellar/glew/2.0.0/lib,
+					/usr/local/Cellar/glfw/3.2.1/lib,
+					"/usr/local/Cellar/lua@5.1/5.1.5_4/lib",
+					/usr/local/Cellar/freetype/2.7.1/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -312,6 +369,7 @@
 				0DF3D3551EBA013C000D0687 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

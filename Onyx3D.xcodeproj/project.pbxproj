@@ -12,7 +12,6 @@
 		0D27CF7F1EA8D34800104625 /* O3DCubeRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D27CF7D1EA8D34800104625 /* O3DCubeRenderer.cpp */; };
 		0D27CF851EA8EE0D00104625 /* O3DInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D27CF831EA8EE0D00104625 /* O3DInput.cpp */; };
 		0D27CF881EA900B600104625 /* O3DMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D27CF861EA900B600104625 /* O3DMaterial.cpp */; };
-		0D27CFBB1EAAA1B900104625 /* O3DSceneLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D27CFB91EAAA1B900104625 /* O3DSceneLoader.cpp */; };
 		0D27CFC31EAB338200104625 /* liblua.5.1.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D27CFC21EAB338200104625 /* liblua.5.1.5.dylib */; };
 		0D27CFC51EAB338E00104625 /* libluabind.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D27CFC41EAB338E00104625 /* libluabind.dylib */; };
 		0D27D01B1EAB400900104625 /* etc1_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D27D0061EAB400900104625 /* etc1_utils.c */; };
@@ -29,12 +28,97 @@
 		0D28A6D41EA65EF100CE1238 /* O3DTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D28A6D21EA65EF100CE1238 /* O3DTransform.cpp */; };
 		0D28A6DD1EA66A1600CE1238 /* O3DScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D28A6DB1EA66A1600CE1238 /* O3DScene.cpp */; };
 		0D28A6E01EA66A2E00CE1238 /* O3DSceneNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D28A6DE1EA66A2E00CE1238 /* O3DSceneNode.cpp */; };
+		0D3D8C5E1EC7292200DAA2D3 /* etc1_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D27D0061EAB400900104625 /* etc1_utils.c */; };
+		0D3D8C601EC7292200DAA2D3 /* image_DXT.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D27D0081EAB400900104625 /* image_DXT.c */; };
+		0D3D8C621EC7292200DAA2D3 /* image_helper.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D27D00A1EAB400900104625 /* image_helper.c */; };
+		0D3D8C671EC7292200DAA2D3 /* SOIL2.c in Sources */ = {isa = PBXBuildFile; fileRef = 0D27D00F1EAB400900104625 /* SOIL2.c */; };
+		0D3D8C731EC7292200DAA2D3 /* luawrapper.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D27D0201EAB40AF00104625 /* luawrapper.hpp */; };
+		0D3D8C741EC7292200DAA2D3 /* O3DObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D8544D61EAE051200C93F2B /* O3DObjLoader.cpp */; };
+		0D3D8C751EC7292200DAA2D3 /* O3DObjLoader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D8544D71EAE051200C93F2B /* O3DObjLoader.hpp */; };
+		0D3D8C761EC7292200DAA2D3 /* O3DShader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D28A6B51EA5F26900CE1238 /* O3DShader.hpp */; };
+		0D3D8C771EC7292200DAA2D3 /* O3DShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D28A6B41EA5F26900CE1238 /* O3DShader.cpp */; };
+		0D3D8C781EC7292200DAA2D3 /* O3DTexture.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D28A6C11EA6316900CE1238 /* O3DTexture.hpp */; };
+		0D3D8C791EC7292200DAA2D3 /* O3DTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D28A6C01EA6316900CE1238 /* O3DTexture.cpp */; };
+		0D3D8C7A1EC7292200DAA2D3 /* O3DMaterial.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D27CF871EA900B600104625 /* O3DMaterial.hpp */; };
+		0D3D8C7B1EC7292200DAA2D3 /* O3DMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D27CF861EA900B600104625 /* O3DMaterial.cpp */; };
+		0D3D8C7C1EC7292200DAA2D3 /* O3DMesh.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D28A6D01EA63ECA00CE1238 /* O3DMesh.hpp */; };
+		0D3D8C7D1EC7292200DAA2D3 /* O3DDefaultMaterial.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D8544DD1EAF329B00C93F2B /* O3DDefaultMaterial.hpp */; };
+		0D3D8C7E1EC7292200DAA2D3 /* O3DDefaultMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D2346081EAF35FE0081D521 /* O3DDefaultMaterial.cpp */; };
+		0D3D8C7F1EC7292200DAA2D3 /* O3DCubeMap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D6D205B1EB0EBE200EC5DEB /* O3DCubeMap.hpp */; };
+		0D3D8C801EC7292200DAA2D3 /* O3DCubeMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D205A1EB0EBE200EC5DEB /* O3DCubeMap.cpp */; };
+		0D3D8C811EC7292200DAA2D3 /* O3DDefaultShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D20651EB10CDF00EC5DEB /* O3DDefaultShader.cpp */; };
+		0D3D8C821EC7292200DAA2D3 /* O3DDefaultShader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D6D20661EB10CDF00EC5DEB /* O3DDefaultShader.hpp */; };
+		0D3D8C831EC7292200DAA2D3 /* O3DRender.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D6D20691EB2130E00EC5DEB /* O3DRender.hpp */; };
+		0D3D8C841EC7292200DAA2D3 /* O3DRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D20681EB2130E00EC5DEB /* O3DRender.cpp */; };
+		0D3D8C851EC7292200DAA2D3 /* O3DShadowMapping.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D9D0A341EB3E6EA0058DD3A /* O3DShadowMapping.hpp */; };
+		0D3D8C861EC7292200DAA2D3 /* O3DShadowMapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D0A331EB3E6EA0058DD3A /* O3DShadowMapping.cpp */; };
+		0D3D8C871EC7292200DAA2D3 /* O3DGizmos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DC972901EB4827900958018 /* O3DGizmos.cpp */; };
+		0D3D8C881EC7292200DAA2D3 /* O3DGizmos.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0DC972911EB4827900958018 /* O3DGizmos.hpp */; };
+		0D3D8C891EC7292200DAA2D3 /* O3DShadowMapFBO.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0DC972941EB9CDF800958018 /* O3DShadowMapFBO.hpp */; };
+		0D3D8C8A1EC7292200DAA2D3 /* O3DPostProFX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DE655DE1EC1D8220043AE78 /* O3DPostProFX.cpp */; };
+		0D3D8C8B1EC7292200DAA2D3 /* O3DPostProFX.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0DE655DF1EC1D8220043AE78 /* O3DPostProFX.hpp */; };
+		0D3D8C8C1EC7292200DAA2D3 /* O3DRenderComposition.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0DE655E31EC1E35F0043AE78 /* O3DRenderComposition.hpp */; };
+		0D3D8C8D1EC7292200DAA2D3 /* O3DMotionBlurFX.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0DE655E61EC1EA890043AE78 /* O3DMotionBlurFX.hpp */; };
+		0D3D8C8E1EC7292200DAA2D3 /* O3DBloomFX.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0DE655E91EC32D2A0043AE78 /* O3DBloomFX.hpp */; };
+		0D3D8C8F1EC7292200DAA2D3 /* O3DScene.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D28A6DC1EA66A1600CE1238 /* O3DScene.hpp */; };
+		0D3D8C901EC7292200DAA2D3 /* O3DScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D28A6DB1EA66A1600CE1238 /* O3DScene.cpp */; };
+		0D3D8C911EC7292200DAA2D3 /* O3DSceneLoader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D27CFBA1EAAA1B900104625 /* O3DSceneLoader.hpp */; };
+		0D3D8C931EC7292200DAA2D3 /* O3DCamera.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D28A6BE1EA630B300CE1238 /* O3DCamera.hpp */; };
+		0D3D8C941EC7292200DAA2D3 /* O3DCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D28A6BD1EA630B300CE1238 /* O3DCamera.cpp */; };
+		0D3D8C951EC7292200DAA2D3 /* O3DGameObject.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D28A6C41EA631CA00CE1238 /* O3DGameObject.hpp */; };
+		0D3D8C971EC7292200DAA2D3 /* O3DSpotLight.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D5B70731EADEC8200902681 /* O3DSpotLight.hpp */; };
+		0D3D8C981EC7292200DAA2D3 /* O3DModel.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D8544DA1EAE124C00C93F2B /* O3DModel.hpp */; };
+		0D3D8C991EC7292200DAA2D3 /* O3DModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D8544D91EAE124C00C93F2B /* O3DModel.cpp */; };
+		0D3D8C9A1EC7292200DAA2D3 /* O3DSceneNode.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D28A6DF1EA66A2E00CE1238 /* O3DSceneNode.hpp */; };
+		0D3D8C9B1EC7292200DAA2D3 /* O3DSceneNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D28A6DE1EA66A2E00CE1238 /* O3DSceneNode.cpp */; };
+		0D3D8C9C1EC7292200DAA2D3 /* O3DTransform.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D28A6D31EA65EF100CE1238 /* O3DTransform.hpp */; };
+		0D3D8C9D1EC7292200DAA2D3 /* O3DTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D28A6D21EA65EF100CE1238 /* O3DTransform.cpp */; };
+		0D3D8C9E1EC7292200DAA2D3 /* O3DModelProxy.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D6D20591EB0D1EF00EC5DEB /* O3DModelProxy.hpp */; };
+		0D3D8C9F1EC7292200DAA2D3 /* O3DComponent.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D28A6D61EA6606B00CE1238 /* O3DComponent.hpp */; };
+		0D3D8CA01EC7292200DAA2D3 /* O3DCubeRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D27CF7E1EA8D34800104625 /* O3DCubeRenderer.hpp */; };
+		0D3D8CA11EC7292200DAA2D3 /* O3DCubeRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D27CF7D1EA8D34800104625 /* O3DCubeRenderer.cpp */; };
+		0D3D8CA21EC7292200DAA2D3 /* O3DQuadRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D28A6CD1EA639F400CE1238 /* O3DQuadRenderer.hpp */; };
+		0D3D8CA31EC7292200DAA2D3 /* O3DQuadRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D28A6CC1EA639F400CE1238 /* O3DQuadRenderer.cpp */; };
+		0D3D8CA41EC7292200DAA2D3 /* O3DMeshRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D28A6CA1EA632D700CE1238 /* O3DMeshRenderer.hpp */; };
+		0D3D8CA51EC7292200DAA2D3 /* O3DMeshRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D28A6C91EA632D700CE1238 /* O3DMeshRenderer.cpp */; };
+		0D3D8CA61EC7292200DAA2D3 /* O3DOctahedronRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D27D0221EAB4FD600104625 /* O3DOctahedronRenderer.hpp */; };
+		0D3D8CA71EC7292200DAA2D3 /* O3DOctahedronRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D27D0211EAB4FD600104625 /* O3DOctahedronRenderer.cpp */; };
+		0D3D8CA81EC7292200DAA2D3 /* O3DGridRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D5B706A1EAB7ECC00902681 /* O3DGridRenderer.hpp */; };
+		0D3D8CA91EC7292200DAA2D3 /* O3DGridRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D5B70691EAB7ECC00902681 /* O3DGridRenderer.cpp */; };
+		0D3D8CAA1EC7292200DAA2D3 /* O3DSkyboxRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D6D20631EB10B3C00EC5DEB /* O3DSkyboxRenderer.hpp */; };
+		0D3D8CAB1EC7292200DAA2D3 /* O3DRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D6D206F1EB21E8700EC5DEB /* O3DRenderer.hpp */; };
+		0D3D8CAC1EC7292200DAA2D3 /* O3DRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D20711EB22F5F00EC5DEB /* O3DRenderer.cpp */; };
+		0D3D8CAD1EC7292200DAA2D3 /* O3DCore.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D07C8171EA5D8A2007A1A45 /* O3DCore.hpp */; };
+		0D3D8CAE1EC7292200DAA2D3 /* O3DCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D07C8161EA5D8A2007A1A45 /* O3DCore.cpp */; };
+		0D3D8CAF1EC7292200DAA2D3 /* O3DInput.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D27CF841EA8EE0D00104625 /* O3DInput.hpp */; };
+		0D3D8CB01EC7292200DAA2D3 /* O3DInput.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D27CF831EA8EE0D00104625 /* O3DInput.cpp */; };
+		0D3D8CB11EC7292200DAA2D3 /* O3DLighting.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D27CFA91EA9F41700104625 /* O3DLighting.hpp */; };
+		0D3D8CB21EC7292200DAA2D3 /* O3DResources.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D5B706D1EACAE5400902681 /* O3DResources.hpp */; };
+		0D3D8CB31EC7292200DAA2D3 /* O3DResources.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D5B706C1EACAE5400902681 /* O3DResources.cpp */; };
+		0D3D8CB41EC7292200DAA2D3 /* O3DDefines.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D6D20581EAFE41600EC5DEB /* O3DDefines.hpp */; };
+		0D3D8CB51EC7292200DAA2D3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D60CF971EA553EC008D41F3 /* main.cpp */; };
+		0D3D8CE21EC7472D00DAA2D3 /* O3DFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D8CE01EC7472D00DAA2D3 /* O3DFont.cpp */; };
+		0D3D8CE41EC74C1F00DAA2D3 /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D3D8CE31EC74C1F00DAA2D3 /* libfreetype.6.dylib */; };
+		0D3D8CE71EC758BF00DAA2D3 /* O3DTextRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D8CE51EC758BF00DAA2D3 /* O3DTextRenderer.cpp */; };
+		0D3D8CE81EC758BF00DAA2D3 /* O3DTextRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D8CE51EC758BF00DAA2D3 /* O3DTextRenderer.cpp */; };
+		0D3D8CE91EC758BF00DAA2D3 /* O3DTextRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D3D8CE61EC758BF00DAA2D3 /* O3DTextRenderer.hpp */; };
+		0D3D8CEA1EC758E500DAA2D3 /* O3DFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D3D8CE01EC7472D00DAA2D3 /* O3DFont.cpp */; };
+		0D3D8CEB1EC758FE00DAA2D3 /* O3DFont.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D3D8CE11EC7472D00DAA2D3 /* O3DFont.hpp */; };
 		0D5B706B1EAB7ECC00902681 /* O3DGridRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D5B70691EAB7ECC00902681 /* O3DGridRenderer.cpp */; };
 		0D5B706E1EACAE5400902681 /* O3DResources.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D5B706C1EACAE5400902681 /* O3DResources.cpp */; };
 		0D60CF981EA553EC008D41F3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D60CF971EA553EC008D41F3 /* main.cpp */; };
 		0D60CF9F1EA55439008D41F3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D60CF9E1EA55439008D41F3 /* OpenGL.framework */; };
 		0D60CFA11EA55479008D41F3 /* libGLEW.2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D60CFA01EA55479008D41F3 /* libGLEW.2.0.0.dylib */; };
 		0D60CFA31EA5548C008D41F3 /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D60CFA21EA5548C008D41F3 /* libglfw.3.2.dylib */; };
+		0D6280581EC83E4B004E0655 /* O3DUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6280561EC83E4B004E0655 /* O3DUI.cpp */; };
+		0D6280591EC83E4B004E0655 /* O3DUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6280561EC83E4B004E0655 /* O3DUI.cpp */; };
+		0D62805A1EC83E4B004E0655 /* O3DUI.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D6280571EC83E4B004E0655 /* O3DUI.hpp */; };
+		0D6280641EC845C9004E0655 /* O3DUIRect.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D6280611EC845C9004E0655 /* O3DUIRect.hpp */; };
+		0D6280691EC8477C004E0655 /* O3DUILoader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D6280661EC8477C004E0655 /* O3DUILoader.hpp */; };
+		0D62806E1EC86A73004E0655 /* O3DLuaLoader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D62806B1EC86A73004E0655 /* O3DLuaLoader.hpp */; };
+		0D6280731EC8746A004E0655 /* O3DLuaLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6280721EC8746A004E0655 /* O3DLuaLoader.cpp */; };
+		0D6280741EC8746A004E0655 /* O3DLuaLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6280721EC8746A004E0655 /* O3DLuaLoader.cpp */; };
+		0D6280791EC87CA8004E0655 /* O3DUIText.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D6280761EC87CA8004E0655 /* O3DUIText.hpp */; };
 		0D6D205C1EB0EBE200EC5DEB /* O3DCubeMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D205A1EB0EBE200EC5DEB /* O3DCubeMap.cpp */; };
 		0D6D20671EB10CDF00EC5DEB /* O3DDefaultShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D20651EB10CDF00EC5DEB /* O3DDefaultShader.cpp */; };
 		0D6D206A1EB2130E00EC5DEB /* O3DRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D20681EB2130E00EC5DEB /* O3DRender.cpp */; };
@@ -42,6 +126,8 @@
 		0D8544D81EAE051200C93F2B /* O3DObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D8544D61EAE051200C93F2B /* O3DObjLoader.cpp */; };
 		0D8544DB1EAE124C00C93F2B /* O3DModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D8544D91EAE124C00C93F2B /* O3DModel.cpp */; };
 		0D9D0A351EB3E6EA0058DD3A /* O3DShadowMapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D0A331EB3E6EA0058DD3A /* O3DShadowMapping.cpp */; };
+		0DBA10061EC886E900772818 /* O3DUIDraw.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0DBA10031EC886E900772818 /* O3DUIDraw.hpp */; };
+		0DBA100C1EC887AB00772818 /* O3DImageRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0DBA10091EC887AB00772818 /* O3DImageRenderer.hpp */; };
 		0DC972921EB4827900958018 /* O3DGizmos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DC972901EB4827900958018 /* O3DGizmos.cpp */; };
 		0DE655E01EC1D8220043AE78 /* O3DPostProFX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DE655DE1EC1D8220043AE78 /* O3DPostProFX.cpp */; };
 /* End PBXBuildFile section */
@@ -90,7 +176,6 @@
 		0D27CF871EA900B600104625 /* O3DMaterial.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DMaterial.hpp; sourceTree = "<group>"; };
 		0D27CFA91EA9F41700104625 /* O3DLighting.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DLighting.hpp; sourceTree = "<group>"; };
 		0D27CFAC1EAA00A600104625 /* O3DLight.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DLight.hpp; sourceTree = "<group>"; };
-		0D27CFB91EAAA1B900104625 /* O3DSceneLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DSceneLoader.cpp; sourceTree = "<group>"; };
 		0D27CFBA1EAAA1B900104625 /* O3DSceneLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DSceneLoader.hpp; sourceTree = "<group>"; };
 		0D27CFC21EAB338200104625 /* liblua.5.1.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblua.5.1.5.dylib; path = "../../../../../../usr/local/Cellar/lua@5.1/5.1.5_4/lib/liblua.5.1.5.dylib"; sourceTree = "<group>"; };
 		0D27CFC41EAB338E00104625 /* libluabind.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libluabind.dylib; path = ../../../../../../usr/local/Cellar/luabind/0.9.1_2/lib/libluabind.dylib; sourceTree = "<group>"; };
@@ -138,6 +223,12 @@
 		0D28A6DC1EA66A1600CE1238 /* O3DScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DScene.hpp; sourceTree = "<group>"; };
 		0D28A6DE1EA66A2E00CE1238 /* O3DSceneNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DSceneNode.cpp; sourceTree = "<group>"; };
 		0D28A6DF1EA66A2E00CE1238 /* O3DSceneNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DSceneNode.hpp; sourceTree = "<group>"; };
+		0D3D8C511EC728CA00DAA2D3 /* libOnyx3DLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOnyx3DLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D3D8CE01EC7472D00DAA2D3 /* O3DFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DFont.cpp; sourceTree = "<group>"; };
+		0D3D8CE11EC7472D00DAA2D3 /* O3DFont.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DFont.hpp; sourceTree = "<group>"; };
+		0D3D8CE31EC74C1F00DAA2D3 /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = ../../../../../../usr/local/Cellar/freetype/2.7.1/lib/libfreetype.6.dylib; sourceTree = "<group>"; };
+		0D3D8CE51EC758BF00DAA2D3 /* O3DTextRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DTextRenderer.cpp; sourceTree = "<group>"; };
+		0D3D8CE61EC758BF00DAA2D3 /* O3DTextRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DTextRenderer.hpp; sourceTree = "<group>"; };
 		0D5B70691EAB7ECC00902681 /* O3DGridRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DGridRenderer.cpp; sourceTree = "<group>"; };
 		0D5B706A1EAB7ECC00902681 /* O3DGridRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DGridRenderer.hpp; sourceTree = "<group>"; };
 		0D5B706C1EACAE5400902681 /* O3DResources.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DResources.cpp; sourceTree = "<group>"; };
@@ -149,6 +240,13 @@
 		0D60CF9E1EA55439008D41F3 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		0D60CFA01EA55479008D41F3 /* libGLEW.2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.0.0.dylib; path = /usr/local/Cellar/glew/2.0.0/lib/libGLEW.2.0.0.dylib; sourceTree = "<absolute>"; };
 		0D60CFA21EA5548C008D41F3 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = /usr/local/Cellar/glfw/3.2.1/lib/libglfw.3.2.dylib; sourceTree = "<absolute>"; };
+		0D6280561EC83E4B004E0655 /* O3DUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DUI.cpp; sourceTree = "<group>"; };
+		0D6280571EC83E4B004E0655 /* O3DUI.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DUI.hpp; sourceTree = "<group>"; };
+		0D6280611EC845C9004E0655 /* O3DUIRect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DUIRect.hpp; sourceTree = "<group>"; };
+		0D6280661EC8477C004E0655 /* O3DUILoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DUILoader.hpp; sourceTree = "<group>"; };
+		0D62806B1EC86A73004E0655 /* O3DLuaLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DLuaLoader.hpp; sourceTree = "<group>"; };
+		0D6280721EC8746A004E0655 /* O3DLuaLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DLuaLoader.cpp; sourceTree = "<group>"; };
+		0D6280761EC87CA8004E0655 /* O3DUIText.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DUIText.hpp; sourceTree = "<group>"; };
 		0D6D20581EAFE41600EC5DEB /* O3DDefines.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = O3DDefines.hpp; sourceTree = "<group>"; };
 		0D6D20591EB0D1EF00EC5DEB /* O3DModelProxy.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = O3DModelProxy.hpp; sourceTree = "<group>"; };
 		0D6D205A1EB0EBE200EC5DEB /* O3DCubeMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DCubeMap.cpp; sourceTree = "<group>"; };
@@ -167,6 +265,8 @@
 		0D8544DD1EAF329B00C93F2B /* O3DDefaultMaterial.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = O3DDefaultMaterial.hpp; sourceTree = "<group>"; };
 		0D9D0A331EB3E6EA0058DD3A /* O3DShadowMapping.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DShadowMapping.cpp; sourceTree = "<group>"; };
 		0D9D0A341EB3E6EA0058DD3A /* O3DShadowMapping.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DShadowMapping.hpp; sourceTree = "<group>"; };
+		0DBA10031EC886E900772818 /* O3DUIDraw.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DUIDraw.hpp; sourceTree = "<group>"; };
+		0DBA10091EC887AB00772818 /* O3DImageRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DImageRenderer.hpp; sourceTree = "<group>"; };
 		0DC972901EB4827900958018 /* O3DGizmos.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DGizmos.cpp; sourceTree = "<group>"; };
 		0DC972911EB4827900958018 /* O3DGizmos.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DGizmos.hpp; sourceTree = "<group>"; };
 		0DC972941EB9CDF800958018 /* O3DShadowMapFBO.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DShadowMapFBO.hpp; sourceTree = "<group>"; };
@@ -179,10 +279,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0D3D8C4E1EC728CA00DAA2D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0D60CF911EA553EC008D41F3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D3D8CE41EC74C1F00DAA2D3 /* libfreetype.6.dylib in Frameworks */,
 				0D27CFC51EAB338E00104625 /* libluabind.dylib in Frameworks */,
 				0D27CFC31EAB338200104625 /* liblua.5.1.5.dylib in Frameworks */,
 				0D60CFA31EA5548C008D41F3 /* libglfw.3.2.dylib in Frameworks */,
@@ -197,6 +305,7 @@
 		0D27CFB21EAA702000104625 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0D3D8CE31EC74C1F00DAA2D3 /* libfreetype.6.dylib */,
 				0DF3D37A1EBA034E000D0687 /* Demo.xcodeproj */,
 				0D27CFC41EAB338E00104625 /* libluabind.dylib */,
 				0D27CFC21EAB338200104625 /* liblua.5.1.5.dylib */,
@@ -249,6 +358,7 @@
 		0D27D0241EAB4FEA00104625 /* renderers */ = {
 			isa = PBXGroup;
 			children = (
+				0DBA100D1EC8885300772818 /* ui */,
 				0D27CF7E1EA8D34800104625 /* O3DCubeRenderer.hpp */,
 				0D27CF7D1EA8D34800104625 /* O3DCubeRenderer.cpp */,
 				0D28A6CD1EA639F400CE1238 /* O3DQuadRenderer.hpp */,
@@ -280,8 +390,6 @@
 			children = (
 				0D28A6DC1EA66A1600CE1238 /* O3DScene.hpp */,
 				0D28A6DB1EA66A1600CE1238 /* O3DScene.cpp */,
-				0D27CFBA1EAAA1B900104625 /* O3DSceneLoader.hpp */,
-				0D27CFB91EAAA1B900104625 /* O3DSceneLoader.cpp */,
 				0D27D0281EAB505C00104625 /* nodes */,
 			);
 			name = scene;
@@ -334,6 +442,8 @@
 				0DE655E31EC1E35F0043AE78 /* O3DRenderComposition.hpp */,
 				0DE655E61EC1EA890043AE78 /* O3DMotionBlurFX.hpp */,
 				0DE655E91EC32D2A0043AE78 /* O3DBloomFX.hpp */,
+				0D3D8CE01EC7472D00DAA2D3 /* O3DFont.cpp */,
+				0D3D8CE11EC7472D00DAA2D3 /* O3DFont.hpp */,
 			);
 			name = graphics;
 			sourceTree = "<group>";
@@ -352,6 +462,7 @@
 			isa = PBXGroup;
 			children = (
 				0D60CF941EA553EC008D41F3 /* Onyx3D */,
+				0D3D8C511EC728CA00DAA2D3 /* libOnyx3DLib.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -360,6 +471,8 @@
 			isa = PBXGroup;
 			children = (
 				0D28A6B91EA6131300CE1238 /* resources */,
+				0D62807A1EC87DC4004E0655 /* loaders */,
+				0D6280541EC83E2E004E0655 /* ui */,
 				0D27D0031EAB400900104625 /* utils */,
 				0D27D02A1EAB50BD00104625 /* graphics */,
 				0D27D0271EAB503E00104625 /* scene */,
@@ -377,6 +490,39 @@
 			path = Onyx3D;
 			sourceTree = "<group>";
 		};
+		0D6280541EC83E2E004E0655 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				0D6280571EC83E4B004E0655 /* O3DUI.hpp */,
+				0D6280561EC83E4B004E0655 /* O3DUI.cpp */,
+				0D6280611EC845C9004E0655 /* O3DUIRect.hpp */,
+				0D6280761EC87CA8004E0655 /* O3DUIText.hpp */,
+				0DBA10031EC886E900772818 /* O3DUIDraw.hpp */,
+			);
+			name = ui;
+			sourceTree = "<group>";
+		};
+		0D62807A1EC87DC4004E0655 /* loaders */ = {
+			isa = PBXGroup;
+			children = (
+				0D6280661EC8477C004E0655 /* O3DUILoader.hpp */,
+				0D27CFBA1EAAA1B900104625 /* O3DSceneLoader.hpp */,
+				0D62806B1EC86A73004E0655 /* O3DLuaLoader.hpp */,
+				0D6280721EC8746A004E0655 /* O3DLuaLoader.cpp */,
+			);
+			name = loaders;
+			sourceTree = "<group>";
+		};
+		0DBA100D1EC8885300772818 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				0D3D8CE51EC758BF00DAA2D3 /* O3DTextRenderer.cpp */,
+				0D3D8CE61EC758BF00DAA2D3 /* O3DTextRenderer.hpp */,
+				0DBA10091EC887AB00772818 /* O3DImageRenderer.hpp */,
+			);
+			name = ui;
+			sourceTree = "<group>";
+		};
 		0DF3D37B1EBA034E000D0687 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,7 +533,82 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		0D3D8C4F1EC728CA00DAA2D3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D6280691EC8477C004E0655 /* O3DUILoader.hpp in Headers */,
+				0D3D8CEB1EC758FE00DAA2D3 /* O3DFont.hpp in Headers */,
+				0D3D8C731EC7292200DAA2D3 /* luawrapper.hpp in Headers */,
+				0D3D8C751EC7292200DAA2D3 /* O3DObjLoader.hpp in Headers */,
+				0DBA100C1EC887AB00772818 /* O3DImageRenderer.hpp in Headers */,
+				0D3D8C761EC7292200DAA2D3 /* O3DShader.hpp in Headers */,
+				0D3D8CE91EC758BF00DAA2D3 /* O3DTextRenderer.hpp in Headers */,
+				0D3D8C781EC7292200DAA2D3 /* O3DTexture.hpp in Headers */,
+				0D3D8C7A1EC7292200DAA2D3 /* O3DMaterial.hpp in Headers */,
+				0D3D8C7C1EC7292200DAA2D3 /* O3DMesh.hpp in Headers */,
+				0D3D8C7D1EC7292200DAA2D3 /* O3DDefaultMaterial.hpp in Headers */,
+				0D3D8C7F1EC7292200DAA2D3 /* O3DCubeMap.hpp in Headers */,
+				0D3D8C821EC7292200DAA2D3 /* O3DDefaultShader.hpp in Headers */,
+				0D3D8C831EC7292200DAA2D3 /* O3DRender.hpp in Headers */,
+				0D3D8C851EC7292200DAA2D3 /* O3DShadowMapping.hpp in Headers */,
+				0D6280641EC845C9004E0655 /* O3DUIRect.hpp in Headers */,
+				0D3D8C881EC7292200DAA2D3 /* O3DGizmos.hpp in Headers */,
+				0D3D8C891EC7292200DAA2D3 /* O3DShadowMapFBO.hpp in Headers */,
+				0D3D8C8B1EC7292200DAA2D3 /* O3DPostProFX.hpp in Headers */,
+				0DBA10061EC886E900772818 /* O3DUIDraw.hpp in Headers */,
+				0D3D8C8C1EC7292200DAA2D3 /* O3DRenderComposition.hpp in Headers */,
+				0D3D8C8D1EC7292200DAA2D3 /* O3DMotionBlurFX.hpp in Headers */,
+				0D3D8C8E1EC7292200DAA2D3 /* O3DBloomFX.hpp in Headers */,
+				0D3D8C8F1EC7292200DAA2D3 /* O3DScene.hpp in Headers */,
+				0D3D8C911EC7292200DAA2D3 /* O3DSceneLoader.hpp in Headers */,
+				0D3D8C931EC7292200DAA2D3 /* O3DCamera.hpp in Headers */,
+				0D3D8C951EC7292200DAA2D3 /* O3DGameObject.hpp in Headers */,
+				0D3D8C971EC7292200DAA2D3 /* O3DSpotLight.hpp in Headers */,
+				0D3D8C981EC7292200DAA2D3 /* O3DModel.hpp in Headers */,
+				0D62805A1EC83E4B004E0655 /* O3DUI.hpp in Headers */,
+				0D3D8C9A1EC7292200DAA2D3 /* O3DSceneNode.hpp in Headers */,
+				0D3D8C9C1EC7292200DAA2D3 /* O3DTransform.hpp in Headers */,
+				0D3D8C9E1EC7292200DAA2D3 /* O3DModelProxy.hpp in Headers */,
+				0D3D8C9F1EC7292200DAA2D3 /* O3DComponent.hpp in Headers */,
+				0D3D8CA01EC7292200DAA2D3 /* O3DCubeRenderer.hpp in Headers */,
+				0D3D8CA21EC7292200DAA2D3 /* O3DQuadRenderer.hpp in Headers */,
+				0D3D8CA41EC7292200DAA2D3 /* O3DMeshRenderer.hpp in Headers */,
+				0D3D8CA61EC7292200DAA2D3 /* O3DOctahedronRenderer.hpp in Headers */,
+				0D3D8CA81EC7292200DAA2D3 /* O3DGridRenderer.hpp in Headers */,
+				0D3D8CAA1EC7292200DAA2D3 /* O3DSkyboxRenderer.hpp in Headers */,
+				0D6280791EC87CA8004E0655 /* O3DUIText.hpp in Headers */,
+				0D3D8CAB1EC7292200DAA2D3 /* O3DRenderer.hpp in Headers */,
+				0D3D8CAD1EC7292200DAA2D3 /* O3DCore.hpp in Headers */,
+				0D3D8CAF1EC7292200DAA2D3 /* O3DInput.hpp in Headers */,
+				0D3D8CB11EC7292200DAA2D3 /* O3DLighting.hpp in Headers */,
+				0D3D8CB21EC7292200DAA2D3 /* O3DResources.hpp in Headers */,
+				0D3D8CB41EC7292200DAA2D3 /* O3DDefines.hpp in Headers */,
+				0D62806E1EC86A73004E0655 /* O3DLuaLoader.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		0D3D8C501EC728CA00DAA2D3 /* Onyx3DLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D3D8C5C1EC728CA00DAA2D3 /* Build configuration list for PBXNativeTarget "Onyx3DLib" */;
+			buildPhases = (
+				0D3D8C4D1EC728CA00DAA2D3 /* Sources */,
+				0D3D8C4E1EC728CA00DAA2D3 /* Frameworks */,
+				0D3D8C4F1EC728CA00DAA2D3 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Onyx3DLib;
+			productName = Onyx3DLib;
+			productReference = 0D3D8C511EC728CA00DAA2D3 /* libOnyx3DLib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		0D60CF931EA553EC008D41F3 /* Onyx3D */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D60CF9B1EA553EC008D41F3 /* Build configuration list for PBXNativeTarget "Onyx3D" */;
@@ -415,6 +636,10 @@
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Josue Candela";
 				TargetAttributes = {
+					0D3D8C501EC728CA00DAA2D3 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
 					0D60CF931EA553EC008D41F3 = {
 						CreatedOnToolsVersion = 6.2;
 					};
@@ -439,6 +664,7 @@
 			projectRoot = "";
 			targets = (
 				0D60CF931EA553EC008D41F3 /* Onyx3D */,
+				0D3D8C501EC728CA00DAA2D3 /* Onyx3DLib */,
 			);
 		};
 /* End PBXProject section */
@@ -454,6 +680,47 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0D3D8C4D1EC728CA00DAA2D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D3D8CEA1EC758E500DAA2D3 /* O3DFont.cpp in Sources */,
+				0D3D8C5E1EC7292200DAA2D3 /* etc1_utils.c in Sources */,
+				0D3D8C601EC7292200DAA2D3 /* image_DXT.c in Sources */,
+				0D3D8C621EC7292200DAA2D3 /* image_helper.c in Sources */,
+				0D3D8C671EC7292200DAA2D3 /* SOIL2.c in Sources */,
+				0D3D8C741EC7292200DAA2D3 /* O3DObjLoader.cpp in Sources */,
+				0D3D8C771EC7292200DAA2D3 /* O3DShader.cpp in Sources */,
+				0D3D8C791EC7292200DAA2D3 /* O3DTexture.cpp in Sources */,
+				0D6280591EC83E4B004E0655 /* O3DUI.cpp in Sources */,
+				0D3D8C7B1EC7292200DAA2D3 /* O3DMaterial.cpp in Sources */,
+				0D3D8C7E1EC7292200DAA2D3 /* O3DDefaultMaterial.cpp in Sources */,
+				0D3D8C801EC7292200DAA2D3 /* O3DCubeMap.cpp in Sources */,
+				0D3D8C811EC7292200DAA2D3 /* O3DDefaultShader.cpp in Sources */,
+				0D3D8C841EC7292200DAA2D3 /* O3DRender.cpp in Sources */,
+				0D3D8C861EC7292200DAA2D3 /* O3DShadowMapping.cpp in Sources */,
+				0D3D8C871EC7292200DAA2D3 /* O3DGizmos.cpp in Sources */,
+				0D3D8C8A1EC7292200DAA2D3 /* O3DPostProFX.cpp in Sources */,
+				0D3D8C901EC7292200DAA2D3 /* O3DScene.cpp in Sources */,
+				0D3D8C941EC7292200DAA2D3 /* O3DCamera.cpp in Sources */,
+				0D3D8C991EC7292200DAA2D3 /* O3DModel.cpp in Sources */,
+				0D3D8C9B1EC7292200DAA2D3 /* O3DSceneNode.cpp in Sources */,
+				0D3D8C9D1EC7292200DAA2D3 /* O3DTransform.cpp in Sources */,
+				0D3D8CA11EC7292200DAA2D3 /* O3DCubeRenderer.cpp in Sources */,
+				0D3D8CA31EC7292200DAA2D3 /* O3DQuadRenderer.cpp in Sources */,
+				0D3D8CA51EC7292200DAA2D3 /* O3DMeshRenderer.cpp in Sources */,
+				0D3D8CE81EC758BF00DAA2D3 /* O3DTextRenderer.cpp in Sources */,
+				0D3D8CA71EC7292200DAA2D3 /* O3DOctahedronRenderer.cpp in Sources */,
+				0D6280741EC8746A004E0655 /* O3DLuaLoader.cpp in Sources */,
+				0D3D8CA91EC7292200DAA2D3 /* O3DGridRenderer.cpp in Sources */,
+				0D3D8CAC1EC7292200DAA2D3 /* O3DRenderer.cpp in Sources */,
+				0D3D8CAE1EC7292200DAA2D3 /* O3DCore.cpp in Sources */,
+				0D3D8CB01EC7292200DAA2D3 /* O3DInput.cpp in Sources */,
+				0D3D8CB31EC7292200DAA2D3 /* O3DResources.cpp in Sources */,
+				0D3D8CB51EC7292200DAA2D3 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0D60CF901EA553EC008D41F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -462,9 +729,11 @@
 				0D27CF851EA8EE0D00104625 /* O3DInput.cpp in Sources */,
 				0D27D01B1EAB400900104625 /* etc1_utils.c in Sources */,
 				0D8544DB1EAE124C00C93F2B /* O3DModel.cpp in Sources */,
+				0D3D8CE71EC758BF00DAA2D3 /* O3DTextRenderer.cpp in Sources */,
 				0D28A6C21EA6316900CE1238 /* O3DTexture.cpp in Sources */,
 				0D27D0231EAB4FD600104625 /* O3DOctahedronRenderer.cpp in Sources */,
 				0D28A6D41EA65EF100CE1238 /* O3DTransform.cpp in Sources */,
+				0D6280581EC83E4B004E0655 /* O3DUI.cpp in Sources */,
 				0D27D01D1EAB400900104625 /* image_helper.c in Sources */,
 				0D27CF7F1EA8D34800104625 /* O3DCubeRenderer.cpp in Sources */,
 				0D27D01C1EAB400900104625 /* image_DXT.c in Sources */,
@@ -482,7 +751,8 @@
 				0D28A6E01EA66A2E00CE1238 /* O3DSceneNode.cpp in Sources */,
 				0D8544D81EAE051200C93F2B /* O3DObjLoader.cpp in Sources */,
 				0D5B706B1EAB7ECC00902681 /* O3DGridRenderer.cpp in Sources */,
-				0D27CFBB1EAAA1B900104625 /* O3DSceneLoader.cpp in Sources */,
+				0D3D8CE21EC7472D00DAA2D3 /* O3DFont.cpp in Sources */,
+				0D6280731EC8746A004E0655 /* O3DLuaLoader.cpp in Sources */,
 				0D27CF881EA900B600104625 /* O3DMaterial.cpp in Sources */,
 				0D27D01E1EAB400900104625 /* SOIL2.c in Sources */,
 				0D07C8181EA5D8A2007A1A45 /* O3DCore.cpp in Sources */,
@@ -495,6 +765,52 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		0D3D8C591EC728CA00DAA2D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/include/freetype2,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		0D3D8C5A1EC728CA00DAA2D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CODE_SIGN_IDENTITY = "-";
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/include/freetype2,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		0D60CF991EA553EC008D41F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -578,6 +894,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/include,
+					/usr/local/include/freetype2,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -585,6 +902,7 @@
 					/usr/local/Cellar/glfw/3.2.1/lib,
 					"/usr/local/Cellar/lua@5.1/5.1.5_4/lib",
 					/usr/local/Cellar/luabind/0.9.1_2/lib,
+					/usr/local/Cellar/freetype/2.7.1/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -599,6 +917,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/include,
+					/usr/local/include/freetype2,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -606,6 +925,7 @@
 					/usr/local/Cellar/glfw/3.2.1/lib,
 					"/usr/local/Cellar/lua@5.1/5.1.5_4/lib",
 					/usr/local/Cellar/luabind/0.9.1_2/lib,
+					/usr/local/Cellar/freetype/2.7.1/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -614,6 +934,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0D3D8C5C1EC728CA00DAA2D3 /* Build configuration list for PBXNativeTarget "Onyx3DLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D3D8C591EC728CA00DAA2D3 /* Debug */,
+				0D3D8C5A1EC728CA00DAA2D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0D60CF8F1EA553EC008D41F3 /* Build configuration list for PBXProject "Onyx3D" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

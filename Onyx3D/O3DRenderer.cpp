@@ -15,7 +15,9 @@ O3DRenderer::O3DRenderer() : m_material(O3D().getResources().getDefaultMaterial(
 
 void O3DRenderer::setMVP(const glm::mat4& view, const glm::mat4& proj, const Shader_ptr& shader){
     Shader_ptr s = shader == nullptr ? m_material->getShader() : shader;
-    s->setUniform("model", getGO()->getModelMatrix());
+    GameObject_ptr go = getGO();
+    if (go != nullptr)
+        s->setUniform("model", go->getModelMatrix());
     s->setUniform("view", view);
     s->setUniform("projection", proj);
 }

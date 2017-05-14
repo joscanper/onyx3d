@@ -43,7 +43,7 @@ for x=1,10 do
 	for y=1,10 do
 		quad("floor"..x.."-"..y)
 			set_rotation(-90,0,0)
-			set_material("mat_ceiling")
+			set_material("mat_floor")
 			set_position(x-5.5,0,y-5.5)
 	end
 end
