@@ -19,6 +19,9 @@ node("pivot")
 	set_rotation(0,0,0)
 	
 
+
+get_material("mat_floor")
+	set_mat_float("shininess",70)
 --[[
 cube("floor")
 	set_scale(5,0.01,5)
@@ -75,7 +78,6 @@ spot_light("dir_light")
 	set_light_specular(2,2,2)
 	set_light_shadows(1024, 0.1, 10, 300)
 	set_local_position(0,0,0)
-
 
 
 for x=1,5 do

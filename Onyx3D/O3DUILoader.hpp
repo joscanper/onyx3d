@@ -33,7 +33,8 @@ namespace o3d{
             O3DLuaLoader::UIDefiners::registerAll(L);
             O3DLuaLoader::UIModificators::registerAll(L);
             
-            std::ifstream ifs(filename);
+            std::string path = O3D().getResources().getResourcesPath(filename);
+            std::ifstream ifs(path);
             std::string content( (std::istreambuf_iterator<char>(ifs) ),
                                 (std::istreambuf_iterator<char>()    ) );
             

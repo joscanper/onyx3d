@@ -164,7 +164,7 @@ void main()
     vec4 col = texture(diffuse, TexCoords);
     float shadow = calculate_shadow();
     float fog = calculate_fog();
-    vec4 bloomCol = calculate_bloom();
+    vec4 bloomCol = calculate_bloom() * (1-shadow);
     float ssao = 1;//calculate_ssao();
     
     outColor = ToneMapping(max(clamp(col - col*shadow, 0, 1), bloomCol) * ssao);

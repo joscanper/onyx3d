@@ -23,6 +23,7 @@ namespace o3d {
         glm::vec3 m_normal;
         glm::vec2 m_texcoord;
         glm::vec3 m_tangent;
+        glm::vec3 m_bitangent;
         
         
         O3DVertex(glm::vec3 pos = glm::vec3(0,0,0), glm::vec3 col = glm::vec3(1,1,1), glm::vec3 n =  glm::vec3(0,0,0), glm::vec2 texc = glm::vec2(0,0)) :
@@ -83,6 +84,9 @@ namespace o3d {
             // Tangent
             glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(O3DVertex), (GLvoid*)(sizeof(glm::vec3)*3 + sizeof(glm::vec2)));
             glEnableVertexAttribArray(4);
+            // Bitangent
+            glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, sizeof(O3DVertex), (GLvoid*)(sizeof(glm::vec3)*4 + sizeof(glm::vec2)));
+            glEnableVertexAttribArray(5);
             
             glBindVertexArray(0);
             
@@ -94,29 +98,28 @@ namespace o3d {
         
         void calculateTangents(){
             for(int i=0; i< vertices.size(); i+=3){
-                glm::vec3 tangent = calculateTangent(vertices[i],vertices[i+1],vertices[i+2]);
+                glm::vec3 edge1 = vertices[i+1].m_position - vertices[i].m_position;
+                glm::vec3 edge2 = vertices[i+2].m_position - vertices[i].m_position;
+                glm::vec2 deltaUV1 = vertices[i+1].m_texcoord - vertices[i].m_texcoord;
+                glm::vec2 deltaUV2 = vertices[i+2].m_texcoord - vertices[i].m_texcoord;
+                
+                GLfloat f = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV2.x * deltaUV1.y);
+                
+                glm::vec3 tangent = (edge1 * deltaUV2.y   - edge2 * deltaUV1.y) * f;
+                glm::vec3 bitangent = (edge2 * deltaUV1.x   - edge1 * deltaUV2.x) * f;
+            
                 vertices[i].m_tangent = tangent;
                 vertices[i+1].m_tangent = tangent;
                 vertices[i+2].m_tangent = tangent;
+                
+                vertices[i].m_bitangent = tangent;
+                vertices[i+1].m_bitangent = tangent;
+                vertices[i+2].m_bitangent = tangent;
             }
         }
         
-        glm::vec3 calculateTangent(const O3DVertex& v0,const O3DVertex& v1,const O3DVertex& v2){
-            glm::vec3 edge1 = v1.m_position - v0.m_position;
-            glm::vec3 edge2 = v2.m_position - v0.m_position;
-            glm::vec2 deltaUV1 = v1.m_texcoord - v0.m_texcoord;
-            glm::vec2 deltaUV2 = v2.m_texcoord - v0.m_texcoord;
-            
-            GLfloat f = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV2.x * deltaUV1.y);
-            
-            glm::vec3 tangent;
-            tangent.x = f * (deltaUV2.y * edge1.x - deltaUV1.y * edge2.x);
-            tangent.y = f * (deltaUV2.y * edge1.y - deltaUV1.y * edge2.y);
-            tangent.z = f * (deltaUV2.y * edge1.z - deltaUV1.y * edge2.z);
-            tangent = glm::normalize(tangent);
-            
-            return tangent;
-        }
+    
+    
     };
 }
 #endif /* O3DMesh_hpp */

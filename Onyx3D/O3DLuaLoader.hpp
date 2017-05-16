@@ -49,7 +49,9 @@ namespace o3d {
             int l_shader(lua_State* L);
             int l_texture(lua_State* L);
             int l_cubemap(lua_State* L);
-             void registerAll(lua_State* L);
+            int l_getMaterial(lua_State* L);
+            
+            void registerAll(lua_State* L);
         }
         
         namespace MaterialModificators{
@@ -60,6 +62,7 @@ namespace o3d {
             int l_setMatInt(lua_State* L);
             int l_setMatTexture(lua_State* L);
             int l_setMatCubemap(lua_State* L);
+            int l_setMatShader(lua_State* L);
             
             void registerAll(lua_State* L);
         };

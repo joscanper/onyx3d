@@ -12,6 +12,10 @@
 #include "O3DGameObject.hpp"
 #include <unordered_map>
 
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+
 namespace o3d {
     DEFINE_CLASS_PTR(O3DModel, Model);
     
@@ -30,6 +34,8 @@ namespace o3d {
         
         Model_ptr instantiate(const char* id);
         void copyChildren(GameObject_ptr from, GameObject_ptr to);
+        void processNode(aiNode* node, const aiScene* scene);
+        GameObject_ptr processSubModel(const char* id, aiMesh* mesh, const aiScene* scene);
         
     private:
         std::unordered_map<std::string, GameObject_ptr> m_submodels;

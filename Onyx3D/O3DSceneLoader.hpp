@@ -37,7 +37,8 @@ namespace o3d {
             
             O3DLuaLoader::LighModificators::registerAll(L);
             
-            if(luaL_dofile(L, filename))
+            std::string path = O3D().getResources().getResourcesPath(filename);
+            if(luaL_dofile(L, path.c_str()))
                 std::cout << lua_tostring(L, -1) << std::endl;
             
             lua_close(L);

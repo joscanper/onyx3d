@@ -50,8 +50,8 @@ int main() {
     }
     
     
-    std::string scene_path = "resources/scenes/test_ssao.lua";
-    //std::string scene_path = "resources/scenes/demo_dungeon.lua";
+    std::string scene_path = "resources/scenes/demo_dungeon.lua";
+    //std::string scene_path = "resources/scenes/test_ssao.lua";
     
     O3DUILoader::load("resources/ui/test.lua");
     
@@ -124,9 +124,10 @@ int main() {
                 glm::vec3 prev_cam_pos = camera->getPosition();
                 glm::vec3 prev_cam_rot = camera->getRotation();
                 
-                O3DUILoader::load("../../../../../../Onyx3D/resources/ui/test.lua");
+                O3D().getResources().reloadDefaultShader();
+                O3DUILoader::load("resources/ui/test.lua");
                 
-                scene = O3DSceneLoader::load(("../../../../../../Onyx3D/" + scene_path).c_str(), true, false);
+                scene = O3DSceneLoader::load(scene_path.c_str(), true, false);
                 camera = scene->getObjectById<O3DCamera>("main_camera");
                 camera->setPosition(prev_cam_pos);
                 camera->setRotation(prev_cam_rot);

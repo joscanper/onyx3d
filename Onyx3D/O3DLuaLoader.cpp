@@ -159,13 +159,21 @@ namespace o3d {
                 return 1;
             }
             
+            int l_getMaterial(lua_State* L){
+                const char* id = lua_tostring(L, 1);
+                g_lastmaterial = O3D().getResources().getMaterial(id);
+                return 1;
+            }
+            
              void registerAll(lua_State* L){
                 lua_register(L, "material", l_material);
                 lua_register(L, "default_material", l_defaultMaterial);
                 lua_register(L, "shader", l_shader);
                 lua_register(L, "texture", l_texture);
                 lua_register(L, "cubemap", l_cubemap);
+                lua_register(L, "get_material", l_getMaterial);
             }
+            
         }
         
         namespace MaterialModificators{
@@ -226,6 +234,12 @@ namespace o3d {
                 return 1;
             }
             
+            int l_setMatShader(lua_State* L){
+                const char* shader_id = lua_tostring(L, 1);
+                Shader_ptr shader = O3D().getResources().getShader(shader_id);
+                g_lastmaterial->setShader(shader);
+                return 1;
+            }
              void registerAll(lua_State* L){
                 lua_register(L, "set_mat_vec4", l_setMatVec4);
                 lua_register(L, "set_mat_vec3", l_setMatVec3);
@@ -234,6 +248,7 @@ namespace o3d {
                 lua_register(L, "set_mat_int", l_setMatInt);
                 lua_register(L, "set_mat_texture", l_setMatTexture);
                 lua_register(L, "set_mat_cubemap", l_setMatCubemap);
+                lua_register(L, "set_mat_shader", l_setMatShader);
             }
         };
         
@@ -390,9 +405,11 @@ namespace o3d {
                         }else{
                             return -1;
                         }
+                    }else{
+                        std::cout << "LuaLoader : Model has no submodel with id: " << model_id << std::endl;
                     }
                 }
-                return -1;
+                return 1;
             }
             
              void registerAll(lua_State* L){

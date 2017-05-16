@@ -23,4 +23,5 @@ O3DDefaultMaterial::O3DDefaultMaterial(MaterialRenderingMode mode) :
     setFloat("shininess", 1);
     setFloat("reflectivity", 0);
     setFloat("fresnel", 0);
+    setFloat("heightScale", 0);
 }

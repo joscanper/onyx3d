@@ -13,7 +13,9 @@ in VS_OUT{
     vec2 texCoord;
     vec3 normal;
     vec3 fragPos;
-    vec3 tangent;
+    mat3 TBN;
+    vec3 tangentFragPos;
+    vec3 tangentCamPos;
 } fs_in;
 
 out vec4 outColor;
@@ -34,6 +36,10 @@ struct Material{
     float reflectivity;
     float fresnel;
     int renderMode;
+    
+    float heightScale;
+    sampler2D height;
+    
 };
 uniform Material material;
 
@@ -98,8 +104,8 @@ vec4 calculate_directional_lights(vec3 texnormal, vec3 texspecular, vec3 viewdir
     vec3 specular = vec3(0,0,0);
 
     for (int i = 0; i < lighting_data.dirlightsnum; ++i){
-        vec3 lightdir = normalize(-lighting_data.directional[i].direction);
-        diffuse += lighting_data.directional[i].color * max(dot(texnormal, lightdir), 0) * lighting_data.directional[i].intensity;
+        vec3 lightdir = fs_in.TBN * normalize(-lighting_data.directional[i].direction);
+        diffuse += lighting_data.directional[i].color * abs(max(dot(texnormal,lightdir),0)) * lighting_data.directional[i].intensity;
         
         vec3 halfwaydir = normalize(lightdir + viewdir);
         specular += pow(max(dot(texnormal, halfwaydir),0), material.shininess) * lighting_data.directional[i].specular * texspecular;
@@ -113,9 +119,10 @@ vec4 calculate_point_lights(vec3 texnormal, vec3 texspecular, vec3 viewdir){
     vec3 specular = vec3(0,0,0);
     
     for (int i = 0; i < lighting_data.pointlightsnum; ++i){
-        vec3 lightfragdir = normalize(lighting_data.point[i].position - fs_in.fragPos);
-
-        float attenuation = max((1+lighting_data.point[i].range)- distance(lighting_data.point[i].position, fs_in.fragPos),0) * lighting_data.point[i].intensity ;
+        vec3 lightPos = fs_in.TBN * lighting_data.point[i].position;
+        vec3 lightfragdir = normalize(lightPos - fs_in.tangentFragPos);
+        
+        float attenuation = max((1+lighting_data.point[i].range) - distance(lightPos, fs_in.tangentFragPos),0) * lighting_data.point[i].intensity ;
         
         diffuse += lighting_data.point[i].color * attenuation * abs(max(dot(texnormal,lightfragdir),0));
         
@@ -132,10 +139,13 @@ vec4 calculate_spot_lights(vec3 texnormal, vec3 texspecular, vec3 viewdir){
     vec3 specular = vec3(0,0,0);
     
     for (int i = 0; i < lighting_data.spotlightsnum; ++i){
-        vec3 lightfragdir = normalize(lighting_data.spot[i].position - fs_in.fragPos);
-        float angle = acos(dot(lightfragdir, normalize(lighting_data.spot[i].direction))) * 180.0f / 3.14159265359f;
+        vec3 lightPos = fs_in.TBN * lighting_data.spot[i].position;
+        vec3 lightDir = fs_in.TBN * lighting_data.spot[i].direction;
+        vec3 lightfragdir = normalize(lightPos - fs_in.tangentFragPos);
         
-        float dist = abs(distance(lighting_data.spot[i].position, fs_in.fragPos));
+        float angle = acos(dot(lightfragdir, normalize(lightDir))) * 180.0f / 3.14159265359f;
+        
+        float dist = abs(distance(lightPos, fs_in.tangentFragPos));
         float attenuation = max((1+lighting_data.spot[i].range) - dist,0) * lighting_data.spot[i].intensity;
         
         float distcenter = (1-min(angle/lighting_data.spot[i].angle,1));
@@ -147,41 +157,80 @@ vec4 calculate_spot_lights(vec3 texnormal, vec3 texspecular, vec3 viewdir){
     return vec4(diffuse + specular,1);
 }
 
-vec4 calculate_reflection(vec3 texnormal, vec3 texspecular, vec3 viewdir){
+vec4 calculate_reflection(vec3 texnormal, vec3 texspecular){
     
-        vec3 reflectdir = reflect(-viewdir, texnormal);
+        vec3 viewdir = normalize(camera.position - fs_in.fragPos);
+        vec3 reflectdir = reflect(-viewdir, fs_in.normal);
         
-        float rim = 1.0f - pow(max(dot(viewdir, texnormal),0), material.fresnel);
+        float rim = 1.0f - pow(max(dot(viewdir, fs_in.normal),0), material.fresnel);
         float reflection = material.reflectivity * texspecular.r * rim;
         reflectdir.x *= -1;
         vec3 refcol = texture(material.environment, reflectdir).rgb;
         return vec4(refcol, length(refcol)) * reflection;
-
 }
 
-vec3 calculate_bumped_normal()
+
+vec2 calculate_paralax_mapping(vec2 texCoords, vec3 viewDir)
 {
-    vec3 Normal = fs_in.normal;
-    vec3 Tangent = fs_in.tangent;
-    Tangent = normalize(Tangent - dot(Tangent, Normal) * Normal);
-    vec3 Bitangent = cross(Tangent, Normal);
-    vec3 BumpMapNormal = texture(material.normal, fs_in.texCoord).xyz;
-    BumpMapNormal = 2.0 * BumpMapNormal - vec3(1.0, 1.0, 1.0);
-    vec3 NewNormal;
-    mat3 TBN = mat3(Tangent, Bitangent, Normal);
-    NewNormal = TBN * BumpMapNormal;
-    NewNormal = normalize(NewNormal);
-    return NewNormal;
+    
+    // number of depth layers
+    const float minLayers = 15;
+    const float maxLayers = 20;
+    float numLayers = mix(maxLayers, minLayers, abs(dot(vec3(0.0, 0.0, 1.0), viewDir)));
+    //numLayers = 50;
+    
+    // calculate the size of each layer
+    float layerDepth = 1.0 / numLayers;
+    // depth of current layer
+    float currentLayerDepth = 0.0;
+    // the amount to shift the texture coordinates per layer (from vector P)
+    vec2 P = viewDir.xy * material.heightScale;
+    vec2 deltaTexCoords = P / numLayers;
+  
+    vec2  currentTexCoords     = texCoords;
+    float currentDepthMapValue = texture(material.height, currentTexCoords).r;
+    
+    while(currentLayerDepth < currentDepthMapValue)
+    {
+        // shift texture coordinates along direction of P
+        currentTexCoords += deltaTexCoords;
+        // get depthmap value at current texture coordinates
+        currentDepthMapValue = texture(material.height, currentTexCoords).r;
+        // get depth of next layer
+        currentLayerDepth += layerDepth;
+    }
+    
+   // return currentTexCoords;
+    
+    // get texture coordinates before collision (reverse operations)
+    vec2 prevTexCoords = currentTexCoords - deltaTexCoords;
+    
+    // get depth after and before collision for linear interpolation
+    float afterDepth  = currentDepthMapValue - currentLayerDepth;
+    float beforeDepth = texture(material.height, prevTexCoords).r - currentLayerDepth + layerDepth;
+    
+    // interpolation of texture coordinates
+    float weight = afterDepth / (afterDepth - beforeDepth);
+    vec2 finalTexCoords = prevTexCoords * weight + currentTexCoords * (1.0 - weight);
+    
+    return finalTexCoords;
+    
 }
 
 void main()
 {
-    vec3 viewdir = normalize(camera.position - fs_in.fragPos);
-    vec3 normal = calculate_bumped_normal();
-    vec4 diffuse = texture(material.diffuse, fs_in.texCoord) * material.color;
+    vec3 viewdir = normalize(fs_in.tangentCamPos - fs_in.tangentFragPos);
+    
+    
+    vec2 texCoord = material.heightScale > 0 ? calculate_paralax_mapping(fs_in.texCoord, viewdir) : fs_in.texCoord;
+    //if(material.heightScale > 0 && (texCoord.x > 1.0 || texCoord.y > 1.0 || texCoord.x < 0.0 || texCoord.y < 0.0))
+     //   discard;
+    vec3 normal = normalize(texture(material.normal, fs_in.texCoord).xyz * 2.0f - 1.0f);
+    
+    vec4 diffuse = texture(material.diffuse, texCoord) * material.color;
     
     // TODO - get glossiness and fresnel from specular map
-    vec3 specular = texture(material.specular, fs_in.texCoord).rgb;
+    vec3 specular = texture(material.specular, texCoord).rgb;
     
     vec4 col = vec4(0,0,0,1);
     col = calculate_directional_lights(normal, specular, viewdir);
@@ -190,7 +239,7 @@ void main()
     
     
     if (material.reflectivity > 0)
-        diffuse += calculate_reflection(normal, specular, viewdir);
+        diffuse += calculate_reflection(normal, specular);
     
     col = min((col + vec4(lighting_data.ambient,1)) * diffuse, 1);
     
@@ -198,6 +247,4 @@ void main()
         discard;
     
     outColor = col;
-    
-    
 }

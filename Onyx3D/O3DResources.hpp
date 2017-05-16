@@ -62,7 +62,7 @@ class O3DResources {
     
     
         Shader_ptr createShader(const char* id, const char *frag, const char* vert){
-            Shader_ptr s = std::make_shared<O3DShader>(frag,vert);
+            Shader_ptr s = std::make_shared<O3DShader>(getResourcesPath(frag).c_str(),getResourcesPath(vert).c_str());
             m_shaders[id] = s;
             return s;
         }
@@ -79,22 +79,23 @@ class O3DResources {
             return mat;
         }
         Texture_ptr createTexture(const char *id, const char* path){
-            Texture_ptr t = std::make_shared<O3DTexture>(path);
+            Texture_ptr t = std::make_shared<O3DTexture>(getResourcesPath(path).c_str());
             m_textures[id] = t;
             return t;
         }
         CubeMap_ptr createCubemap(const char *id, vector<string> paths){
+            for (auto s : paths)
+                s = getResourcesPath(s);
             CubeMap_ptr t = std::make_shared<O3DCubeMap>(paths);
             m_cubemaps[id] = t;
             return t;
         }
         Font_ptr createFont(const char *id, const char* path){
-            Font_ptr f = std::make_shared<O3DFont>(path);
+            
+            Font_ptr f = std::make_shared<O3DFont>(getResourcesPath(path).c_str());
             m_fonts[id] = f;
             return f;
         }
-    
-    
     
         void addModel(const char* id, Model_ptr model){ m_models[id] = model; }
         Model_ptr createModel(const char *id, const char* path){
@@ -110,7 +111,15 @@ class O3DResources {
         }
     
         DefaultMaterial_ptr getDefaultMaterial(){ return m_default_mat; }
-        
+    
+        std::string getResourcesPath(std::string path){
+            return "../../../../../../Onyx3D/" + path;
+        }
+    
+        void reloadDefaultShader(){
+            createShader("o3d_shaders/default", "resources/shaders/default.vert","resources/shaders/default.frag");
+        }
+    
     private:
         DefaultMaterial_ptr m_default_mat;
     
