@@ -16,6 +16,8 @@
 #include <iostream>
 #include <string>
 
+#include <boost/algorithm/string.hpp>
+
 
 using namespace o3d;
 
@@ -127,7 +129,12 @@ void O3DModel::processNode(aiNode* node, const aiScene* scene)
     for(GLuint i = 0; i < node->mNumMeshes; i++)
     {
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-        const char* id = node->mName.C_Str();
+        
+        std::vector<string> strs;
+        std::string name = node->mName.C_Str();
+        boost::split(strs, name, boost::is_any_of("."));
+        const char* id = strs[0].c_str();
+        
         GameObject_ptr go = this->processSubModel(id, mesh, scene);
         m_submodels[id] = go;
     }

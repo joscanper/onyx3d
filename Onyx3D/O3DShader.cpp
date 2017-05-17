@@ -7,6 +7,7 @@
 //
 
 #include "O3DShader.hpp"
+
 #include <glm/gtc/type_ptr.hpp>
 
 using namespace o3d;
@@ -44,18 +45,24 @@ void O3DShader::fragmentFile(const GLchar* frag_file)
 
 void O3DShader::vertexCode(const GLchar* vert_code)
 {
+    
     m_vs = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(m_vs, 1, &vert_code, NULL);
 }
 
 void O3DShader::fragmentCode(const GLchar* frag_code)
 {
+  
     m_fs = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(m_fs, 1, &frag_code, NULL);
 }
 
 bool O3DShader::compile()
 {
+    
+    
+    
+    
     if (!compile(m_vs, "[Vertex Shader]")) return false;
     if (!compile(m_fs, "[Fragment Shader]")) return false;
     

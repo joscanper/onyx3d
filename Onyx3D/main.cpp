@@ -35,9 +35,12 @@ void showFPS(){
         int fps = (int)O3D().getFPS();
         std::string sfps = std::to_string(fps) + "fps";
         std::string render = "Render:" + std::to_string(O3D().getRenderer().getRenderTime(fps));
+        std::string drawc = "Draw calls: " + std::to_string(O3D().getRenderer().getDrawCalls());
         
         O3D().getUI().getObjectById<O3DUIText>("textFPS")->setText(sfps);
         O3D().getUI().getObjectById<O3DUIText>("textRender")->setText(render);
+        O3D().getUI().getObjectById<O3DUIText>("textDrawCalls")->setText(drawc);
+        
         time = 0;
     }
 }
@@ -51,7 +54,7 @@ int main() {
     
     
     std::string scene_path = "resources/scenes/demo_dungeon.lua";
-    //std::string scene_path = "resources/scenes/test_ssao.lua";
+    //swstd::string scene_path = "resources/scenes/test_ssao.lua";
     
     O3DUILoader::load("resources/ui/test.lua");
     
@@ -60,7 +63,7 @@ int main() {
     GameObject_ptr pivot = scene->getObjectById<O3DGameObject>("pivot");
     
     
-    
+    O3D().getRenderer().getMotionBlur().setEnabled(false);
     
     //Shader_ptr font_s = std::make_shared<O3DShader>("resources/shaders/text.vert","resources/shaders/text.frag");
     //O3DTextRenderer tr;
@@ -70,26 +73,35 @@ int main() {
     
     bool wasFocused = true;
     float camspeed= 0;
+    int reload = 0;
     while(O3D().running()){
         
         // Camera movement
         
+        float mult = 1;
+        if (O3DInput::isKeyPressed(Keys::Space))
+            mult = 10;
         if (O3DInput::isKeyPressed(Keys::W))
-            camera->translate(glm::vec3(0,0,-0.05));
+            camera->translate(glm::vec3(0,0,-0.01*mult));
         if (O3DInput::isKeyPressed(Keys::S))
-            camera->translate(glm::vec3(0,0,0.05));
+            camera->translate(glm::vec3(0,0,0.01*mult));
         if (O3DInput::isKeyPressed(Keys::A))
             camspeed -= 0.1f;
         if (O3DInput::isKeyPressed(Keys::D))
             camspeed += 0.1f;
+        if (O3DInput::isKeyPressed(Keys::E))
+            camera->rotate(glm::vec3(1,0,0));
+        if (O3DInput::isKeyPressed(Keys::Q))
+            camera->rotate(glm::vec3(-1,0,0));
+    
         if (O3DInput::isKeyPressed(Keys::ArrowUp))
-            camera->translate(glm::vec3(0,0.05,0));
+            camera->translate(glm::vec3(0,0.01*mult,0));
         if (O3DInput::isKeyPressed(Keys::ArrowDown))
-            camera->translate(glm::vec3(0,-0.05,0));
+            camera->translate(glm::vec3(0,-0.01*mult,0));
         if (O3DInput::isKeyPressed(Keys::ArrowRight))
-            camera->translate(glm::vec3(0.01,0,0));
+            camera->translate(glm::vec3(0.01*mult,0,0));
         if (O3DInput::isKeyPressed(Keys::ArrowLeft))
-            camera->translate(glm::vec3(-0.01,0,0));
+            camera->translate(glm::vec3(-0.01*mult,0,0));
         
         camera->rotate(glm::vec3(0,camspeed,0));
         if (camspeed>0)
@@ -100,6 +112,11 @@ int main() {
             pivot->rotate(glm::vec3(0,1,0));
         if (O3DInput::isKeyPressed(Keys::Numpad_6))
             pivot->rotate(glm::vec3(0,-1,0));
+        
+        
+        
+        if (O3DInput::isKeyPressed(Keys::R))
+            reload = 2;
         
         /*
          if (O3DInput::isKeyPressed(Keys::Numpad_7))
@@ -120,22 +137,8 @@ int main() {
             
             
             if (!wasFocused){
-                camspeed = 0;
-                glm::vec3 prev_cam_pos = camera->getPosition();
-                glm::vec3 prev_cam_rot = camera->getRotation();
-                
-                O3D().getResources().reloadDefaultShader();
-                O3DUILoader::load("resources/ui/test.lua");
-                
-                scene = O3DSceneLoader::load(scene_path.c_str(), true, false);
-                camera = scene->getObjectById<O3DCamera>("main_camera");
-                camera->setPosition(prev_cam_pos);
-                camera->setRotation(prev_cam_rot);
-                
-                pivot = scene->getObjectById<O3DGameObject>("pivot");
+                reload = 1;
                 wasFocused = true;
-                
-                
             }
             
             
@@ -144,6 +147,23 @@ int main() {
             wasFocused = false;
         }
         
+        
+        if (reload){
+            camspeed = 0;
+            glm::vec3 prev_cam_pos = camera->getPosition();
+            glm::vec3 prev_cam_rot = camera->getRotation();
+            
+            O3D().getResources().reloadDefaultShader();
+            O3DUILoader::load("resources/ui/test.lua");
+            
+            scene = O3DSceneLoader::load(scene_path.c_str(), true, reload == 2);
+            camera = scene->getObjectById<O3DCamera>("main_camera");
+            camera->setPosition(prev_cam_pos);
+            camera->setRotation(prev_cam_rot);
+            
+            pivot = scene->getObjectById<O3DGameObject>("pivot");
+            reload = 0;
+        }
     }
     
     O3D().terminate();

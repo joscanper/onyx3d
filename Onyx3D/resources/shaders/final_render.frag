@@ -117,7 +117,7 @@ float calculate_fog(){
 }
 
 vec4 calculate_bloom(){
-    vec2 texSize = textureSize(shadows,0);
+    vec2 texSize = textureSize(bloom,0);
     vec4 bH = blurH(bloom, texSize, TexCoords, 2,3);
     vec4 bV = blurV(bloom, texSize, TexCoords, 2,3);
     return (bH + bV) / 2.0f;

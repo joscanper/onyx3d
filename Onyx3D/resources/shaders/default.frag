@@ -8,6 +8,9 @@
 #define RENDER_MODE_TRANSPARENT 1
 #define RENDER_MODE_CUTOUT      2
 
+precision lowp float;
+
+
 in VS_OUT{
     vec3 color;
     vec2 texCoord;
@@ -51,6 +54,7 @@ uniform Material material;
 struct Camera{
     vec3 position;
     vec3 direction;
+    vec4 clippingPlane;
 };
 uniform Camera camera;
 
@@ -176,7 +180,7 @@ vec2 calculate_paralax_mapping(vec2 texCoords, vec3 viewDir)
     // number of depth layers
     const float minLayers = 15;
     const float maxLayers = 20;
-    float numLayers = mix(maxLayers, minLayers, abs(dot(vec3(0.0, 0.0, 1.0), viewDir)));
+    float numLayers = 20;//mix(maxLayers, minLayers, abs(dot(vec3(0.0, 0.0, 1.0), viewDir)));
     //numLayers = 50;
     
     // calculate the size of each layer

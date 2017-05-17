@@ -7,6 +7,9 @@
 //
 
 #include "O3DLuaLoader.hpp"
+#include "O3DGridRenderer.hpp"
+#include "O3DOctahedronRenderer.hpp"
+#include "O3DWaterRenderer.hpp"
 
 namespace o3d {
     namespace O3DLuaLoader{
@@ -320,6 +323,27 @@ namespace o3d {
                 return 1;
             }
             
+            int l_water(lua_State* L){
+                const char* id = luawrapper::pop_string(L, "");
+                int w = luawrapper::pop_number(L, 512);
+                int h = luawrapper::pop_number(L, 512);
+                GameObject_ptr go = O3DScene::createObject<O3DGameObject>(id);
+                addToScene(go);
+                
+                WaterRenderer_ptr m = make_shared<O3DWaterRenderer>();
+                m->initFBOs(w, h);
+                go->addComponent(m);
+                
+                
+                return 1;
+            }
+            
+            int l_getModel(lua_State* L){
+                const char* id = luawrapper::pop_string(L, "");
+                g_lastobject = O3D().getResources().getModel(id);
+                return 1;
+            }
+            
              void registerAll(lua_State* L){
                 lua_register(L, "ambient_light", l_ambientLight);
                 lua_register(L, "default_camera", l_defaultCamera);
@@ -329,11 +353,13 @@ namespace o3d {
                 lua_register(L, "octa", l_mesh<O3DOctahedronRenderer>);
                 lua_register(L, "quad", l_mesh<O3DQuadRenderer>);
                 lua_register(L, "skybox", l_mesh<O3DSkyboxRenderer>);
+                lua_register(L, "water", l_water);
                 lua_register(L, "model", l_model);
                 lua_register(L, "model_instance", l_modelInstance);
                 lua_register(L, "dir_light", l_dirLight);
                 lua_register(L, "spot_light", l_spotLight);
                 lua_register(L, "point_light", l_pointLight);
+                 lua_register(L, "get_model", l_getModel);
             }
         };
         
@@ -424,6 +450,67 @@ namespace o3d {
                 lua_register(L, "set_model_material", l_setModelMaterial);
             }
         };
+        
+        namespace WaterModificators{
+            int l_setWaterWaveStrength(lua_State* L){
+                float strength = luawrapper::pop_number(L, 0.5f);
+                WaterRenderer_ptr wr = g_lastobject->getComponent<O3DWaterRenderer>();
+                if (wr == nullptr)
+                    throw("LuaLoader :Last created object is not Water");
+                
+                wr->setWaveStrength(strength);
+                return 1;
+            }
+            
+            int l_setWaterSpeed(lua_State* L){
+                float speed = luawrapper::pop_number(L, 0.01f);
+                WaterRenderer_ptr wr = g_lastobject->getComponent<O3DWaterRenderer>();
+                if (wr == nullptr)
+                    throw("LuaLoader :Last created object is not Water");
+                
+                wr->setSpeed(speed);
+                return 1;
+            }
+
+            int l_setWaterColor(lua_State* L){
+                glm::vec3 col = luawrapper::get_vec3(L);
+                WaterRenderer_ptr wr = g_lastobject->getComponent<O3DWaterRenderer>();
+                if (wr == nullptr)
+                    throw("LuaLoader :Last created object is not Water");
+                
+                wr->setColor(col);
+                return 1;
+            }
+
+            int l_setWaterDensity(lua_State* L){
+                float d = luawrapper::pop_number(L, 1);
+                WaterRenderer_ptr wr = g_lastobject->getComponent<O3DWaterRenderer>();
+                if (wr == nullptr)
+                    throw("LuaLoader :Last created object is not Water");
+                
+                wr->setDensity(d);
+                return 1;
+            }
+
+            int l_setWaterSpecular(lua_State* L){
+                float spec = luawrapper::pop_number(L, 16);
+                WaterRenderer_ptr wr = g_lastobject->getComponent<O3DWaterRenderer>();
+                if (wr == nullptr)
+                    throw("LuaLoader :Last created object is not Water");
+                
+                wr->setSpecular(spec);
+                return 1;
+            }
+
+            
+            void registerAll(lua_State* L){
+                lua_register(L, "set_water_wave_strength", l_setWaterWaveStrength);
+                lua_register(L, "set_water_speed", l_setWaterSpeed);
+                lua_register(L, "set_water_color", l_setWaterColor);
+                lua_register(L, "set_water_density", l_setWaterDensity);
+                lua_register(L, "set_water_specular", l_setWaterSpecular);
+            }
+        }
         
         namespace UIDefiners{
             

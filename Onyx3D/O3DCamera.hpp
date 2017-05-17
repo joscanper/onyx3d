@@ -61,9 +61,18 @@ namespace o3d {
             translation[3][2] = -pos.z;
             return translation;
         }
+        
+        void invertPitch(){
+            glm::vec3 rot = O3DTransform::getLocalRotation();
+            rot.x = -rot.x;
+            setLocalRotation(rot);
+        }
+        
+        glm::vec4 getClippingPlane(){ return m_clippingPlane; }
+        void setClippingPlane(glm::vec4 plane){ m_clippingPlane = plane; };
     private:
         glm::mat4 m_projection;
-        
+        glm::vec4 m_clippingPlane;
     };
     
 

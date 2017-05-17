@@ -12,6 +12,7 @@
 #include "O3DRenderer.hpp"
 #include "O3DQuadRenderer.hpp"
 #include "O3DSkyboxRenderer.hpp"
+#include "O3DWaterRenderer.hpp"
 #include "O3DScene.hpp"
 #include "O3DTransform.hpp"
 #include "O3DShadowMapping.hpp"
@@ -84,7 +85,9 @@ namespace o3d {
             return time;
         }
         O3DMotionBlurFX& getMotionBlur() { return m_motionBlurFX; }
+        int getDrawCalls(){ return m_drawCalls; }
     private:
+        int m_drawCalls;
         float m_renderTime;
         
         QuadRenderer_Uptr m_screenQuad;
@@ -101,13 +104,17 @@ namespace o3d {
         SkyboxRenderer_Wptr m_skybox;
         std::map<float, Renderer_Wptr> m_opaque;
         std::map<float, Renderer_Wptr> m_transparent;
+        WaterRenderer_Wptr m_water;
         
         void updateAndSortRenderers(const SceneNode_ptr& node, const Camera_ptr& cam);
         float getValidDistance(const Transform_ptr& node, const Camera_ptr& cam);
         void sortScene();
         void renderShadowMap(const Camera_ptr& cam);
-        void renderObjects(const std::map<float, Renderer_Wptr>& list, const glm::mat4& view, const glm::mat4& proj, const Shader_ptr& shader = nullptr);
+        void renderWaterMaps(const Camera_ptr& cam, glm::mat4 viewM, glm::mat4 projM);
+        void renderObjects(const std::map<float, Renderer_Wptr>& list, const glm::mat4& view, const glm::mat4& proj, const Shader_ptr& shader = nullptr, bool reversed = false);
+        void renderObject(const Renderer_Wptr& list, const glm::mat4& view, const glm::mat4& proj, const Shader_ptr& shader);
         void renderScreenQuad();
+        void renderSkybox(glm::mat4 viewM, glm::mat4 projM);
         void renderShadowMaps(Scene_ptr scene, glm::mat4 viewM, glm::mat4 projM);
         void showDebugRender(int key, GLuint texture);
         void prepareBuffers(int w, int h);

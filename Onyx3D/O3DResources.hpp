@@ -118,6 +118,7 @@ class O3DResources {
     
         void reloadDefaultShader(){
             createShader("o3d_shaders/default", "resources/shaders/default.vert","resources/shaders/default.frag");
+            createShader("o3d_shaders/water", "resources/shaders/water.vert","resources/shaders/water.frag");
         }
     
     private:

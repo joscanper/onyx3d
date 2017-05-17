@@ -56,6 +56,8 @@ namespace o3d
         
         void setUniformTexture(const char* name, GLuint texture, GLuint index);
         void setUniformCubemap(const char* name, GLuint texture, GLuint index);
+        
+        GLuint getProgram(){ return m_program; }
     private:
         
         GLuint m_vs,m_fs;

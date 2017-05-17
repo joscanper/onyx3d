@@ -35,11 +35,13 @@ void O3DMeshRenderer::render(const glm::mat4& view, const glm::mat4& proj, const
     // -- TODO - Move this somewhere else where we set a UBO --------
     Scene_ptr   scene   = O3DScene::getActiveScene();
     Camera_ptr  camera  = scene->getActiveCamera();
+    /*
+    shader->setUniform("time", O3D().getTime());
     
     // Camera
     shader->setUniform("camera.direction", camera->getDirection());
     shader->setUniform("camera.position", camera->getPosition());
-    
+    shader->setUniform("camera.clippingPlane", camera->getClippingPlane());
     // Lighting
     shader->setUniform("lighting_data.ambient", scene->getLighting().getAmbientLight());
     const std::vector<Light_ptr> dlights = scene->getLighting().getDirectionalLights();
@@ -47,6 +49,7 @@ void O3DMeshRenderer::render(const glm::mat4& view, const glm::mat4& proj, const
     for (int i=0; i < dlights.size(); ++i){
         Light_ptr l = dlights[i];
         std::string index = std::to_string(i);
+        shader->setUniform(("lighting_data.directional["+index+"].position").c_str(),l->getPosition());
         shader->setUniform(("lighting_data.directional["+index+"].direction").c_str(),l->getDirection());
         shader->setUniform(("lighting_data.directional["+index+"].color").c_str(), l->getColor());
         shader->setUniform(("lighting_data.directional["+index+"].specular").c_str(), l->getSpecular());
@@ -79,7 +82,7 @@ void O3DMeshRenderer::render(const glm::mat4& view, const glm::mat4& proj, const
         shader->setUniform(("lighting_data.spot["+index+"].range").c_str(), l->getRange());
         shader->setUniform(("lighting_data.spot["+index+"].intensity").c_str(), l->getIntensity());
     }
-    
+    */
     
     // -----------------------------------------------
 

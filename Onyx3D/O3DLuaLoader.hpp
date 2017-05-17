@@ -11,8 +11,7 @@
 
 #include "O3DCore.hpp"
 #include "O3DLight.hpp"
-#include "O3DGridRenderer.hpp"
-#include "O3DOctahedronRenderer.hpp"
+
 
 #include "utils/luawrapper.hpp"
 
@@ -91,6 +90,8 @@ namespace o3d {
             int l_spotLight(lua_State* L);
             int l_pointLight(lua_State* L);
             int l_ambientLight(lua_State* L);
+            int l_water(lua_State* L);
+            int l_getModel(lua_State* L);
 
              void registerAll(lua_State* L);
         };
@@ -107,6 +108,16 @@ namespace o3d {
             
              void registerAll(lua_State* L);
         };
+        
+        namespace WaterModificators{
+            int l_setWaterWaveStrength(lua_State* L);
+            int l_setWaterSpeed(lua_State* L);
+            int l_setWaterColor(lua_State* L);
+            int l_setWaterDensity(lua_State* L);
+            int l_setWaterSpecular(lua_State* L);
+            
+            void registerAll(lua_State* L);
+        }
         
         namespace UIDefiners{
             int l_draw(lua_State* L);

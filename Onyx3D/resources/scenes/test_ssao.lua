@@ -67,7 +67,7 @@ for x=1,1 do
 			set_position(x*1.25-3.5,0,y*1.25-3.5)
 	end
 end	
-
+--[[
 get_material("mat_floor")
 	set_mat_float("reflectivity", 2)
 	set_mat_cubemap("environment", "skymap", 3)
@@ -84,6 +84,10 @@ for x=1,10 do
 			set_position(x-5.5,0,y-5.5)
 	end
 end
+]]
+
+water("wat")
+	set_scale(10,1,10)
 
 model("cyl", "resources/models/blocky.obj")
 	set_model_material("Cube", "mat_test")
@@ -94,8 +98,9 @@ model_instance("testcube", "cyl")
 
 cube("tsc")
 	set_material("mat_test")
-	set_position(2,0.5,2)
-
+	set_position(2,0,2)
+	set_rotation(-45,0,0)
+	set_scale(1,3,1)
 
 dir_light("light")
 	set_position(-5,3,0)

@@ -7,12 +7,12 @@
 		<key>Onyx3D.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Onyx3DLib.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<key>Onyx3dLib.xcscheme</key>
 		<dict>

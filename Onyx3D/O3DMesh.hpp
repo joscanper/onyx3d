@@ -23,7 +23,7 @@ namespace o3d {
         glm::vec3 m_normal;
         glm::vec2 m_texcoord;
         glm::vec3 m_tangent;
-        glm::vec3 m_bitangent;
+        
         
         
         O3DVertex(glm::vec3 pos = glm::vec3(0,0,0), glm::vec3 col = glm::vec3(1,1,1), glm::vec3 n =  glm::vec3(0,0,0), glm::vec2 texc = glm::vec2(0,0)) :
@@ -84,9 +84,6 @@ namespace o3d {
             // Tangent
             glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(O3DVertex), (GLvoid*)(sizeof(glm::vec3)*3 + sizeof(glm::vec2)));
             glEnableVertexAttribArray(4);
-            // Bitangent
-            glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, sizeof(O3DVertex), (GLvoid*)(sizeof(glm::vec3)*4 + sizeof(glm::vec2)));
-            glEnableVertexAttribArray(5);
             
             glBindVertexArray(0);
             
@@ -106,15 +103,10 @@ namespace o3d {
                 GLfloat f = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV2.x * deltaUV1.y);
                 
                 glm::vec3 tangent = (edge1 * deltaUV2.y   - edge2 * deltaUV1.y) * f;
-                glm::vec3 bitangent = (edge2 * deltaUV1.x   - edge1 * deltaUV2.x) * f;
             
                 vertices[i].m_tangent = tangent;
                 vertices[i+1].m_tangent = tangent;
                 vertices[i+2].m_tangent = tangent;
-                
-                vertices[i].m_bitangent = tangent;
-                vertices[i+1].m_bitangent = tangent;
-                vertices[i+2].m_bitangent = tangent;
             }
         }
         

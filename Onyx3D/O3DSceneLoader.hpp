@@ -36,6 +36,7 @@ namespace o3d {
             O3DLuaLoader::MaterialModificators::registerAll(L);
             
             O3DLuaLoader::LighModificators::registerAll(L);
+            O3DLuaLoader::WaterModificators::registerAll(L);
             
             std::string path = O3D().getResources().getResourcesPath(filename);
             if(luaL_dofile(L, path.c_str()))

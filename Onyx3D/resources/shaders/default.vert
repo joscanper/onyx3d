@@ -19,6 +19,7 @@ out VS_OUT{
 struct Camera{
     vec3 position;
     vec3 direction;
+    vec4 clippingPlane;
 };
 uniform Camera camera;
 
@@ -26,13 +27,17 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
+
 void main()
 {
-    gl_Position = projection * view * model * vec4(position, 1.0);
+    
+    vec4 worldpos = model * vec4(position, 1.0);
+    gl_ClipDistance[0] = dot(worldpos, camera.clippingPlane);
+    gl_Position = projection * view * worldpos;
     vs_out.color = color;
     
     
-    vs_out.fragPos = vec3(model * vec4(position, 1.0));
+    vs_out.fragPos = vec3(worldpos);
     vs_out.texCoord = vec2(texcoord.x, 1.0 - texcoord.y);
     
     mat3 normalMatrix = transpose(inverse(mat3(model)));

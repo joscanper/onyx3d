@@ -47,7 +47,7 @@
 		0D3D8C7F1EC7292200DAA2D3 /* O3DCubeMap.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D6D205B1EB0EBE200EC5DEB /* O3DCubeMap.hpp */; };
 		0D3D8C801EC7292200DAA2D3 /* O3DCubeMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D205A1EB0EBE200EC5DEB /* O3DCubeMap.cpp */; };
 		0D3D8C811EC7292200DAA2D3 /* O3DDefaultShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D20651EB10CDF00EC5DEB /* O3DDefaultShader.cpp */; };
-		0D3D8C821EC7292200DAA2D3 /* O3DDefaultShader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D6D20661EB10CDF00EC5DEB /* O3DDefaultShader.hpp */; };
+		0D3D8C821EC7292200DAA2D3 /* O3DDefaultDataUBO.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D6D20661EB10CDF00EC5DEB /* O3DDefaultDataUBO.hpp */; };
 		0D3D8C831EC7292200DAA2D3 /* O3DRender.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D6D20691EB2130E00EC5DEB /* O3DRender.hpp */; };
 		0D3D8C841EC7292200DAA2D3 /* O3DRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D20681EB2130E00EC5DEB /* O3DRender.cpp */; };
 		0D3D8C851EC7292200DAA2D3 /* O3DShadowMapping.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D9D0A341EB3E6EA0058DD3A /* O3DShadowMapping.hpp */; };
@@ -129,6 +129,12 @@
 		0DBA10061EC886E900772818 /* O3DUIDraw.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0DBA10031EC886E900772818 /* O3DUIDraw.hpp */; };
 		0DBA100C1EC887AB00772818 /* O3DImageRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0DBA10091EC887AB00772818 /* O3DImageRenderer.hpp */; };
 		0DC6CBE21EC9F405003D4B1C /* libassimp.3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC6CBE11EC9F405003D4B1C /* libassimp.3.3.1.dylib */; };
+		0DC6CBE51ECAF887003D4B1C /* O3DWaterRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DC6CBE31ECAF887003D4B1C /* O3DWaterRenderer.cpp */; };
+		0DC6CBE61ECAF887003D4B1C /* O3DWaterRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DC6CBE31ECAF887003D4B1C /* O3DWaterRenderer.cpp */; };
+		0DC6CBE71ECAF887003D4B1C /* O3DWaterRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0DC6CBE41ECAF887003D4B1C /* O3DWaterRenderer.hpp */; };
+		0DC6CBEA1ECAFC81003D4B1C /* O3DFBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DC6CBE81ECAFC81003D4B1C /* O3DFBO.cpp */; };
+		0DC6CBEB1ECAFC81003D4B1C /* O3DFBO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DC6CBE81ECAFC81003D4B1C /* O3DFBO.cpp */; };
+		0DC6CBEC1ECAFC81003D4B1C /* O3DFBO.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0DC6CBE91ECAFC81003D4B1C /* O3DFBO.hpp */; };
 		0DC972921EB4827900958018 /* O3DGizmos.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DC972901EB4827900958018 /* O3DGizmos.cpp */; };
 		0DE655E01EC1D8220043AE78 /* O3DPostProFX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DE655DE1EC1D8220043AE78 /* O3DPostProFX.cpp */; };
 /* End PBXBuildFile section */
@@ -254,7 +260,7 @@
 		0D6D205B1EB0EBE200EC5DEB /* O3DCubeMap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DCubeMap.hpp; sourceTree = "<group>"; };
 		0D6D20631EB10B3C00EC5DEB /* O3DSkyboxRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DSkyboxRenderer.hpp; sourceTree = "<group>"; };
 		0D6D20651EB10CDF00EC5DEB /* O3DDefaultShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DDefaultShader.cpp; sourceTree = "<group>"; };
-		0D6D20661EB10CDF00EC5DEB /* O3DDefaultShader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DDefaultShader.hpp; sourceTree = "<group>"; };
+		0D6D20661EB10CDF00EC5DEB /* O3DDefaultDataUBO.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DDefaultDataUBO.hpp; sourceTree = "<group>"; };
 		0D6D20681EB2130E00EC5DEB /* O3DRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DRender.cpp; sourceTree = "<group>"; };
 		0D6D20691EB2130E00EC5DEB /* O3DRender.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DRender.hpp; sourceTree = "<group>"; };
 		0D6D206F1EB21E8700EC5DEB /* O3DRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DRenderer.hpp; sourceTree = "<group>"; };
@@ -269,9 +275,14 @@
 		0DBA10031EC886E900772818 /* O3DUIDraw.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DUIDraw.hpp; sourceTree = "<group>"; };
 		0DBA10091EC887AB00772818 /* O3DImageRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DImageRenderer.hpp; sourceTree = "<group>"; };
 		0DC6CBE11EC9F405003D4B1C /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../usr/local/Cellar/assimp/3.3.1/lib/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
+		0DC6CBE31ECAF887003D4B1C /* O3DWaterRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DWaterRenderer.cpp; sourceTree = "<group>"; };
+		0DC6CBE41ECAF887003D4B1C /* O3DWaterRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DWaterRenderer.hpp; sourceTree = "<group>"; };
+		0DC6CBE81ECAFC81003D4B1C /* O3DFBO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DFBO.cpp; sourceTree = "<group>"; };
+		0DC6CBE91ECAFC81003D4B1C /* O3DFBO.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DFBO.hpp; sourceTree = "<group>"; };
 		0DC972901EB4827900958018 /* O3DGizmos.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DGizmos.cpp; sourceTree = "<group>"; };
 		0DC972911EB4827900958018 /* O3DGizmos.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DGizmos.hpp; sourceTree = "<group>"; };
 		0DC972941EB9CDF800958018 /* O3DShadowMapFBO.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DShadowMapFBO.hpp; sourceTree = "<group>"; };
+		0DE087251ECCACCF00A50026 /* libglsl_optimizer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglsl_optimizer.a; path = "Onyx3D/utils/glsl-optimizer-master/projects/xcode5/ /glsl_optimizer_lib/Build/Products/Debug/libglsl_optimizer.a"; sourceTree = "<group>"; };
 		0DE655DE1EC1D8220043AE78 /* O3DPostProFX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DPostProFX.cpp; sourceTree = "<group>"; };
 		0DE655DF1EC1D8220043AE78 /* O3DPostProFX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DPostProFX.hpp; sourceTree = "<group>"; };
 		0DE655E31EC1E35F0043AE78 /* O3DRenderComposition.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DRenderComposition.hpp; sourceTree = "<group>"; };
@@ -308,6 +319,7 @@
 		0D27CFB21EAA702000104625 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0DE087251ECCACCF00A50026 /* libglsl_optimizer.a */,
 				0DC6CBE11EC9F405003D4B1C /* libassimp.3.3.1.dylib */,
 				0D3D8CE31EC74C1F00DAA2D3 /* libfreetype.6.dylib */,
 				0DF3D37A1EBA034E000D0687 /* Demo.xcodeproj */,
@@ -369,13 +381,15 @@
 				0D28A6CC1EA639F400CE1238 /* O3DQuadRenderer.cpp */,
 				0D28A6CA1EA632D700CE1238 /* O3DMeshRenderer.hpp */,
 				0D28A6C91EA632D700CE1238 /* O3DMeshRenderer.cpp */,
-				0D27D0221EAB4FD600104625 /* O3DOctahedronRenderer.hpp */,
 				0D27D0211EAB4FD600104625 /* O3DOctahedronRenderer.cpp */,
+				0D27D0221EAB4FD600104625 /* O3DOctahedronRenderer.hpp */,
 				0D5B706A1EAB7ECC00902681 /* O3DGridRenderer.hpp */,
 				0D5B70691EAB7ECC00902681 /* O3DGridRenderer.cpp */,
 				0D6D20631EB10B3C00EC5DEB /* O3DSkyboxRenderer.hpp */,
 				0D6D206F1EB21E8700EC5DEB /* O3DRenderer.hpp */,
 				0D6D20711EB22F5F00EC5DEB /* O3DRenderer.cpp */,
+				0DC6CBE31ECAF887003D4B1C /* O3DWaterRenderer.cpp */,
+				0DC6CBE41ECAF887003D4B1C /* O3DWaterRenderer.hpp */,
 			);
 			name = renderers;
 			sourceTree = "<group>";
@@ -433,9 +447,7 @@
 				0D6D205B1EB0EBE200EC5DEB /* O3DCubeMap.hpp */,
 				0D6D205A1EB0EBE200EC5DEB /* O3DCubeMap.cpp */,
 				0D6D20651EB10CDF00EC5DEB /* O3DDefaultShader.cpp */,
-				0D6D20661EB10CDF00EC5DEB /* O3DDefaultShader.hpp */,
-				0D6D20691EB2130E00EC5DEB /* O3DRender.hpp */,
-				0D6D20681EB2130E00EC5DEB /* O3DRender.cpp */,
+				0D6D20661EB10CDF00EC5DEB /* O3DDefaultDataUBO.hpp */,
 				0D9D0A341EB3E6EA0058DD3A /* O3DShadowMapping.hpp */,
 				0D9D0A331EB3E6EA0058DD3A /* O3DShadowMapping.cpp */,
 				0DC972901EB4827900958018 /* O3DGizmos.cpp */,
@@ -448,6 +460,8 @@
 				0DE655E91EC32D2A0043AE78 /* O3DBloomFX.hpp */,
 				0D3D8CE01EC7472D00DAA2D3 /* O3DFont.cpp */,
 				0D3D8CE11EC7472D00DAA2D3 /* O3DFont.hpp */,
+				0DC6CBE81ECAFC81003D4B1C /* O3DFBO.cpp */,
+				0DC6CBE91ECAFC81003D4B1C /* O3DFBO.hpp */,
 			);
 			name = graphics;
 			sourceTree = "<group>";
@@ -483,6 +497,8 @@
 				0D27D0261EAB500F00104625 /* components */,
 				0D07C8171EA5D8A2007A1A45 /* O3DCore.hpp */,
 				0D07C8161EA5D8A2007A1A45 /* O3DCore.cpp */,
+				0D6D20691EB2130E00EC5DEB /* O3DRender.hpp */,
+				0D6D20681EB2130E00EC5DEB /* O3DRender.cpp */,
 				0D27CF841EA8EE0D00104625 /* O3DInput.hpp */,
 				0D27CF831EA8EE0D00104625 /* O3DInput.cpp */,
 				0D27CFA91EA9F41700104625 /* O3DLighting.hpp */,
@@ -552,9 +568,10 @@
 				0D3D8C781EC7292200DAA2D3 /* O3DTexture.hpp in Headers */,
 				0D3D8C7A1EC7292200DAA2D3 /* O3DMaterial.hpp in Headers */,
 				0D3D8C7C1EC7292200DAA2D3 /* O3DMesh.hpp in Headers */,
+				0DC6CBE71ECAF887003D4B1C /* O3DWaterRenderer.hpp in Headers */,
 				0D3D8C7D1EC7292200DAA2D3 /* O3DDefaultMaterial.hpp in Headers */,
 				0D3D8C7F1EC7292200DAA2D3 /* O3DCubeMap.hpp in Headers */,
-				0D3D8C821EC7292200DAA2D3 /* O3DDefaultShader.hpp in Headers */,
+				0D3D8C821EC7292200DAA2D3 /* O3DDefaultDataUBO.hpp in Headers */,
 				0D3D8C831EC7292200DAA2D3 /* O3DRender.hpp in Headers */,
 				0D3D8C851EC7292200DAA2D3 /* O3DShadowMapping.hpp in Headers */,
 				0D6280641EC845C9004E0655 /* O3DUIRect.hpp in Headers */,
@@ -590,6 +607,7 @@
 				0D3D8CB21EC7292200DAA2D3 /* O3DResources.hpp in Headers */,
 				0D3D8CB41EC7292200DAA2D3 /* O3DDefines.hpp in Headers */,
 				0D62806E1EC86A73004E0655 /* O3DLuaLoader.hpp in Headers */,
+				0DC6CBEC1ECAFC81003D4B1C /* O3DFBO.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,6 +719,7 @@
 				0D3D8C7B1EC7292200DAA2D3 /* O3DMaterial.cpp in Sources */,
 				0D3D8C7E1EC7292200DAA2D3 /* O3DDefaultMaterial.cpp in Sources */,
 				0D3D8C801EC7292200DAA2D3 /* O3DCubeMap.cpp in Sources */,
+				0DC6CBEB1ECAFC81003D4B1C /* O3DFBO.cpp in Sources */,
 				0D3D8C811EC7292200DAA2D3 /* O3DDefaultShader.cpp in Sources */,
 				0D3D8C841EC7292200DAA2D3 /* O3DRender.cpp in Sources */,
 				0D3D8C861EC7292200DAA2D3 /* O3DShadowMapping.cpp in Sources */,
@@ -718,6 +737,7 @@
 				0D3D8CA71EC7292200DAA2D3 /* O3DOctahedronRenderer.cpp in Sources */,
 				0D6280741EC8746A004E0655 /* O3DLuaLoader.cpp in Sources */,
 				0D3D8CA91EC7292200DAA2D3 /* O3DGridRenderer.cpp in Sources */,
+				0DC6CBE61ECAF887003D4B1C /* O3DWaterRenderer.cpp in Sources */,
 				0D3D8CAC1EC7292200DAA2D3 /* O3DRenderer.cpp in Sources */,
 				0D3D8CAE1EC7292200DAA2D3 /* O3DCore.cpp in Sources */,
 				0D3D8CB01EC7292200DAA2D3 /* O3DInput.cpp in Sources */,
@@ -742,6 +762,7 @@
 				0D27D01D1EAB400900104625 /* image_helper.c in Sources */,
 				0D27CF7F1EA8D34800104625 /* O3DCubeRenderer.cpp in Sources */,
 				0D27D01C1EAB400900104625 /* image_DXT.c in Sources */,
+				0DC6CBEA1ECAFC81003D4B1C /* O3DFBO.cpp in Sources */,
 				0D28A6DD1EA66A1600CE1238 /* O3DScene.cpp in Sources */,
 				0D28A6CB1EA632D700CE1238 /* O3DMeshRenderer.cpp in Sources */,
 				0D28A6CE1EA639F400CE1238 /* O3DQuadRenderer.cpp in Sources */,
@@ -759,6 +780,7 @@
 				0D3D8CE21EC7472D00DAA2D3 /* O3DFont.cpp in Sources */,
 				0D6280731EC8746A004E0655 /* O3DLuaLoader.cpp in Sources */,
 				0D27CF881EA900B600104625 /* O3DMaterial.cpp in Sources */,
+				0DC6CBE51ECAF887003D4B1C /* O3DWaterRenderer.cpp in Sources */,
 				0D27D01E1EAB400900104625 /* SOIL2.c in Sources */,
 				0D07C8181EA5D8A2007A1A45 /* O3DCore.cpp in Sources */,
 				0D9D0A351EB3E6EA0058DD3A /* O3DShadowMapping.cpp in Sources */,
@@ -911,6 +933,8 @@
 					/usr/local/Cellar/luabind/0.9.1_2/lib,
 					/usr/local/Cellar/freetype/2.7.1/lib,
 					/usr/local/Cellar/assimp/3.3.1/lib,
+					"$(PROJECT_DIR)/Onyx3D/utils/glsl-optimizer-master/projects/xcode5/\\ /glsl_optimizer_lib/Build/Products/Debug",
+					"$(PROJECT_DIR)/Onyx3D/utils/glsl-optimizer-master/projects/xcode5/\\ /glsl_optimizer_lib/Build/Products/Debug",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -938,6 +962,8 @@
 					/usr/local/Cellar/luabind/0.9.1_2/lib,
 					/usr/local/Cellar/freetype/2.7.1/lib,
 					/usr/local/Cellar/assimp/3.3.1/lib,
+					"$(PROJECT_DIR)/Onyx3D/utils/glsl-optimizer-master/projects/xcode5/\\ /glsl_optimizer_lib/Build/Products/Debug",
+					"$(PROJECT_DIR)/Onyx3D/utils/glsl-optimizer-master/projects/xcode5/\\ /glsl_optimizer_lib/Build/Products/Debug",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
