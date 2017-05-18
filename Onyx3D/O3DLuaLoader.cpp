@@ -30,8 +30,10 @@ namespace o3d {
             }
             
             int l_include(lua_State* L){
-                const char* path = lua_tostring(L, 1);
-                luaL_dofile(L, path);
+                std::string path = O3D().getResources().getResourcesPath(lua_tostring(L, 1));
+                std::cout << "Processing included file:" << path << std::endl;
+                if (luaL_dofile(L, path.c_str()))
+                    std::cout << "Error loading file: " << path << ":" << lua_tostring(L, -1) << std::endl;
                 return 1;
             }
             

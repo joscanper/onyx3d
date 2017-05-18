@@ -79,8 +79,9 @@ int O3DCore::init(GLint w, GLint h){
     glViewport(0,0,w,h);
     m_screenSize.x = w;
     m_screenSize.y = h;
-    m_render.init(w, h);
     m_resources.init();
+    m_render.init(w, h);
+    
     
     return 1;
 }

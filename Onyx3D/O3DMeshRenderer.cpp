@@ -35,7 +35,7 @@ void O3DMeshRenderer::render(const glm::mat4& view, const glm::mat4& proj, const
     // -- TODO - Move this somewhere else where we set a UBO --------
     Scene_ptr   scene   = O3DScene::getActiveScene();
     Camera_ptr  camera  = scene->getActiveCamera();
-    /*
+    
     shader->setUniform("time", O3D().getTime());
     
     // Camera
@@ -82,7 +82,7 @@ void O3DMeshRenderer::render(const glm::mat4& view, const glm::mat4& proj, const
         shader->setUniform(("lighting_data.spot["+index+"].range").c_str(), l->getRange());
         shader->setUniform(("lighting_data.spot["+index+"].intensity").c_str(), l->getIntensity());
     }
-    */
+    
     
     // -----------------------------------------------
 

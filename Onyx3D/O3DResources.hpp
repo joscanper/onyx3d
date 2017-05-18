@@ -113,7 +113,7 @@ class O3DResources {
         DefaultMaterial_ptr getDefaultMaterial(){ return m_default_mat; }
     
         std::string getResourcesPath(std::string path){
-            return "../../../../../../Onyx3D/" + path;
+            return "../../../Onyx3D/" + path;
         }
     
         void reloadDefaultShader(){
