@@ -4,7 +4,8 @@ Onyx3D is a 3D game engine developed with C++ and OpenGL
 ### Features
 - LUA Scene, materials and resources files, suitable for scene hot-reloading.
 - Default material & shader supporting:
-  - Normal maps.
+  - Normal mapping.
+  - Parallax mapping
   - Cubemaps reflection.
   - Multiple light casters: directional, point and spot.
 - Realtime shadows (Shadow mapping for directional and spot light)
