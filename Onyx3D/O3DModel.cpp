@@ -154,18 +154,26 @@ GameObject_ptr O3DModel::processSubModel(const char* id, aiMesh *assimp_mesh, co
     go->addComponent(r);
     Mesh_ptr mesh = std::make_shared<O3DMesh>();
     
+    
+    if (!assimp_mesh->HasTangentsAndBitangents())
+        std::cout << "WARNING: Model doesn't have tangents" << std::endl;
+    
     for(GLuint i = 0; i < assimp_mesh->mNumVertices; i++)
     {
         aiVector3D p = assimp_mesh->mVertices[i];
         aiVector3D n = assimp_mesh->mNormals[i];
-        aiVector3D t = assimp_mesh->mTangents[i];
         
         
         O3DVertex vertex;
         vertex.m_position = glm::vec3(p.x,p.y,p.z);
         vertex.m_normal = glm::normalize(glm::vec3(n.x,n.y,n.z));
-        vertex.m_tangent = glm::vec3(t.x,t.y,t.z);
-        if (assimp_mesh->mTextureCoords[0]){
+        
+        if (assimp_mesh->HasTangentsAndBitangents()){
+            aiVector3D t = assimp_mesh->mTangents[i];
+            vertex.m_tangent = glm::vec3(t.x,t.y,t.z);
+        }
+        
+        if (assimp_mesh->HasTextureCoords(0)){
             aiVector3D uv = assimp_mesh->mTextureCoords[0][i];
             vertex.m_texcoord = glm::vec2(uv.x, uv.y);
         }

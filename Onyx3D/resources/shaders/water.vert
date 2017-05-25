@@ -7,7 +7,18 @@ uniform mat4 model;
 uniform mat4 view;
 uniform mat4 projection;
 
-const float tiling = 1;
+struct Water{
+    sampler2D reflection;
+    sampler2D refraction;
+    sampler2D refractionDepth;
+    float waveStrength;
+    float speed;
+    vec3 color;
+    float density;
+    float specular;
+    float tiling;
+};
+uniform Water water;
 
 out VS_OUT{
     vec4 worldPos;
@@ -20,5 +31,5 @@ void main()
     vs_out.worldPos = model * vec4(position, 1.0);
     vs_out.fragPos = projection * view * vs_out.worldPos;
     gl_Position = vs_out.fragPos;
-    vs_out.texCoord = texcoord * tiling;
+    vs_out.texCoord = texcoord * water.tiling;
 }

@@ -72,6 +72,7 @@ void O3DWaterRenderer::render(const glm::mat4& view, const glm::mat4& proj, cons
     shader->setUniform("water.waveStrength", m_waveStrength);
     shader->setUniform("water.density", m_density);
     shader->setUniform("water.color", m_color);
+    shader->setUniform("water.tiling", m_tiling);
     
     O3DMeshRenderer::render(view, proj, shader);
     

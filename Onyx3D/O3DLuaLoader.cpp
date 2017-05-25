@@ -339,7 +339,7 @@ namespace o3d {
                 WaterRenderer_ptr m = make_shared<O3DWaterRenderer>();
                 m->initFBOs(w, h);
                 go->addComponent(m);
-                
+                m->setTiling(luawrapper::pop_number(L,1));
                 
                 return 1;
             }

@@ -33,11 +33,13 @@ namespace o3d {
         void setWaveStrength(float ws){ m_waveStrength = ws; }
         void setDensity(float d){ m_density = d; }
         void setColor(glm::vec3 c){ m_color = c; }
+        void setTiling(float t){ m_tiling = t; }
     private:
         float m_specular;
         float m_waveStrength;
         float m_speed;
         float m_density;
+        float m_tiling;
         glm::vec3 m_color;
         
         FBO_ptr reflection_fbo;

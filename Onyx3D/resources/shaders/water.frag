@@ -32,6 +32,7 @@ struct Water{
     vec3 color;
     float density;
     float specular;
+    float tiling;
 };
 uniform Water water;
 
