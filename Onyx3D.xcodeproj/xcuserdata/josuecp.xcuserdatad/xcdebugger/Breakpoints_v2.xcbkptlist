@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "242"
             endingLineNumber = "242"
-            landmarkName = "O3DRender::renderObject(const bRenderer_Wptr&amp; r,const glm::mat4&amp; view,const glm::mat4&amp; projection, const Shader_ptr&amp; shader)"
+            landmarkName = "O3DRender::renderObject(const Renderer_Wptr&amp; r,const glm::mat4&amp; view,const glm::mat4&amp; projection, const Shader_ptr&amp; shader)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "241"
             endingLineNumber = "241"
-            landmarkName = "O3DRender::renderObject(const bRenderer_Wptr&amp; r,const glm::mat4&amp; view,const glm::mat4&amp; projection, const Shader_ptr&amp; shader)"
+            landmarkName = "O3DRender::renderObject(const Renderer_Wptr&amp; r,const glm::mat4&amp; view,const glm::mat4&amp; projection, const Shader_ptr&amp; shader)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -95,7 +95,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "246"
             endingLineNumber = "246"
-            landmarkName = "O3DRender::renderObject(const bRenderer_Wptr&amp; r,const glm::mat4&amp; view,const glm::mat4&amp; projection, const Shader_ptr&amp; shader)"
+            landmarkName = "O3DRender::renderObject(const Renderer_Wptr&amp; r,const glm::mat4&amp; view,const glm::mat4&amp; projection, const Shader_ptr&amp; shader)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -53,8 +53,8 @@ int main() {
     }
     
     
-    //std::string scene_path = "resources/scenes/demo_dungeon.lua";
-    std::string scene_path = "resources/scenes/test_ssao.lua";
+    std::string scene_path = "resources/scenes/demo_beach.lua";
+    //std::string scene_path = "resources/scenes/test_ssao.lua";
     
     O3DUILoader::load("resources/ui/test.lua");
     
