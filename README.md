@@ -15,6 +15,7 @@ Onyx3D is a 3D game engine developed with C++ and OpenGL
 - Motion blur
 - Bloom
 - Filmic Tone Mapping
+- Draw calls batching
 
 ### Upcoming Features
 
