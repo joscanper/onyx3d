@@ -78,7 +78,7 @@ void O3DRender::render(){
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     if (!m_water.expired())
         renderObject(m_water, viewM, projM, nullptr);
-    renderObjects(m_transparent, viewM, projM, nullptr, true);
+        renderObjects(m_transparent, viewM, projM, nullptr, true);
     glDisable(GL_BLEND);
     
     

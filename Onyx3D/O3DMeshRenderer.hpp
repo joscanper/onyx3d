@@ -42,11 +42,9 @@ namespace o3d {
             m_mesh = other->m_mesh;
         }
         
-        
-        
     protected:
         Mesh_ptr m_mesh;
-        void generateArrayObject();
+        
     
         
     };

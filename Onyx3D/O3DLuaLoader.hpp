@@ -11,16 +11,18 @@
 
 #include "O3DCore.hpp"
 #include "O3DLight.hpp"
-
+#include "O3DBatch.hpp"
 
 #include "utils/luawrapper.hpp"
 
 namespace o3d {
     namespace O3DLuaLoader{
     
-        extern GameObject_ptr   g_lastobject;
-        extern Scene_ptr        g_scene;
-        extern Material_ptr     g_lastmaterial;
+        extern GameObject_ptr       g_lastobject;
+        extern Scene_ptr            g_scene;
+        extern Material_ptr         g_lastmaterial;
+        extern Batch_ptr            g_batch;
+        
         
         void clear();
         
@@ -129,6 +131,13 @@ namespace o3d {
         
         namespace UIModificators{
             int l_setColor(lua_State* L);
+            
+            void registerAll(lua_State* L);
+        }
+        
+        namespace RenderOperators{
+            int l_startBatch(lua_State* L);
+            int l_endBatch(lua_State* L);
             
             void registerAll(lua_State* L);
         }

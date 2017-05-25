@@ -40,8 +40,8 @@ void main(){
     // Use this frame's position and last frame's to compute the pixel
     // velocity.
     vec4 velocity = (previousPos - currentPos) / (2.0f/strength);
-    velocity.y *= -1.0f;
-    velocity.x *= 0.5f;
+    //velocity.y *= 1.0f;
+    //   velocity.x *= 0.5f;
     
     // Get the initial color at this pixel.
     vec2 tcoord = TexCoords;
@@ -49,6 +49,7 @@ void main(){
     vec4 color = screenCol;
     tcoord += velocity.xy;
     
+    velocity *= pow(zOverW,25);
     
     for(int i = 1; i < samples; ++i, tcoord += velocity.xy)
     {
@@ -57,6 +58,8 @@ void main(){
         // Add the current color to our color sum.
         color += currentColor;
     }
+    
+    
     
     // Average all of the samples to get the final blur color.
     //outColor = ;

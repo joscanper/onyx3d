@@ -16,6 +16,7 @@ namespace o3d {
         GameObject_ptr   g_lastobject;
         Scene_ptr        g_scene;
         Material_ptr     g_lastmaterial;
+        Batch_ptr        g_batch;
         
         void clear(){
             g_lastobject = nullptr;
@@ -260,7 +261,10 @@ namespace o3d {
         namespace ObjectDefiners{
             void addToScene(GameObject_ptr obj){
                 g_lastobject = obj;
-                g_scene->add(obj);
+                if (g_batch == nullptr)
+                    g_scene->add(obj);
+                else
+                    g_batch->add(obj);
             }
             
             int l_defaultCamera(lua_State* L){
@@ -567,6 +571,31 @@ namespace o3d {
             
             void registerAll(lua_State* L){
                 lua_register(L, "set_color", l_setColor);
+            }
+        }
+        
+        namespace RenderOperators{
+            int l_startBatch(lua_State* L){
+                const char* id = luawrapper::pop_string(L, "");
+                const char* mat_id = luawrapper::pop_string(L, "o3d_materials/default");
+                
+                g_batch = std::make_shared<O3DBatch>(id);
+                g_batch->setMaterial(O3D().getResources().getMaterial(mat_id));
+                
+                return 1;
+            }
+            
+            int l_endBatch(lua_State* L){
+                GameObject_ptr go = g_batch->generate();
+                g_batch = nullptr;
+                ObjectDefiners::addToScene(go);
+                
+                return 1;
+            }
+            
+            void registerAll(lua_State* L){
+                lua_register(L, "start_batch", l_startBatch);
+                lua_register(L, "end_batch", l_endBatch);
             }
         }
         

@@ -16,11 +16,8 @@ grid("grid");
 ]]
 
 ambient_light(0.1,0.1,0.1)
-
 node("pivot")
 	set_rotation(0,0,0)
-
-
 
 --texture("tilesD", "resources/textures/floor1/diffuse.jpg")
 texture("testD", "resources/textures/test_wallD.jpg")
@@ -58,15 +55,27 @@ default_material("mat_teapot")
 	set_mat_vec4("color",1,0.3,0.3,1)
 	
 model("teapot", "resources/models/teapot.obj")
-	set_model_material("teapot.005","mat_teapot")
+	set_model_material("teapot","mat_teapot")
 
 
-for x=1,1 do
-	for y=1,1 do
-		model_instance("teapot"..x.."-"..y, "teapot")
-			set_position(x*1.25-3.5,0,y*1.25-3.5)
+start_batch("teapots", "mat_teapot")
+	for x=1,20 do
+		for y=1,20 do
+			model_instance("teapot"..x.."-"..y, "teapot")
+				set_position(x*1.25-3.5,0,y*1.25-3.5)
+		end
+	end	
+end_batch()
+--[[
+start_batch("cubes", "mat_teapot")
+	for x=1,10 do
+		for y=1,10 do
+			cube("cube"..x.."-"..y)
+				set_position(x*1.25-3.5,-2,y*1.25-3.5)
+		end
 	end
-end	
+end_batch()	
+]]
 --[[
 get_material("mat_floor")
 	set_mat_float("reflectivity", 2)
@@ -86,21 +95,18 @@ for x=1,10 do
 end
 ]]
 
-water("wat")
-	set_scale(10,1,10)
+--water("wat")
+--	set_scale(10,1,10)
 
+--[[
 model("cyl", "resources/models/blocky.obj")
 	set_model_material("Cube", "mat_test")
 
 model_instance("testcube", "cyl")
 	set_position(0,0.5,0)
 	set_scale(0.5,0.5,0.5)
+]]
 
-cube("tsc")
-	set_material("mat_test")
-	set_position(2,0,2)
-	set_rotation(-45,0,0)
-	set_scale(1,3,1)
 
 dir_light("light")
 	set_position(-5,3,0)

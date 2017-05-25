@@ -126,6 +126,7 @@
 		0D8544D81EAE051200C93F2B /* O3DObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D8544D61EAE051200C93F2B /* O3DObjLoader.cpp */; };
 		0D8544DB1EAE124C00C93F2B /* O3DModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D8544D91EAE124C00C93F2B /* O3DModel.cpp */; };
 		0D9D0A351EB3E6EA0058DD3A /* O3DShadowMapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D0A331EB3E6EA0058DD3A /* O3DShadowMapping.cpp */; };
+		0DA055101ED6FAE2004DAEB3 /* O3DBatch.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0DA0550D1ED6FAE2004DAEB3 /* O3DBatch.hpp */; };
 		0DBA10061EC886E900772818 /* O3DUIDraw.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0DBA10031EC886E900772818 /* O3DUIDraw.hpp */; };
 		0DBA100C1EC887AB00772818 /* O3DImageRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0DBA10091EC887AB00772818 /* O3DImageRenderer.hpp */; };
 		0DC6CBE21EC9F405003D4B1C /* libassimp.3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC6CBE11EC9F405003D4B1C /* libassimp.3.3.1.dylib */; };
@@ -272,6 +273,7 @@
 		0D8544DD1EAF329B00C93F2B /* O3DDefaultMaterial.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = O3DDefaultMaterial.hpp; sourceTree = "<group>"; };
 		0D9D0A331EB3E6EA0058DD3A /* O3DShadowMapping.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DShadowMapping.cpp; sourceTree = "<group>"; };
 		0D9D0A341EB3E6EA0058DD3A /* O3DShadowMapping.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DShadowMapping.hpp; sourceTree = "<group>"; };
+		0DA0550D1ED6FAE2004DAEB3 /* O3DBatch.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DBatch.hpp; sourceTree = "<group>"; };
 		0DBA10031EC886E900772818 /* O3DUIDraw.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DUIDraw.hpp; sourceTree = "<group>"; };
 		0DBA10091EC887AB00772818 /* O3DImageRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DImageRenderer.hpp; sourceTree = "<group>"; };
 		0DC6CBE11EC9F405003D4B1C /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.3.3.1.dylib; path = ../../../../../../usr/local/Cellar/assimp/3.3.1/lib/libassimp.3.3.1.dylib; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 				0D3D8CE11EC7472D00DAA2D3 /* O3DFont.hpp */,
 				0DC6CBE81ECAFC81003D4B1C /* O3DFBO.cpp */,
 				0DC6CBE91ECAFC81003D4B1C /* O3DFBO.hpp */,
+				0DA0550D1ED6FAE2004DAEB3 /* O3DBatch.hpp */,
 			);
 			name = graphics;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				0D3D8C821EC7292200DAA2D3 /* O3DDefaultDataUBO.hpp in Headers */,
 				0D3D8C831EC7292200DAA2D3 /* O3DRender.hpp in Headers */,
 				0D3D8C851EC7292200DAA2D3 /* O3DShadowMapping.hpp in Headers */,
+				0DA055101ED6FAE2004DAEB3 /* O3DBatch.hpp in Headers */,
 				0D6280641EC845C9004E0655 /* O3DUIRect.hpp in Headers */,
 				0D3D8C881EC7292200DAA2D3 /* O3DGizmos.hpp in Headers */,
 				0D3D8C891EC7292200DAA2D3 /* O3DShadowMapFBO.hpp in Headers */,

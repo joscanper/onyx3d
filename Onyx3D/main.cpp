@@ -63,7 +63,7 @@ int main() {
     GameObject_ptr pivot = scene->getObjectById<O3DGameObject>("pivot");
     
     
-    O3D().getRenderer().getMotionBlur().setEnabled(false);
+    O3D().getRenderer().getMotionBlur().setStrength(1);
     
     //Shader_ptr font_s = std::make_shared<O3DShader>("resources/shaders/text.vert","resources/shaders/text.frag");
     //O3DTextRenderer tr;
