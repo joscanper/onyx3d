@@ -2,20 +2,12 @@
 include("resources/resources.lua")
 include("resources/demos/beach/beach.res")
 
-cubemap("skymap2",
-	"resources/skyboxes/1/right.jpg",
-	"resources/skyboxes/1/left.jpg",
-	"resources/skyboxes/1/top.jpg",
-	"resources/skyboxes/1/bottom.jpg",
-	"resources/skyboxes/1/back.jpg",
-	"resources/skyboxes/1/front.jpg")
+shader("mysky", "resources/shaders/sky.vert", "resources/shaders/sky.frag")
+material("mat_sky", "mysky");
+sky("sky")
+	set_material("mat_sky")
 
-material("mat_sky2", "o3d_shaders/skybox");
-	set_mat_cubemap("skybox", "skymap2", 0)
-
-
-skybox("sky")
-	set_material("mat_sky2")
+exposure(1)
 
 model("mod_beach", "resources/demos/beach/beach.obj")
 --model("mod_beach", "resources/models/teapot.obj")
@@ -47,12 +39,12 @@ dir_light("sun")
 	set_light_color(0.8,0.8,0.5)
 	set_light_shadows(1024, 0.01, 50, 15)
 	set_parent("pivot")
-
+--[[
 octa("lightsource")
 	set_parent("sun")
 	set_local_position(0,0,0)
 	set_material("white")
-	
+	]]
 water("water",512,512,10)
 	set_scale(100,1,100)
 	set_position(0,-0.05,0)
