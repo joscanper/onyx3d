@@ -20,6 +20,7 @@ void O3DResources::init(){
     createShader("o3d_shaders/skybox", "resources/shaders/skybox.vert","resources/shaders/skybox.frag");
     createShader("o3d_shaders/ui", "resources/shaders/ui.vert","resources/shaders/ui.frag");
     createShader("o3d_shaders/water", "resources/shaders/water.vert","resources/shaders/water.frag");
+    createShader("o3d_shaders/sky", "resources/shaders/skybox.vert","resources/shaders/sky.frag");
     
     // ----- TEXTURES
     createTexture("o3d_textures/white", "resources/textures/white.png");
@@ -55,4 +56,8 @@ void O3DResources::init(){
     Material_ptr water = createMaterial("o3d_materials/water", "o3d_shaders/water");
     water->setTexture("dudv", water_dudv, 5); 
     water->setTexture("normal", water_normal, 6);
+    
+    
+    // ------- MODELS    
+    createModel("o3d_models/skydome", "resources/models/skydome.obj");
 }

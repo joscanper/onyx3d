@@ -8,6 +8,8 @@ uniform sampler2D shadows;
 uniform sampler2D depth;
 uniform sampler2D bloom;
 
+uniform float exposure;
+
 // TODO - Make all this Uniforms
 float FAR = 1000.0f;
 float NEAR = 1.0f;
@@ -15,6 +17,7 @@ vec4 FOG_COLOR = vec4(0.5,0.5,0.5,1);
 int BLUR_RANGE = 5;
 
 vec4 ToneMapping(vec4 col){
+    col *= exposure;
     vec3 x = max(vec3(0),col.rgb-0.004); // Filmic Curve
     vec3 retColor = (x*(6.2*x+.5))/(x*(6.2*x+1.7)+0.06);
     return vec4(retColor,1);

@@ -63,6 +63,12 @@ namespace o3d {
         std::vector<ShadowEmitter>& getShadowEmitters(){ return m_shadowEmitters; }
         ShadowEmitter& getShadowEmitter(int index){ return m_shadowEmitters[index]; }
         
+        Light_ptr getSun(){
+            if (m_directionalLights.size() == 0)
+                throw "Lighting : There isn't any directional light";
+            
+            return m_directionalLights[0];
+        }
         
     private:
         std::vector<Light_ptr> m_directionalLights;

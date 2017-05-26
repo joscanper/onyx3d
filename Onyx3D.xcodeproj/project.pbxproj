@@ -123,6 +123,9 @@
 		0D6D20671EB10CDF00EC5DEB /* O3DDefaultShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D20651EB10CDF00EC5DEB /* O3DDefaultShader.cpp */; };
 		0D6D206A1EB2130E00EC5DEB /* O3DRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D20681EB2130E00EC5DEB /* O3DRender.cpp */; };
 		0D6D20721EB22F5F00EC5DEB /* O3DRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D6D20711EB22F5F00EC5DEB /* O3DRenderer.cpp */; };
+		0D719A051ED829F70060D4FE /* O3DSkyRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D719A031ED829F70060D4FE /* O3DSkyRenderer.cpp */; };
+		0D719A061ED829F70060D4FE /* O3DSkyRenderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D719A031ED829F70060D4FE /* O3DSkyRenderer.cpp */; };
+		0D719A071ED829F70060D4FE /* O3DSkyRenderer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 0D719A041ED829F70060D4FE /* O3DSkyRenderer.hpp */; };
 		0D8544D81EAE051200C93F2B /* O3DObjLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D8544D61EAE051200C93F2B /* O3DObjLoader.cpp */; };
 		0D8544DB1EAE124C00C93F2B /* O3DModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D8544D91EAE124C00C93F2B /* O3DModel.cpp */; };
 		0D9D0A351EB3E6EA0058DD3A /* O3DShadowMapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D0A331EB3E6EA0058DD3A /* O3DShadowMapping.cpp */; };
@@ -266,6 +269,8 @@
 		0D6D20691EB2130E00EC5DEB /* O3DRender.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DRender.hpp; sourceTree = "<group>"; };
 		0D6D206F1EB21E8700EC5DEB /* O3DRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DRenderer.hpp; sourceTree = "<group>"; };
 		0D6D20711EB22F5F00EC5DEB /* O3DRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DRenderer.cpp; sourceTree = "<group>"; };
+		0D719A031ED829F70060D4FE /* O3DSkyRenderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DSkyRenderer.cpp; sourceTree = "<group>"; };
+		0D719A041ED829F70060D4FE /* O3DSkyRenderer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DSkyRenderer.hpp; sourceTree = "<group>"; };
 		0D8544D61EAE051200C93F2B /* O3DObjLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DObjLoader.cpp; sourceTree = "<group>"; };
 		0D8544D71EAE051200C93F2B /* O3DObjLoader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = O3DObjLoader.hpp; sourceTree = "<group>"; };
 		0D8544D91EAE124C00C93F2B /* O3DModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = O3DModel.cpp; sourceTree = "<group>"; };
@@ -392,6 +397,8 @@
 				0D6D20711EB22F5F00EC5DEB /* O3DRenderer.cpp */,
 				0DC6CBE31ECAF887003D4B1C /* O3DWaterRenderer.cpp */,
 				0DC6CBE41ECAF887003D4B1C /* O3DWaterRenderer.hpp */,
+				0D719A031ED829F70060D4FE /* O3DSkyRenderer.cpp */,
+				0D719A041ED829F70060D4FE /* O3DSkyRenderer.hpp */,
 			);
 			name = renderers;
 			sourceTree = "<group>";
@@ -609,6 +616,7 @@
 				0D3D8CAF1EC7292200DAA2D3 /* O3DInput.hpp in Headers */,
 				0D3D8CB11EC7292200DAA2D3 /* O3DLighting.hpp in Headers */,
 				0D3D8CB21EC7292200DAA2D3 /* O3DResources.hpp in Headers */,
+				0D719A071ED829F70060D4FE /* O3DSkyRenderer.hpp in Headers */,
 				0D3D8CB41EC7292200DAA2D3 /* O3DDefines.hpp in Headers */,
 				0D62806E1EC86A73004E0655 /* O3DLuaLoader.hpp in Headers */,
 				0DC6CBEC1ECAFC81003D4B1C /* O3DFBO.hpp in Headers */,
@@ -735,6 +743,7 @@
 				0D3D8C9B1EC7292200DAA2D3 /* O3DSceneNode.cpp in Sources */,
 				0D3D8C9D1EC7292200DAA2D3 /* O3DTransform.cpp in Sources */,
 				0D3D8CA11EC7292200DAA2D3 /* O3DCubeRenderer.cpp in Sources */,
+				0D719A061ED829F70060D4FE /* O3DSkyRenderer.cpp in Sources */,
 				0D3D8CA31EC7292200DAA2D3 /* O3DQuadRenderer.cpp in Sources */,
 				0D3D8CA51EC7292200DAA2D3 /* O3DMeshRenderer.cpp in Sources */,
 				0D3D8CE81EC758BF00DAA2D3 /* O3DTextRenderer.cpp in Sources */,
@@ -778,6 +787,7 @@
 				0DC972921EB4827900958018 /* O3DGizmos.cpp in Sources */,
 				0D6D206A1EB2130E00EC5DEB /* O3DRender.cpp in Sources */,
 				0D6D20671EB10CDF00EC5DEB /* O3DDefaultShader.cpp in Sources */,
+				0D719A051ED829F70060D4FE /* O3DSkyRenderer.cpp in Sources */,
 				0D28A6E01EA66A2E00CE1238 /* O3DSceneNode.cpp in Sources */,
 				0D8544D81EAE051200C93F2B /* O3DObjLoader.cpp in Sources */,
 				0D5B706B1EAB7ECC00902681 /* O3DGridRenderer.cpp in Sources */,

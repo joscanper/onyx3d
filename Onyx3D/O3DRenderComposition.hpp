@@ -31,7 +31,12 @@ namespace o3d{
             shader->setUniformTexture("shadows", shadows, 1);
             shader->setUniformTexture("depth", depth,2);
             shader->setUniformTexture("bloom", bloom,3);
+            
+            shader->setUniform("exposure", m_exposure);
         }
+        void setExposure(float e) { m_exposure = e; }
+    private:
+        float m_exposure;
     };
 }
 

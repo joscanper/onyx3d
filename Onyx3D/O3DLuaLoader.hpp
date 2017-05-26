@@ -139,6 +139,8 @@ namespace o3d {
             int l_startBatch(lua_State* L);
             int l_endBatch(lua_State* L);
             
+            int l_exposure(lua_State* L);
+            
             void registerAll(lua_State* L);
         }
         

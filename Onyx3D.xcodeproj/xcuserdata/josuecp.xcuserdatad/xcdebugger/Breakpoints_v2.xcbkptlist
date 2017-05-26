@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Onyx3D/O3DLuaLoader.cpp"
-            timestampString = "517406553.080756"
+            timestampString = "517489054.325155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "l_model(lua_State* L)"
             landmarkType = "9">
          </BreakpointContent>
@@ -26,28 +26,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Onyx3D/O3DRender.cpp"
-            timestampString = "517403045.182797"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
-            landmarkName = "O3DRender::renderObject(const bRenderer_Wptr&amp; r,const glm::mat4&amp; view,const glm::mat4&amp; projection, const Shader_ptr&amp; shader)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Onyx3D/O3DRender.cpp"
-            timestampString = "517403047.250132"
+            timestampString = "517488033.711605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "241"
             endingLineNumber = "241"
-            landmarkName = "O3DRender::renderObject(const bRenderer_Wptr&amp; r,const glm::mat4&amp; view,const glm::mat4&amp; projection, const Shader_ptr&amp; shader)"
+            landmarkName = "O3DRender::renderObject(const Renderer_Wptr&amp; r,const glm::mat4&amp; view,const glm::mat4&amp; projection, const Shader_ptr&amp; shader)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Onyx3D/O3DRender.cpp"
+            timestampString = "517488033.711605"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
+            landmarkName = "O3DRender::renderObject(const Renderer_Wptr&amp; r,const glm::mat4&amp; view,const glm::mat4&amp; projection, const Shader_ptr&amp; shader)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Onyx3D/O3DLuaLoader.cpp"
-            timestampString = "517406553.080756"
+            timestampString = "517489054.325155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "581"
-            endingLineNumber = "581"
+            startingLineNumber = "584"
+            endingLineNumber = "584"
             landmarkName = "l_startBatch(lua_State* L)"
             landmarkType = "9">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Onyx3D/O3DLuaLoader.cpp"
-            timestampString = "517404757.513379"
+            timestampString = "517489054.325155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "583"
-            endingLineNumber = "583"
+            startingLineNumber = "586"
+            endingLineNumber = "586"
             landmarkName = "l_startBatch(lua_State* L)"
             landmarkType = "9">
          </BreakpointContent>
@@ -90,12 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Onyx3D/O3DRender.cpp"
-            timestampString = "517405034.787554"
+            timestampString = "517488033.711605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
-            landmarkName = "O3DRender::renderObject(const bRenderer_Wptr&amp; r,const glm::mat4&amp; view,const glm::mat4&amp; projection, const Shader_ptr&amp; shader)"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
+            landmarkName = "O3DRender::renderObject(const Renderer_Wptr&amp; r,const glm::mat4&amp; view,const glm::mat4&amp; projection, const Shader_ptr&amp; shader)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Onyx3D/O3DLuaLoader.cpp"
-            timestampString = "517406553.080756"
+            timestampString = "517489054.325155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
             landmarkName = "addToScene(GameObject_ptr obj)"
             landmarkType = "9">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Onyx3D/O3DRender.cpp"
-            timestampString = "517406646.945194"
+            timestampString = "517488033.711605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "O3DRender::renderObjects(const std::map&lt;float, Renderer_Wptr&gt;&amp; list,const glm::mat4&amp; view,const glm::mat4&amp; projection, const Shader_ptr&amp; shader, bool reversed)"
             landmarkType = "7">
             <Locations>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Onyx3D/O3DLuaLoader.cpp"
-            timestampString = "517406852.445224"
+            timestampString = "517489054.325155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "591"
-            endingLineNumber = "591"
+            startingLineNumber = "594"
+            endingLineNumber = "594"
             landmarkName = "l_endBatch(lua_State* L)"
             landmarkType = "9">
          </BreakpointContent>
@@ -234,12 +234,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Onyx3D/O3DRender.cpp"
-            timestampString = "517408795.697019"
+            timestampString = "517488033.711605"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "O3DRender::renderObjects(const std::map&lt;float, Renderer_Wptr&gt;&amp; list,const glm::mat4&amp; view,const glm::mat4&amp; projection, const Shader_ptr&amp; shader, bool reversed)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Onyx3D/O3DRender.cpp"
+            timestampString = "517493493.076275"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "O3DRender::renderSky(glm::mat4 viewM, glm::mat4 projM)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Onyx3D/O3DRender.cpp"
+            timestampString = "517493493.076275"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
+            landmarkName = "O3DRender::renderSky(glm::mat4 viewM, glm::mat4 projM)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

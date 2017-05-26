@@ -54,7 +54,8 @@ int main() {
     
     
     //std::string scene_path = "resources/scenes/demo_dungeon.lua";
-    std::string scene_path = "resources/scenes/test_ssao.lua";
+    //std::string scene_path = "resources/scenes/test_ssao.lua";
+    std::string scene_path = "resources/scenes/test_sky.lua";
     
     O3DUILoader::load("resources/ui/test.lua");
     
@@ -109,9 +110,9 @@ int main() {
         if (camspeed<0)
             camspeed+=0.01f;
         if (O3DInput::isKeyPressed(Keys::Numpad_4))
-            pivot->rotate(glm::vec3(0,1,0));
+            pivot->rotate(glm::vec3(0,0,0.1*mult));
         if (O3DInput::isKeyPressed(Keys::Numpad_6))
-            pivot->rotate(glm::vec3(0,-1,0));
+            pivot->rotate(glm::vec3(0,0,-0.1*mult));
         
         
         
