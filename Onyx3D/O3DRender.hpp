@@ -85,7 +85,10 @@ namespace o3d {
             return time;
         }
         O3DMotionBlurFX& getMotionBlur() { return m_motionBlurFX; }
+        O3DRenderComposition& getComposition() { return m_finalRender; }
+        
         int getDrawCalls(){ return m_drawCalls; }
+        
     private:
         int m_drawCalls;
         float m_renderTime;
@@ -101,7 +104,7 @@ namespace o3d {
         O3DRenderFBO m_renderFBO;
         O3DRenderFBO m_prevRenderFBO;
         
-        SkyboxRenderer_Wptr m_skybox;
+        SkyRenderer_Wptr m_sky;
         std::map<float, Renderer_Wptr> m_opaque;
         std::map<float, Renderer_Wptr> m_transparent;
         WaterRenderer_Wptr m_water;
@@ -114,7 +117,7 @@ namespace o3d {
         void renderObjects(const std::map<float, Renderer_Wptr>& list, const glm::mat4& view, const glm::mat4& proj, const Shader_ptr& shader = nullptr, bool reversed = false);
         void renderObject(const Renderer_Wptr& list, const glm::mat4& view, const glm::mat4& proj, const Shader_ptr& shader);
         void renderScreenQuad();
-        void renderSkybox(glm::mat4 viewM, glm::mat4 projM);
+        void renderSky(glm::mat4 viewM, glm::mat4 projM);
         void renderShadowMaps(Scene_ptr scene, glm::mat4 viewM, glm::mat4 projM);
         void showDebugRender(int key, GLuint texture);
         void prepareBuffers(int w, int h);

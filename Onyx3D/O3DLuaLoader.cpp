@@ -10,6 +10,8 @@
 #include "O3DGridRenderer.hpp"
 #include "O3DOctahedronRenderer.hpp"
 #include "O3DWaterRenderer.hpp"
+#include "O3DSkyRenderer.hpp"
+#include "O3DCubeRenderer.hpp"
 
 namespace o3d {
     namespace O3DLuaLoader{
@@ -359,6 +361,7 @@ namespace o3d {
                 lua_register(L, "octa", l_mesh<O3DOctahedronRenderer>);
                 lua_register(L, "quad", l_mesh<O3DQuadRenderer>);
                 lua_register(L, "skybox", l_mesh<O3DSkyboxRenderer>);
+                lua_register(L, "sky", l_mesh<O3DSkyRenderer>);
                 lua_register(L, "water", l_water);
                 lua_register(L, "model", l_model);
                 lua_register(L, "model_instance", l_modelInstance);
@@ -593,9 +596,16 @@ namespace o3d {
                 return 1;
             }
             
+            int l_exposure(lua_State* L){
+                float e = luawrapper::pop_number(L, 16);
+                O3D().getRenderer().getComposition().setExposure(e);
+                return 1;
+            }
+            
             void registerAll(lua_State* L){
                 lua_register(L, "start_batch", l_startBatch);
                 lua_register(L, "end_batch", l_endBatch);
+                lua_register(L, "exposure", l_exposure);
             }
         }
         

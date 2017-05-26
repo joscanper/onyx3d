@@ -67,8 +67,8 @@ void O3DRender::render(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glCullFace(GL_BACK);
     
-    // Skybox ------------------------------
-    renderSkybox(viewM, projM);
+    // Sky ------------------------------
+    renderSky(viewM, projM);
     
     // Opaque objects ----------------------
     renderObjects(m_opaque, viewM, projM);
@@ -179,8 +179,8 @@ void O3DRender::updateAndSortRenderers(const SceneNode_ptr& node, const Camera_p
         if (go){
             
             if (Renderer_ptr r = go->getComponent<O3DRenderer>()){
-                if (SkyboxRenderer_ptr sbr = std::dynamic_pointer_cast<O3DSkyboxRenderer>(r)){
-                    m_skybox = sbr;
+                if (SkyRenderer_ptr sbr = std::dynamic_pointer_cast<O3DSkyRenderer>(r)){
+                    m_sky = sbr;
                     continue;
                 }
                 
@@ -220,7 +220,7 @@ float O3DRender::getValidDistance(const Transform_ptr& t, const Camera_ptr& cam)
     
     float d = glm::length2(t->getPosition() - cam->getPosition());
     while(m_opaque.find(d) != m_opaque.end()){
-        d += 0.0001f;
+        d += 0.1f;
     }
     return d;
 }
@@ -253,12 +253,14 @@ void O3DRender::renderObject(const Renderer_Wptr& r,const glm::mat4& view,const 
     }
 }
 
-void O3DRender::renderSkybox(glm::mat4 viewM, glm::mat4 projM){
-    if (!m_skybox.expired()){
-        SkyboxRenderer_ptr skybox = m_skybox.lock();
-        skybox->getMaterial()->use();
-        skybox->render(viewM, projM, skybox->getMaterial()->getShader());
+void O3DRender::renderSky(glm::mat4 viewM, glm::mat4 projM){
+    if (!m_sky.expired()){
+        glDepthMask(GL_FALSE);
+        SkyRenderer_ptr sky = m_sky.lock();
+        sky->getMaterial()->use();
+        sky->render(viewM, projM, sky->getMaterial()->getShader());
         ++m_drawCalls;
+        glDepthMask(GL_TRUE);
     }
 }
 
@@ -277,7 +279,7 @@ void O3DRender::renderWaterMaps(const Camera_ptr& cam, glm::mat4 viewM, glm::mat
         // ------------------ Refraction
         refraction_fbo->bind();
         cam->setClippingPlane(glm::vec4(0,-1,0,waterY));
-        renderSkybox(viewM, projM);
+        renderSky(viewM, projM);
         renderObjects(m_opaque, viewM, projM);
         
         // ------------------ Reflection
@@ -289,7 +291,7 @@ void O3DRender::renderWaterMaps(const Camera_ptr& cam, glm::mat4 viewM, glm::mat
         cam->setPosition(glm::vec3(camPos.x,camPos.y-underWaterY, camPos.z));
         cam->setRotation(glm::vec3(-camRot.x, camRot.y, camRot.z));
         glm::mat4 underWaterM = cam->getViewMatrix();
-        renderSkybox(underWaterM, projM);
+        renderSky(underWaterM, projM);
         renderObjects(m_opaque, underWaterM, projM);
         
         // Camera restoration
