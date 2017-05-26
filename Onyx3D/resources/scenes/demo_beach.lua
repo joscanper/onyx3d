@@ -7,7 +7,7 @@ material("mat_sky", "mysky");
 sky("sky")
 	set_material("mat_sky")
 
-exposure(1)
+exposure(0.6)
 
 model("mod_beach", "resources/demos/beach/beach.obj")
 --model("mod_beach", "resources/models/teapot.obj")
@@ -26,18 +26,18 @@ grid("grid");
 ambient_light(0.2,0.2,0.2)
 
 node("pivot")
-	set_rotation(0,0,0)
+	set_rotation(0,70,0)
 
 ----------------------------------
 -- LIGHTING ----------------------
 ----------------------------------
 
 dir_light("sun")
-	set_position(2,5,-7)
-	set_rotation(50,20,0)
+	set_position(0,5,0)
+	set_rotation(90,0,0)
 	set_light_intensity(0.5)
 	set_light_color(0.8,0.8,0.5)
-	set_light_shadows(1024, 0.01, 50, 15)
+	--set_light_shadows(1024, 0.01, 50, 15)
 	set_parent("pivot")
 --[[
 octa("lightsource")
