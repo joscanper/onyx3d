@@ -1,5 +1,5 @@
 # Onyx3D
-Onyx3D is a 3D game engine developed with C++ and OpenGL
+Onyx3D is a 3D graphic engine developed with C++ and OpenGL
 
 ![](https://raw.githubusercontent.com/joscanper/onyx3d/master/Showcase/May-21-2017%2010-10-33.gif)
 
